@@ -1,0 +1,111 @@
+/**
+ *	@author:Le Vinh Thien;
+ *	@date:05/09/2015;
+ *	@mail:ohmyodvt95@gmail.com;
+ *	@location:frontend/index.php;
+ *	@copyright 2015;
+**/
+/**
+ *	HEADER
+ **/
+ /*header top*/
+ header{
+ 	background-color: #FFFFFF;
+ }
+.header-top{
+	border-top: 4px solid #7BAE23;
+	width: 100%;
+	height: 46px;
+	background-color: #F5F5F5;
+}
+.header-top .header-top-left{
+	float: left;
+}
+.header-top-left ul{
+	list-style: none;
+}
+.header-top-left ul li{
+	height: 46px;
+	line-height: 46px;
+	float: left;
+	padding-right: 20px;
+}
+.header-top-left ul li a{
+	color: #444645;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
+}
+.header-top-left ul li i{
+	font-size: 1.2em;
+}
+.header-top .header-top-right{
+	float: right;
+	line-height: 46px;
+}
+.header-top-right span{
+	font-weight: 300;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
+}
+
+/* header banner*/
+.header-banner{
+	padding-bottom: 50px;
+}
+.header-banner .logo{
+	min-height: 100px;
+}
+.header-banner .logo img{
+	height: 100px;
+	width: 120px;
+	padding: 10px;
+	margin-top: 10px;
+	display: block;
+}
+.header-banner .logo h1{
+	font-size: 48px;
+	line-height: 80px;
+}
+.header-banner .contact{
+    height: 100px;
+}
+.header-banner .contact i{
+	color: #84BB26;
+}
+.header-banner .contact-box{
+	margin-top: 30px;
+	background-color: #F7F7F7;
+	width: 250px;
+	border-radius: 5px;
+	padding: 5px 0px 5px 40px;
+	font-family: 'Raleway'
+}
+.header-banner .contact-box h6{
+	line-height: 15px;
+	font-size: 14px;
+}
+/*header-menu*/
+.header-menu ul li{
+	font-family: "Raleway";
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size: 18px;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+}
+.header-menu ul li a{
+	color: #84BB26!important;
+	font-family: "Open Sans";
+}
+.header-menu ul li a:hover{
+	color: black!important;
+}
+.navbar-default{
+	border-radius: 0;
+	width: 100%;
+	z-index: 9998;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin-bottom: 0px;
+	background-color: rgba(255, 255, 255, 0.8);
+	border: none;	-webkit-box-shadow: 0 10px 10px -6px #222;
+  	-moz-box-shadow: 0 10px 10px -6px #222;
+  	box-shadow: 0 10px 10px -6px #222;
+}

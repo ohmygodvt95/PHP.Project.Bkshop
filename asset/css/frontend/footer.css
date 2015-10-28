@@ -1,0 +1,64 @@
+/*
+ *	@author:Le Vinh Thien;
+ *	@date:05/09/2015;
+ *	@mail:ohmyodvt95@gmail.com;
+ *	@location:home/index.php;
+ *	@copyright 2015;
+**/
+/*manufacturers*/
+.manufacturers h1{
+	font-family: 'Raleway';
+	padding-left: 15px;
+	border-left: 40px solid #7BAE23;
+	font-weight: bolder;
+	margin-bottom: 20px;
+}
+.manufacturers img{
+	margin: 0 auto;
+}
+/**
+ *
+ * FOOTER
+ *
+ **/
+ .footer{
+ 	background-color: #444645;
+ }
+ .footer .intro{
+ 	padding: 20px;
+ 	color: #fff;
+ 	font-family: 'Raleway';
+ 	background-color: #7BAE23;
+ 	text-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+ }
+  .footer .intro footer{
+ 	color: #fff;
+ }
+  .footer .intro p{
+ 	font-weight: 300;
+ }
+ .footer .categories h3{
+ 	text-transform: uppercase;
+ 	font-family: 'Roboto';
+ }
+ .footer .categories p{
+ 	text-align: justify;
+ 	color: 	#c4c4c4!important;
+ }
+  .footer .categories *{
+ 	color: #fff;
+ 	font-family: 'Raleway';
+ }
+ .footer .copyright{
+ 	text-align: right;
+ 	border-top: 1px solid #383938;
+ 	min-height: 50px;
+ 	line-height: 50px;
+ 	text-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+ }
+ .footer .copyright span{
+	color: 	#c4c4c4;
+ }
+ .footer li a{
+ 	color: 	#c4c4c4!important;
+ }

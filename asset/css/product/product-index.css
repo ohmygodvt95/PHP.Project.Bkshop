@@ -1,0 +1,231 @@
+/*
+ *	@author:Le Vinh Thien;
+ *	@date:05/09/2015;
+ *	@mail:ohmyodvt95@gmail.com;
+ *	@location:product/index.php;
+ *	@copyright 2015;
+**/
+/*default*/
+body{
+	font-size: 14px;
+	font-family: "Raleway";
+}
+/*
+ * SLIDER
+*/
+#owl-demo .item img{
+	z-index: 0;
+   display: block;
+   width: 100%;
+   height: auto;
+}
+#owl-demo .item{
+	z-index: 0;
+}
+#owl-demo:hover .owl-theme .owl-controls .owl-buttons div{
+   display: block;
+}
+.owl-theme  .owl-prev{
+	position: absolute;
+ 	left: -5px;
+ 	top: 40%;
+}
+.owl-theme .owl-controls .owl-buttons div{
+	color: #000;
+	height: 50px;
+	width: 100px;
+	line-height: 50px;
+	text-align: center;
+	border-radius: 5px;
+	background-color: #fff;
+}
+.owl-theme  .owl-next{
+ 	position: absolute;
+ 	right: -5px;
+ 	top: 40%;
+}
+#owl-product .owl-controls .owl-buttons div{
+	color: #000;
+	height: 50px;
+	width: 50px;
+	line-height: 50px;
+	text-align: center;
+	border-radius: 5px;
+	background-color: gray;
+}
+#owl-product .owl-prev{
+ 	left: -25px;
+}
+#owl-product .owl-next{
+ 	right: -25px;
+}
+.owl-nav{
+	margin-top: -10px;
+	margin-left: 5px;
+	text-align: center;
+	cursor: pointer;
+	width: 40px;
+	padding: 5px;
+	background-color: #FFFFFF;
+	border-radius: 4px;
+	border: 2px solid #F6F6F6;
+}
+.owl-nav:hover{
+	background-color: #7BAE23;
+}
+/*new feeds*/
+.newfeeds{
+	margin-top: 10px;
+}
+#owl-newfeeds p{
+	text-align: justify;
+	padding: 5px;
+}
+#owl-newfeeds .owl-pagination{
+	display: none;
+}
+.readmore{
+	font-weight: bold;
+	color: #82B929;
+}
+.newfeeds .item{
+	padding: 5px;
+	border-right: 1px solid rgb(227, 227, 227);
+}
+.newfeeds h3{
+	font-weight: bold;
+	font-size: 20px;
+}
+.newfeeds .item h4{
+	font-weight: 300;
+	font-size: 16px;
+}
+.pagination{
+	margin: 0;
+	padding: 0;
+}
+.breadcrumb{
+	background-color: #7BAE23;
+	font-weight: bold;
+	color: #fff;
+	margin-bottom: 0px;
+
+}
+.breadcrumb li a{
+	line-height: 30px;
+	color: #fff;
+	font-family: 'Roboto';
+
+}
+.bread{
+	background-color: #7BAE23;
+  	margin-bottom: 10px;
+  	border-radius: 3px;
+}
+/*List-group*/
+.heading{
+	font-family: 'Raleway';
+	padding-left: 15px;
+	border-left: 40px solid #7BAE23;
+	font-weight: bolder;
+}
+.list-group-horizontal .list-group-item {
+    display: inline-block;
+    background-color: #575A59;
+    color: #fff;
+    font-family: 'Raleway';
+    border-color: #C7CDCA;
+}
+.list-group-horizontal .list-group-item:hover {
+    background-color: #7BAE23!important;
+    color: #fff;
+}
+.list-group-horizontal .list-group-item {
+	margin-bottom: 0;
+	margin-left:-4px;
+	margin-right: 0;
+}
+.list-group-horizontal .list-group-item:first-child {
+	border-top-right-radius:0;
+	border-bottom-left-radius:4px;
+}
+.list-group-horizontal .list-group-item:last-child {
+	border-top-right-radius:4px;
+	border-bottom-left-radius:0;
+}
+a.active{
+	background-color: #449D44!important;
+	border-color: #449D44!important;
+	font-weight: bolder;
+}
+/*products*/
+.products .box{
+	border-radius: 5px;
+	box-shadow: 0px 0px 5px rgb(227, 227, 227);
+	padding-bottom: 10px;
+	padding-top: 20px;
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+.box:hover{
+	box-shadow: 0px 0px 10px gray;
+}
+.box:hover img{
+	opacity: 0.1;
+}
+.box:hover button{
+	background-color: #FFA200;
+	border-color: #FFA200;
+	box-shadow: 0px 3px 6px gray;
+}
+.box  button:hover{
+	padding-left: 20px;
+	font-weight: bolder;
+	background-color: #FF432E;
+}
+.box:hover .info{
+	display: block;
+}
+.box img{
+	transition: 0.25s;
+	height: 250px;
+}
+.box h3{
+	padding:0;
+	font-size: 18px;
+	font-weight: bolder;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+}
+.box h3 a{
+	color: #000;
+}
+.box h4{
+	color: #D0021B;
+	font-size: 16px;
+}
+.box .info{
+	top: 20px;
+	position: absolute;
+	display: none;
+	width: 100%;
+	height: 250px;
+	padding: 15px 15px 15px 30px;
+	font-family: 'Raleway';
+	overflow: hidden;
+}
+.box .info p{
+	font-family: 'Roboto';
+	color: #000;
+	font-weight: 300;
+}
+.box .info a{
+	color: #3B599B;
+	font-weight: bold;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, .1);
+	font-size: 16px;
+}
+.box .info h3{
+	padding-bottom: 10px;
+	border-left: 4px solid #3B599B;
+	padding-left: 10px;
+}

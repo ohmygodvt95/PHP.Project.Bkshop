@@ -1,0 +1,60 @@
+/**
+ *	@author:Le Vinh Thien;
+ *	@date:05/09/2015;
+ *	@mail:ohmyodvt95@gmail.com;
+ *	@location:home/index.php;
+ *	@copyright 2015;
+**//*responsive 490*/
+@media (max-width: 490px) {
+	.header-top-right span{
+		display: none;
+	}
+}
+/*responsive 768*/
+@media (max-width: 768px) {
+	.header-top-left span{
+		display: none;
+	}
+	.header-banner .contact-box{
+		top: 10%;
+		margin: 0 auto;
+	}
+	.header-banner .logo h1{
+		font-size: 36px;
+		text-align: center;
+	}
+	.header-banner{
+		padding-bottom: 20px;
+	}
+	.navbar-default{
+		padding-bottom: 0px;
+		padding-top: 0px;
+	}
+	.box img{
+	transform: scale(0.8);
+	}
+	.owl-theme .owl-controls .owl-buttons div {
+		height: 30px;
+		width: 50px;
+		font-size: 16px;
+		line-height: 30px;
+	}
+	.owl-theme .owl-controls .owl-buttons i{
+		font-size: 16px;
+	}
+	.footer .copyright span{
+		font-size: 10px;
+ 	}
+ 	.manufacturers h1{
+ 		font-size: 30px;
+ 	}
+ 	.products .heading{
+		font-size: 30px;
+	}
+	.btn-more{
+		font-size: 14px;
+	}
+	.header-banner .logo img{
+		margin: 10px auto;
+	}
+}

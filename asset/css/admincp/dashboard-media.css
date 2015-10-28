@@ -1,0 +1,30 @@
+/**
+ *	@author:Le Vinh Thien;
+ *	@date:05/09/2015;
+ *	@mail:ohmyodvt95@gmail.com;
+ *	@location:dashboard/dashboard.php;
+ *	@copyright 2015;
+**/
+/*responsive*/
+@media (max-width: 768px) {
+	.dashboard h1{
+		font-size: 16px;
+		font-weight: bold;
+	}
+	.tabs li{
+		font-size: 10px;
+	}
+	.footer h3{
+		font-size: 14px;
+	}
+	.fix-padding{
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+	.tabs h3{
+		font-size: 12px;
+	}
+	.text-super{
+		font-size: 20px!important;
+	}
+}
