@@ -143,7 +143,7 @@
                                     else {
                                         echo '<div class="col-sm-12">
                                         <div class="col-sm-6 col-sm-offset-3">
-                                            <a href="'.site_url("product/").'" class="btn btn-warning btn-block btn-lg btn-more">Xem tất cả '.strtolower($item->category_title).'</a>
+                                            <a title="'.$item->category_title.'" href="'.site_url("san-pham/".$item->category_url."/all").'" class="btn btn-warning btn-block btn-lg btn-more">Xem tất cả '.strtolower($item->category_title).'</a>
                                         </div>
                                     </div>';
                                     }
