@@ -90,7 +90,7 @@
                                             echo '
                                             <tr id="p_'.$item['id'].'">
                                                 <th>'.$id++.'</th>
-                                                <th style="color:#7BAE23">'.$item['name'].'</th>
+                                                <th style="color:#7BAE23"><a href="'.site_url("chi-tiet/".$item['options']).'">'.$item['name'].'</a></th>
                                                 <th>'.$item['qty'].'</th>
                                                 <th>$ '.$item['price'].'</th>
                                                 <th style="color:#CB3430">$ '.($item['qty'] * $item['price']).'</th>
@@ -130,6 +130,7 @@
                 </div>
             </div>
         </div>
+         <div class="hidden baseurl"><?php echo site_url();?></div>
         <?php $this->load->view('module/frontend/footer');?>
             <!-- JQUERY -->
             <script src="<?php echo base_url();?>asset/js/jquery.min.js"></script>
@@ -140,7 +141,9 @@
             <script src="<?php echo base_url();?>asset/js/stickup.min.js"></script>
             <script src="<?php echo base_url();?>asset/js/frontend/script.js"></script>
             <script src="<?php echo base_url();?>asset/js/sweetalert.min.js"></script>
+
             <!-- Customize -->
+            <script src="<?php echo base_url();?>asset/js/frontend/cart.js"></script>
             <script type="text/javascript">
             $(document).ready(function() {
 
