@@ -13,10 +13,12 @@ class User extends CI_Controller {
 		if(!$this->session->has_userdata('login')){
 			$email = $this->input->post('email');
 			$password = $this->input->post('password');
-			$time = time();
-			$sql = "INSERT INTO \"user\"( user_email, user_pass, user_fullname, user_time, user_join_time) VALUES( '$email', '$password', '$email', $time, $time)";
-			$this->db->query($sql);
-			$this->session->set_flashdata('signup', $email);
+			if($email != "" && $password != ""){
+				$time = time();
+				$sql = "INSERT INTO \"user\"( user_email, user_pass, user_fullname, user_time, user_join_time) VALUES( '$email', '$password', '$email', $time, $time)";
+				$this->db->query($sql);
+				$this->session->set_flashdata('signup', $email);
+			}
 			redirect('cart/pay','refresh');
 		}
 	}
