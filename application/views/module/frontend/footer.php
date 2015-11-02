@@ -3,16 +3,16 @@
     <h1>Manufacturers</h1>
     <div class="slider">
         <div id="owl-manufactures" class="owl-carousel owl-theme">
-            <div class="item"><img src="http://newsmartwave.net/html/venedor/green/images/brands/brand-logo.png" alt="The Last of us" class="center-block"></div>
-            <div class="item"><img src="http://newsmartwave.net/html/venedor/green/images/brands/brand-logo.png" alt="GTA V" class="center-block"></div>
-            <div class="item"><img src="http://newsmartwave.net/html/venedor/green/images/brands/brand-logo.png" alt="The Last of us" class="center-block"></div>
-            <div class="item"><img src="http://newsmartwave.net/html/venedor/green/images/brands/brand-logo.png" alt="GTA V" class="center-block"></div>
-            <div class="item"><img src="http://newsmartwave.net/html/venedor/green/images/brands/brand-logo.png" alt="The Last of us" class="center-block"></div>
-            <div class="item"><img src="http://newsmartwave.net/html/venedor/green/images/brands/brand-logo.png" alt="GTA V" class="center-block"></div>
-            <div class="item"><img src="http://newsmartwave.net/html/venedor/green/images/brands/brand-logo.png" alt="The Last of us" class="center-block"></div>
-            <div class="item"><img src="http://newsmartwave.net/html/venedor/green/images/brands/brand-logo.png" alt="GTA V" class="center-block"></div>
-            <div class="item"><img src="http://newsmartwave.net/html/venedor/green/images/brands/brand-logo.png" alt="The Last of us" class="center-block"></div>
-            <div class="item"><img src="http://newsmartwave.net/html/venedor/green/images/brands/brand-logo.png" alt="GTA V" class="center-block"></div>
+            <div class="item"><img src="<?php echo base_url();?>asset/images/logo/dell.png" alt="Dell" class="center-block"></div>
+            <div class="item"><img src="<?php echo base_url();?>asset/images/logo/hp.png" alt="HP" class="center-block"></div>
+            <div class="item"><img src="<?php echo base_url();?>asset/images/logo/windows.png" alt="Windows" class="center-block"></div>
+            <div class="item"><img src="<?php echo base_url();?>asset/images/logo/acer.jpg" alt="Acer" class="center-block"></div>
+            <div class="item"><img src="<?php echo base_url();?>asset/images/logo/foxconn.jpg" alt="Foxconn" class="center-block"></div>
+            <div class="item"><img src="<?php echo base_url();?>asset/images/logo/lg.jpg" alt="LG" class="center-block"></div>
+            <div class="item"><img src="<?php echo base_url();?>asset/images/logo/htc.jpg" alt="HTC" class="center-block"></div>
+            <div class="item"><img src="<?php echo base_url();?>asset/images/logo/apple.jpg" alt="Apple" class="center-block"></div>
+            <div class="item"><img src="<?php echo base_url();?>asset/images/logo/intel.jpg" alt="Intel" class="center-block"></div>
+            <div class="item"><img src="<?php echo base_url();?>asset/images/logo/asus.png" alt="Asus" class="center-block"></div>
         </div>
     </div>
 </div>
