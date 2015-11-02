@@ -9,7 +9,10 @@ class Cart extends CI_Controller
     }
     public function index()
     {
-    	# code...
+    	$data['cart'] = $this->cart->contents();
+    	echo "<pre>";
+    	print_r ($data['cart']);
+    	echo "</pre>";
     }
     public function checkout() {
         $data['cart'] = $this->cart->contents();
@@ -37,7 +40,7 @@ class Cart extends CI_Controller
     {
     	$id = $this->input->post('id');
     	$qty = $this->input->post('qty');
-    	$sql = "SELECT product_id, product_title, product_price FROM product WHERE product_id = $id AND product_status = 0";
+    	$sql = "SELECT product_id, product_title, product_price, product_url FROM product WHERE product_id = $id AND product_status = 0";
     	$result = $this->db->query($sql);
     	if($result->num_rows() < 1){
     		echo "FASLE";
@@ -58,7 +61,7 @@ class Cart extends CI_Controller
     			}
     		}
     		if($checked == 0){
-    			$add = array('id' => $product->product_id, 'name' => $product->product_title, 'qty' => $qty, 'price' => $product->product_price);
+    			$add = array('id' => $product->product_id, 'name' => $product->product_title, 'qty' => $qty, 'price' => $product->product_price, 'options' => $product->product_url);
     			$this->cart->insert($add);
     			echo 'TRUE';
     		}
