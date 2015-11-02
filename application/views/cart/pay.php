@@ -39,6 +39,9 @@
                 .roboto{
                     font-family: 'Roboto';
                 }
+                .error{
+                    color: red;
+                }
             </style>
         </head>
         <body>
@@ -109,21 +112,21 @@
                                     <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                                         <div class="panel-body">
                                             <div class="col-sm-8 col-sm-offset-2 signup">
-                                                <form action="<?php echo site_url();?>user/register/" method = "POST">
+                                                <form id = "form" action="<?php echo site_url();?>user/register/" method = "POST">
                                                      <h4>Email:</h4>
                                                     <div class="input-group">
                                                         <span class="input-group-addon" id="basic-addon1"><i class="fa fa-fw fa-user"></i></span>
-                                                        <input type="email" class="form-control" placeholder="Username" aria-describedby="basic-addon1" name = "email">
+                                                        <input type="email" class="form-control" placeholder="Username" aria-describedby="basic-addon1" name = "email" required minlength="10">
                                                     </div>
                                                     <h4>Password:</h4>
                                                     <div class="input-group">
                                                         <span class="input-group-addon" id="basic-addon1"><i class="fa fa-fw fa-key"></i></span>
-                                                        <input type="password" class="form-control" placeholder="Password" aria-describedby="basic-addon1" name = "password">
+                                                        <input id="password" type="password" class="form-control" placeholder="Password" aria-describedby="basic-addon1" name = "password" required minlength="8">
                                                     </div>
                                                     <h4>Re-password:</h4>
                                                     <div class="input-group">
                                                         <span class="input-group-addon" id="basic-addon1"><i class="fa fa-fw fa-key"></i></span>
-                                                        <input type="password" class="form-control" placeholder="Password" aria-describedby="basic-addon1">
+                                                        <input type="password" class="form-control" placeholder="Password" aria-describedby="basic-addon1" required minlength="8" equalTo = "#password">
                                                     </div>
                                                     <div class="checkbox hidden" style="font-size: 12px">
                                                         <label><input type="checkbox" value="" class="check">I agree to the BKShop <a href="">Terms of Service</a>  and <a href="">Privacy Policy</a></label>
@@ -141,6 +144,7 @@
                     </div>
                 </div>
             </div>
+            <div class="hidden baseurl"><?php echo site_url();?></div>
             <?php $this->load->view('module/frontend/footer');?>
             <!-- JQUERY -->
             <script src="<?php echo base_url();?>asset/js/jquery.min.js"></script>
@@ -151,12 +155,15 @@
             <script src="<?php echo base_url();?>asset/js/stickup.min.js"></script>
             <script src="<?php echo base_url();?>asset/js/frontend/script.js"></script>
             <script src="<?php echo base_url();?>asset/js/sweetalert.min.js"></script>
+            <script src="<?php echo base_url();?>asset/js/frontend/cart.js"></script>
+            <script src="<?php echo base_url();?>asset/js/jquery.validate.min.js"></script>
             <!-- Customize -->
             <script type="text/javascript">
             $(document).ready(function() {
                 // $('.check').click(function(event) {
                 //     $('.signup button').toggleClass('active');
                 // });
+                $('#form').validate();
             });
             </script>
             <script>
