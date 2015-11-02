@@ -6,10 +6,7 @@
                     <div class="header-top-left">
                         <ul>
                             <li>
-                                <a href=""><i class="fa fa-fw fa-cart-plus"></i><span>My Cart</span></a>
-                            </li>
-                            <li>
-                                <a href=""><i class="fa fa-fw fa-check"></i><span>Checkout</span></a>
+                                <a href="<?php echo site_url();?>cart/checkout/"><i class="fa fa-fw fa-cart-plus"></i><span>My Cart</span></a>
                             </li>
                         </ul>
                     </div>
@@ -47,7 +44,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href=""><i class="fa fa-fw fa-shopping-cart"></i><span>0</span> item(s) - $ <span>00.0</span></a>
+                    <a class="navbar-brand info-cart" href="<?php echo site_url();?>cart/checkout/"><i class="fa fa-fw fa-shopping-cart"></i><span>0</span> item(s) - $ <span>00.0</span></a>
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse navbar-ex1-collapse">

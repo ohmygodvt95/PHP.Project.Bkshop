@@ -17,6 +17,7 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/owl.carousel.css">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/owl.theme.css">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/sweetalert.min.css">
         <!-- Load module -->
         <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/frontend/header.css">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/frontend/footer.css">
@@ -80,7 +81,7 @@
                                                     <div>
                                                         <div class="row">
                                                             <div class="col-sm-8 col-sm-offset-2">
-                                                                <button class="btn btn-success center-block" productid = "'.$key->product_id.'">Add to cart</button>
+                                                                <button class="btn btn-success center-block btn-add" productid = "'.$key->product_id.'">Add to cart</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -121,7 +122,7 @@
                                                             <div>
                                                                 <div class="row">
                                                                     <div class="col-sm-8 col-sm-offset-2">
-                                                                        <button class="btn btn-success center-block" productid = "'.$key->product_id.'">Add to cart</button>
+                                                                        <button class="btn btn-success center-block btn-add" productid = "'.$key->product_id.'">Add to cart</button>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -150,7 +151,7 @@
                             ';
                         }
                     ?>
-                </div>    
+                </div>
                 <div class="right-bar col-sm-3">
                     <div class="panel panel-default newslatter" style="z-index: 10000">
                         <div class="panel-body">
@@ -236,6 +237,7 @@
                 </div>
             </div>
         </div>
+        <div class="hidden baseurl"><?php echo site_url();?></div>
         <?php $this->load->view('module/frontend/footer');?>
         <!-- JQUERY -->
         <script src="<?php echo base_url();?>asset/js/jquery.min.js"></script>
@@ -245,76 +247,80 @@
         <script src="<?php echo base_url();?>asset/js/owl.carousel.min.js"></script>
         <script src="<?php echo base_url();?>asset/js/stickup.min.js"></script>
         <script src="<?php echo base_url();?>asset/js/frontend/script.js"></script>
+        <script src="<?php echo base_url();?>asset/js/sweetalert.min.js"></script>
         <!-- Customize -->
+        <script src="<?php echo base_url();?>asset/js/frontend/cart.js"></script>
         <script>
         jQuery(function($) {
-        $(document).ready(function() {
-        //enabling stickUp on the '.navbar-wrapper' class
-        $("#owl-demo").owlCarousel({
-        navigation : true, // Show next and prev buttons
-        slideSpeed : 300,
-        paginationSpeed : 400,
-        singleItem:true,
-        navigationText: [
-        "<i class='fa fa-2x fa-chevron-left'></i>",
-        "<i class='fa fa-2x fa-chevron-right'></i>"
-        ],
-        autoPlay : 4000
+            $(document).ready(function() {
+                //enabling stickUp on the '.navbar-wrapper' class
+                $("#owl-demo").owlCarousel({
+                    navigation: true, // Show next and prev buttons
+                    slideSpeed: 300,
+                    paginationSpeed: 400,
+                    singleItem: true,
+                    navigationText: [
+                        "<i class='fa fa-2x fa-chevron-left'></i>",
+                        "<i class='fa fa-2x fa-chevron-right'></i>"
+                    ],
+                    autoPlay: 4000
+                });
+                $(".owl-product").owlCarousel({
+                    items: 3,
+                    itemsDesktopSmall: [980, 3],
+                    itemsDesktop: [1199, 4],
+                    navigation: true, // Show next and prev buttons
+                    slideSpeed: 300,
+                    paginationSpeed: 400,
+                    navigationText: [
+                        "<i class='fa fa-2x fa-chevron-left'></i>",
+                        "<i class='fa fa-2x fa-chevron-right'></i>"
+                    ],
+                    autoPlay: 2000,
+                    stopOnHover: true
+                });
+                $("#owl-testimonials").owlCarousel({
+                    items: 1,
+                    itemsDesktopSmall: [980, 1],
+                    itemsDesktop: [1199, 1],
+                    slideSpeed: 300,
+                    paginationSpeed: 400,
+                    autoPlay: 4000,
+                    autoHeight: true
+                });
+                var owl = $("#owl-testimonials").data('owlCarousel');
+                $('.owl-next').click(function(event) {
+                    owl.next();
+                });
+                $('.owl-prev').click(function(event) {
+                    owl.prev();
+                });
+                $("#owl-newfeeds").owlCarousel({
+                    items: 1,
+                    itemsDesktopSmall: [980, 1],
+                    itemsDesktop: [1199, 1],
+                    slideSpeed: 300,
+                    paginationSpeed: 400,
+                    autoPlay: 3000,
+                    autoHeight: true
+                });
+                var owl_news = $("#owl-newfeeds").data('owlCarousel');
+                $('.owl-next-new').click(function(event) {
+                    owl_news.next();
+                });
+                $('.owl-prev-new').click(function(event) {
+                    owl_news.prev();
+                });
+            });
         });
-        $(".owl-product").owlCarousel({
-        items : 3,
-        itemsDesktopSmall : [980,3],
-        itemsDesktop : [1199,4],
-        navigation : true, // Show next and prev buttons
-        slideSpeed : 300,
-        paginationSpeed : 400,
-        navigationText: [
-        "<i class='fa fa-2x fa-chevron-left'></i>",
-        "<i class='fa fa-2x fa-chevron-right'></i>"
-        ],
-        autoPlay : 2000,
-        stopOnHover: true
-        });
-        $("#owl-testimonials").owlCarousel({
-        items : 1,
-        itemsDesktopSmall : [980,1],
-        itemsDesktop : [1199,1],
-        slideSpeed : 300,
-        paginationSpeed : 400,
-        autoPlay : 4000,
-        autoHeight : true
-        });
-        var owl = $("#owl-testimonials").data('owlCarousel');
-        $('.owl-next').click(function(event) {
-        owl.next();
-        });
-        $('.owl-prev').click(function(event) {
-        owl.prev();
-        });
-        $("#owl-newfeeds").owlCarousel({
-        items : 1,
-        itemsDesktopSmall : [980,1],
-        itemsDesktop : [1199,1],
-        slideSpeed : 300,
-        paginationSpeed : 400,
-        autoPlay : 3000,
-        autoHeight : true
-        });
-        var owl_news = $("#owl-newfeeds").data('owlCarousel');
-        $('.owl-next-new').click(function(event) {
-        owl_news.next();
-        });
-        $('.owl-prev-new').click(function(event) {
-        owl_news.prev();
-        });
-        });
-        });
+
         </script>
+
         <script>
         // Preloader Website
         $(window).load(function() {
-        $('#loader-wrapper').delay(450).fadeOut();
-        $('#loader').delay(750).fadeOut('slow');
+            $('#loader-wrapper').delay(450).fadeOut();
+            $('#loader').delay(750).fadeOut('slow');
         });
         </script>
     </body>

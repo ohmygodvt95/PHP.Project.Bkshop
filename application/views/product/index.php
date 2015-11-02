@@ -17,6 +17,7 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/owl.carousel.css">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/owl.theme.css">
+        <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/sweetalert.min.css">
         <!-- Load module -->
         <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/frontend/header.css">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/frontend/footer.css">
@@ -110,236 +111,48 @@
                             </div>
                         </div>
                         <hr>
+                        <div class="">
+                            <input type="text" class="base_url" value="<?php echo site_url(); ?>">
+                            <input type="text" class="category" value="<?php echo $category->category_url; ?>">
+                            <input type="text" class="sub_category" value="<?php echo $this_sub_category; ?>">
+                            <input type="text" class="sort_by" value="<?php echo $sort_by; ?>">
+                            <input type="text" class="sort_type" value="<?php echo $sort_type; ?>">
+                            <input type="text" class="count" value="0">
+                        </div>
                         <div class="row">
                             <div class="col-sm-3 sort">
                                 <div class="input-group">
                                     <div class="input-group-addon">Sort by</div>
-                                    <select name="" id="" class="form-control">
-                                        <option value="">Name</option>
-                                        <option value="">Price</option>
-                                        <option value="">Views</option>
-                                        <option value="">Release date</option>
+                                    <select name="" id="" class="form-control sort-by">
+                                        <option value="time" <?php if($sort_by == 'time') echo 'selected="true"';?>>Release date</option>
+                                        <option value="name" <?php if($sort_by == 'name') echo 'selected="true"';?>>Name</option>
+                                        <option value="price" <?php if($sort_by == 'price') echo 'selected="true"';?>>Price</option>
+                                        <option value="view" <?php if($sort_by == 'view') echo 'selected="true"';?>>Views</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-sm-3 sort">
                                 <div class="input-group">
                                     <div class="input-group-addon">Sort type</div>
-                                    <select name="" id="" class="form-control">
-                                        <option value="ASC">ASC</option>
-                                        <option value="DESC">DESC</option>
+                                    <select name="" id="" class="form-control sort-type">
+                                        <option value="asc" <?php if($sort_type == 'asc') echo 'selected="true"';?>>ASC</option>
+                                        <option value="desc" <?php if($sort_type != 'asc') echo 'selected="true"';?>>DESC</option>
                                     </select>
                                 </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <ul class="pagination pull-right">
-                                    <li><a href="#">&laquo;</a></li>
-                                    <li><a href="#">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#">4</a></li>
-                                    <li><a href="#">5</a></li>
-                                    <li><a href="#">&raquo;</a></li>
-                                </ul>
                             </div>
                         </div>
                         <hr>
                     </div>
                     <div class="col-sm-12 products">
-                        <div class="col-sm-3">
-                            <div class="box">
-                                <img class="img-responsive center-block" src="https://www.thegioididong.com/images/42/71542/oppo-neo-5-400x533.png" alt=""/>
-                                <div class="info">
-                                    <h3>Thông tin</h3>
-                                    <p>Màn hình:   fullHD</p>
-                                    <p>H Đ H:   Android 4.4.5</p>
-                                    <p>Ram:   2GB</p>
-                                    <p>CPU:   HD</p>
-                                    <a href="<?php echo site_url('product/details');?>">Xem thêm <i class="fa fa-fw fa-hand-o-right"></i></a>
-                                </div>
-                                <h3 class="text-center"><a href="">LG optimus G E973</a></h3>
-                                <h4 class="text-center">9,000,000 USD</h4>
-                                <div>
-                                    <div class="row">
-                                        <div class="col-sm-8 col-sm-offset-2">
-                                            <button class="btn btn-success center-block">Add to cart</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="box">
-                                <img class="img-responsive center-block" src="https://www.thegioididong.com/images/42/71542/oppo-neo-5-400x533.png" alt=""/>
-                                <div class="info">
-                                    <h3>Thông tin</h3>
-                                    <p>Màn hình:   fullHD</p>
-                                    <p>H Đ H:   Android 4.4.5</p>
-                                    <p>Ram:   2GB</p>
-                                    <p>CPU:   HD</p>
-                                    <a href="<?php echo site_url('product/details');?>">Xem thêm <i class="fa fa-fw fa-hand-o-right"></i></a>
-                                </div>
-                                <h3 class="text-center"><a href="">LG optimus G E973</a></h3>
-                                <h4 class="text-center">9,000,000 USD</h4>
-                                <div>
-                                    <div class="row">
-                                        <div class="col-sm-8 col-sm-offset-2">
-                                            <button class="btn btn-success center-block">Add to cart</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="box">
-                                <img class="img-responsive center-block" src="https://www.thegioididong.com/images/42/71542/oppo-neo-5-400x533.png" alt=""/>
-                                <div class="info">
-                                    <h3>Thông tin</h3>
-                                    <p>Màn hình:   fullHD</p>
-                                    <p>H Đ H:   Android 4.4.5</p>
-                                    <p>Ram:   2GB</p>
-                                    <p>CPU:   HD</p>
-                                    <a href="<?php echo site_url('product/details');?>">Xem thêm <i class="fa fa-fw fa-hand-o-right"></i></a>
-                                </div>
-                                <h3 class="text-center"><a href="">LG optimus G E973</a></h3>
-                                <h4 class="text-center">9,000,000 USD</h4>
-                                <div>
-                                    <div class="row">
-                                        <div class="col-sm-8 col-sm-offset-2">
-                                            <button class="btn btn-success center-block">Add to cart</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="box">
-                                <img class="img-responsive center-block" src="https://www.thegioididong.com/images/42/71542/oppo-neo-5-400x533.png" alt=""/>
-                                <div class="info">
-                                    <h3>Thông tin</h3>
-                                    <p>Màn hình:   fullHD</p>
-                                    <p>H Đ H:   Android 4.4.5</p>
-                                    <p>Ram:   2GB</p>
-                                    <p>CPU:   HD</p>
-                                    <a href="<?php echo site_url('product/details');?>">Xem thêm <i class="fa fa-fw fa-hand-o-right"></i></a>
-                                </div>
-                                <h3 class="text-center"><a href="">LG optimus G E973</a></h3>
-                                <h4 class="text-center">9,000,000 USD</h4>
-                                <div>
-                                    <div class="row">
-                                        <div class="col-sm-8 col-sm-offset-2">
-                                            <button class="btn btn-success center-block">Add to cart</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="box">
-                                <img class="img-responsive center-block" src="https://www.thegioididong.com/images/42/71542/oppo-neo-5-400x533.png" alt=""/>
-                                <div class="info">
-                                    <h3>Thông tin</h3>
-                                    <p>Màn hình:   fullHD</p>
-                                    <p>H Đ H:   Android 4.4.5</p>
-                                    <p>Ram:   2GB</p>
-                                    <p>CPU:   HD</p>
-                                    <a href="<?php echo site_url('product/details');?>">Xem thêm <i class="fa fa-fw fa-hand-o-right"></i></a>
-                                </div>
-                                <h3 class="text-center"><a href="">LG optimus G E973</a></h3>
-                                <h4 class="text-center">9,000,000 USD</h4>
-                                <div>
-                                    <div class="row">
-                                        <div class="col-sm-8 col-sm-offset-2">
-                                            <button class="btn btn-success center-block">Add to cart</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="box">
-                                <img class="img-responsive center-block" src="https://www.thegioididong.com/images/42/71542/oppo-neo-5-400x533.png" alt=""/>
-                                <div class="info">
-                                    <h3>Thông tin</h3>
-                                    <p>Màn hình:   fullHD</p>
-                                    <p>H Đ H:   Android 4.4.5</p>
-                                    <p>Ram:   2GB</p>
-                                    <p>CPU:   HD</p>
-                                    <a href="<?php echo site_url('product/details');?>">Xem thêm <i class="fa fa-fw fa-hand-o-right"></i></a>
-                                </div>
-                                <h3 class="text-center"><a href="">LG optimus G E973</a></h3>
-                                <h4 class="text-center">9,000,000 USD</h4>
-                                <div>
-                                    <div class="row">
-                                        <div class="col-sm-8 col-sm-offset-2">
-                                            <button class="btn btn-success center-block">Add to cart</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="box">
-                                <img class="img-responsive center-block" src="https://www.thegioididong.com/images/42/71542/oppo-neo-5-400x533.png" alt=""/>
-                                <div class="info">
-                                    <h3>Thông tin</h3>
-                                    <p>Màn hình:   fullHD</p>
-                                    <p>H Đ H:   Android 4.4.5</p>
-                                    <p>Ram:   2GB</p>
-                                    <p>CPU:   HD</p>
-                                    <a href="<?php echo site_url('product/details');?>">Xem thêm <i class="fa fa-fw fa-hand-o-right"></i></a>
-                                </div>
-                                <h3 class="text-center"><a href="">LG optimus G E973</a></h3>
-                                <h4 class="text-center">9,000,000 USD</h4>
-                                <div>
-                                    <div class="row">
-                                        <div class="col-sm-8 col-sm-offset-2">
-                                            <button class="btn btn-success center-block">Add to cart</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="box">
-                                <img class="img-responsive center-block" src="https://www.thegioididong.com/images/42/71542/oppo-neo-5-400x533.png" alt=""/>
-                                <div class="info">
-                                    <h3>Thông tin</h3>
-                                    <p>Màn hình:   fullHD</p>
-                                    <p>H Đ H:   Android 4.4.5</p>
-                                    <p>Ram:   2GB</p>
-                                    <p>CPU:   HD</p>
-                                    <a href="<?php echo site_url('product/details');?>">Xem thêm <i class="fa fa-fw fa-hand-o-right"></i></a>
-                                </div>
-                                <h3 class="text-center"><a href="">LG optimus G E973</a></h3>
-                                <h4 class="text-center">9,000,000 USD</h4>
-                                <div>
-                                    <div class="row">
-                                        <div class="col-sm-8 col-sm-offset-2">
-                                            <button class="btn btn-success center-block">Add to cart</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
-                    <div class="container">
-                        <div class="col-sm-12">
-                            <hr>
-                            <ul class="pagination pull-right">
-                                <li><a href="#">&laquo;</a></li>
-                                <li><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li><a href="#">&raquo;</a></li>
-                            </ul>
-                        </div>
+                    <div class="col-sm-6 col-sm-offset-3">
+                    <hr>
+                        <div class="btn btn-block btn-success btn-more btn-lg">Kéo xuống để xem thêm sản phẩm</div>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="hidden baseurl"><?php echo site_url();?></div>
         <?php $this->load->view('module/frontend/footer');?>
         <!-- JQUERY -->
         <script src="<?php echo base_url();?>asset/js/jquery.min.js"></script>
@@ -349,43 +162,106 @@
         <script src="<?php echo base_url();?>asset/js/owl.carousel.min.js"></script>
         <script src="<?php echo base_url();?>asset/js/stickup.min.js"></script>
         <script src="<?php echo base_url();?>asset/js/frontend/script.js"></script>
+        <script src="<?php echo base_url();?>asset/js/sweetalert.min.js"></script>
         <!-- Customize -->
+        <script src="<?php echo base_url();?>asset/js/frontend/cart.js"></script>
         <script>
         $(document).ready(function() {
-        $("#owl-demo").owlCarousel({
-        navigation : true, // Show next and prev buttons
-        slideSpeed : 300,
-        paginationSpeed : 400,
-        singleItem:true,
-        navigationText: [
-        "<i class='fa fa-2x fa-chevron-left'></i>",
-        "<i class='fa fa-2x fa-chevron-right'></i>"
-        ],
-        autoPlay : 4000
+            $("#owl-demo").owlCarousel({
+                navigation: true, // Show next and prev buttons
+                slideSpeed: 300,
+                paginationSpeed: 400,
+                singleItem: true,
+                navigationText: [
+                    "<i class='fa fa-2x fa-chevron-left'></i>",
+                    "<i class='fa fa-2x fa-chevron-right'></i>"
+                ],
+                autoPlay: 4000
+            });
+            $("#owl-newfeeds").owlCarousel({
+                items: 1,
+                itemsDesktopSmall: [980, 1],
+                itemsDesktop: [1199, 1],
+                slideSpeed: 300,
+                paginationSpeed: 400,
+                autoPlay: 3000
+            });
+            var owl_news = $("#owl-newfeeds").data('owlCarousel');
+            $('.owl-next-new').click(function(event) {
+                owl_news.next();
+            });
+            $('.owl-prev-new').click(function(event) {
+                owl_news.prev();
+            });
+            // load product
+            var base_url = $('input.base_url').val();
+            var category = $('input.category').val();
+            var sub_category = $('input.sub_category').val();
+            var sort_by = $('input.sort_by').val();
+            var sort_type = $('input.sort_type').val();
+            var stt = 0;
+
+            function setCount(dem) {
+                var count = parseInt($('input.count').val());
+                count = count + dem;
+                $('input.count').attr('value', count);
+            }
+            //alert(category + sub_category + sort_by + sort_type + count);
+            function getProduct() {
+                stt = 1;
+                var count = parseInt($('input.count').val());
+                $.post(base_url + "ajax/getproduct/" + category + "/" + sub_category + "/" + sort_by + "/" + sort_type + "/" + count, {
+                        param1: 'value1'
+                    },
+                    function(data, textStatus, xhr) {
+                        if (textStatus == "success") {
+                            if (data == "FALSE") {
+                                $('.btn-more').text("Không còn sản phẩm nào");
+                                $('.btn-more').addClass('btn-warning')
+                            }
+                            var dem = 0;
+                            var textArr = data.split("<!--split-->");
+                            for (var i = 0; i < textArr.length; i++) {
+                                var html = $(textArr[i]).hide();
+                                //$('.products').append($(html));
+                                $(html).appendTo('.products').show(300 + i * 150);
+                                dem++;
+                            }
+                            if (dem > 0) dem--;
+                            setCount(dem);
+                            stt = 0;
+                        }
+                    });
+            }
+
+            function init() {
+                getProduct();
+            }
+
+            init();
+
+            $(window).scroll(function() {
+                if ($(window).scrollTop() >= ($(document).height() - $(window).height() - 300) && stt == 0) {
+                    getProduct();
+                };
+            });
+            $('select.sort-by').change(function(event) {
+                window.location = base_url + "san-pham/" + category + "/" + sub_category + "/" + $(this).val() + "/" + $('select.sort-type').val();
+            });
+            $('select.sort-type').change(function(event) {
+                window.location = base_url + "san-pham/" + category + "/" + sub_category + "/" + $('select.sort-by').val() + "/" + $(this).val();
+            });
         });
-        $("#owl-newfeeds").owlCarousel({
-        items : 1,
-        itemsDesktopSmall : [980,1],
-        itemsDesktop : [1199,1],
-        slideSpeed : 300,
-        paginationSpeed : 400,
-        autoPlay : 3000
-        });
-        var owl_news = $("#owl-newfeeds").data('owlCarousel');
-        $('.owl-next-new').click(function(event) {
-        owl_news.next();
-        });
-        $('.owl-prev-new').click(function(event) {
-        owl_news.prev();
-        });
-        });
+
         </script>
+
         <script>
         // Preloader Website
         $(window).load(function() {
-        $('#loader-wrapper').delay(450).fadeOut();
-        $('#loader').delay(750).fadeOut('slow');
+            $('#loader-wrapper').delay(450).fadeOut();
+            $('#loader').delay(750).fadeOut('slow');
         });
+
         </script>
     </body>
 </html>
