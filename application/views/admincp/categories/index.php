@@ -21,6 +21,7 @@
     <link href="<?php echo base_url();?>/asset/backend/css/sb-admin-2.css" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/sweetalert.min.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -159,7 +160,7 @@
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Thống kê</a>
                         </li>
                         <li>
-                            <a href="tables.html"><i class="fa fa-cart-plus fa-fw"></i> Order</a>
+                            <a href="<?php echo site_url("admincp/order");?>"><i class="fa fa-cart-plus fa-fw"></i> Order</a>
                         </li>
                         <li>
                             <a href="forms.html" class="active"><i class="fa fa-tasks fa-fw"></i> Categories</a>
@@ -225,7 +226,7 @@
                     </div>
                     <div class="col-sm-6 col-sm-offset-3">
                         <br>
-                        <button class="btn btn-primary btn-block btn-lg">Tạo mới danh mục</button>
+                        <button class="btn btn-primary btn-block btn-lg btn-create">Tạo mới danh mục</button>
                     </div>
                 </div>
                 <div class="col-lg-12">
@@ -272,12 +273,46 @@
     <script src="<?php echo base_url();?>/asset/backend/js/sb-admin-2.js"></script>
 
     <!-- customize -->
+    <script src="<?php echo base_url();?>asset/js/sweetalert.min.js"></script>
     <script type="text/javascript" charset="utf-8" >
     jQuery(document).ready(function($) {
         var base_url = $('input.base_url').val();
         $(".loai-danh-muc").change(function(event) {
             $('.category').toggle();
         });
+        $('.btn-create').click(function(event) {
+            var name = $.trim($('.ten-danh-muc').val());
+            var type = parseInt($(".loai-danh-muc").val());
+            var father = 0;
+            if (type == 1) {
+                father = parseInt($(".danh-muc-cha").val());
+            }
+            if (name.length > 4) {
+                $.post('<?php echo site_url();?>adminajax/newcategory/', {
+                        name: name,
+                        type: type,
+                        father: father
+                    }, function(data, textStatus, xhr) {
+                        if (textStatus == 'success' && data=="TRUE") {
+                            swal({
+                                title: 'Success',
+                                text: 'Bạn đã thêm thành công!' + name,
+                                type: 'success',
+                                confirmButtonColor: '#3085d6',
+                                confirmButtonText: 'OK',
+                                closeOnConfirm: false
+                            },
+                            function() {
+                                window.location = "<?php echo site_url('admincp/categories');?>";
+                            });
+                        }
+                        else{
+                            swal('Error', "Đã có lỗi or category đã có", "error");
+                        }
+                    });
+                } else swal('Error', "Category phải >= 5 kí tự", "error");
+            });
+
         $(".level-1 a").click(function(event) {
             var id = $(this).attr("value");
             $(".level-1 a").each(function(index, el) {
@@ -288,7 +323,45 @@
             $.post(base_url + "adminajax/getsubcategory/", 
                 {id: id}
                 , function(data, textStatus, xhr) {
-                $('.level-2').html(data);
+                    if(textStatus == "success"){
+                        $('.level-2').html(data);
+                    }
+            });
+        });
+
+        $(document).on('click', '.delete', function(event) {
+            var id = $(this).attr('value');
+            swal({
+                title: 'Are you sure?',
+                text: 'Bạn có chắc chắn xóa category này?',
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!',
+                closeOnConfirm: false
+            },
+            function() {
+                $.post('<?php echo site_url();?>adminajax/deletecategory/', {id: id}, function(data, textStatus, xhr) {
+                   if(textStatus == 'success' && data == 'TRUE'){
+                        swal({
+                            title: 'Success',
+                            text: 'Bạn đã xóa thành công!',
+                            type: 'success',
+                            confirmButtonColor: '#3085d6',
+                            confirmButtonText: 'OK',
+                            closeOnConfirm: false
+                        },
+                        function() {
+                            window.location = "<?php echo site_url('admincp/categories');?>";
+                        });
+                   }
+                });
+                swal(
+                  'Deleted!',
+                  'Your file has been deleted.',
+                  'success'
+                );
             });
         });
     });
