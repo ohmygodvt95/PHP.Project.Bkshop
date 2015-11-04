@@ -23,7 +23,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-6 logo">
-                    <img src="<?php echo base_url();?>asset/images/logo.png" alt="BKshop" >
+                    <a href="<?php echo site_url();?>"><img src="<?php echo base_url();?>asset/images/logo3.png" alt="BKshop" ></a>
                 </div>
                 <div class="col-sm-4 col-sm-offset-2 contact">
                     <div class="contact-box center-block">
@@ -50,34 +50,34 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav navbar-left">
-                        <li><a href="<?php echo site_url();?>"><i class="fa fa-fw fa-home"></i>BKshop</a></li>
+                        <li><a href="<?php echo site_url();?>" title="BKShop Home Page"><i class="fa fa-fw fa-home"></i>BKshop</a></li>
                         <?php
                         $sql = "SELECT * FROM category WHERE category_level = 0 ORDER BY category_title ASC";
                         $result = $this->db->query($sql)->result();
                         foreach ($result as $item) {
                             echo '<li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">'.$item->category_title.'<b class="caret"></b></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="'.$item->category_title.'">'.$item->category_title.'<b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="'.site_url("san-pham/".$item->category_url."/all").'">All product</a></li>';
+                                <li><a href="'.site_url("san-pham/".$item->category_url."/all").'" title="Tất cả sản phẩm '.$item->category_title.'">All product</a></li>';
 
                                 $sql = "SELECT * FROM category WHERE category_level = 1 AND category_prev = $item->category_id ORDER BY category_title ASC";
                                 $r = $this->db->query($sql)->result();
                                 foreach ($r as $key) {
-                                   echo '<li><a href="'.site_url('san-pham/'.$item->category_url."/".$key->category_url).'">'.$key->category_title.'</a></li>';
+                                   echo '<li><a href="'.site_url('san-pham/'.$item->category_url."/".$key->category_url).'" title="'.$key->category_title.'">'.$key->category_title.'</a></li>';
                                 }
                                 echo '</ul>
                         </li>
                         ';
                         }
                         ?>
-                        <li><a href=""><i class="fa fa-fw fa-paper-plane"></i>Contact</a></li>
-                        <?php if($this->session->has_userdata('login')) echo '<li><a href="'.site_url("user/profile").'"><i class="fa fa-fw fa-user"></i>Profile</a></li>'; ?>
+                        <li><a href="" title="Contact"><i class="fa fa-fw fa-paper-plane"></i>Contact</a></li>
+                        <?php if($this->session->has_userdata('login')) echo '<li><a title="User profile" href="'.site_url("user/profile").'"><i class="fa fa-fw fa-user"></i>Profile</a></li>'; ?>
                     </ul>
-                    <form class="navbar-form navbar-right" role="search">
+                    <form class="navbar-form navbar-right"  method="get" action="<?php echo site_url();?>search">
                         <div class="input-group">
-                            <input type="text" class="form-control search" placeholder="Search">
+                            <input type="text" class="form-control search" placeholder="Search: e.g Iphone 6" name="key">
                             <span class="input-group-btn">
-                                <button class="btn btn-success" type="button"><i class="fa fa-fw fa-search"></i></button>
+                                <button class="btn btn-success" type="submit" title="Search!"><i class="fa fa-fw fa-search" ></i></button>
                             </span>
                         </div>
                     </form>
