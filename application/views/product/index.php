@@ -111,7 +111,7 @@
                             </div>
                         </div>
                         <hr>
-                        <div class="">
+                        <div class="hidden">
                             <input type="text" class="base_url" value="<?php echo site_url(); ?>">
                             <input type="text" class="category" value="<?php echo $category->category_url; ?>">
                             <input type="text" class="sub_category" value="<?php echo $this_sub_category; ?>">
@@ -224,7 +224,7 @@
                             for (var i = 0; i < textArr.length; i++) {
                                 var html = $(textArr[i]).hide();
                                 //$('.products').append($(html));
-                                $(html).appendTo('.products').show(300 + i * 150);
+                                $(html).appendTo('.products').show(150 + i * 150);
                                 dem++;
                             }
                             if (dem > 0) dem--;
