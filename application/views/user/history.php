@@ -93,10 +93,10 @@
                                                     echo '<tr>
                                                             <td>'.$id.'</td>
                                                             <td>'.substr(md5($item->order_id), 0, 10).'</td>
-                                                            <td>'.date("D-M-Y h:i:s",$item->order_time).'</td>
+                                                            <td>'.date("l, jS F, Y - h:i:s A",$item->order_time).'</td>
                                                             <td>';
-                                                            if($item->order_status == 0) echo "Pending";
-                                                            else "Done";
+                                                            if($item->order_status == 0) echo '<span class="pending">Pending</span>';
+                                                            else echo "Done";
                                                             echo '</td>
                                                         </tr>';
                                                 }
