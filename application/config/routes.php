@@ -53,6 +53,7 @@ $route['default_controller'] = 'home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['san-pham/(:any)/(:any)'] = "product/index/$1/$2";
+$route['san-pham/(:any)'] = "product/index/$1";
 $route['san-pham/(:any)/(:any)/(:any)/(:any)'] = "product/index/$1/$2/$3/$4";
 $route['chi-tiet/(:any)'] = "product/details/$1";
 
