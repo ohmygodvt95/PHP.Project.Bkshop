@@ -27,7 +27,45 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+    <style>
+        tr{
+            cursor: pointer;
+        }
+        .act{
+            background-color: #28ABE3;
+            color: white;
+        }
+        tr:hover{
+            color: black;
+        }
+        @-webkit-keyframes my {
+         0% { color: #F8CD0A; } 
+         50% { color: #fff;  } 
+         100% { color: #F8CD0A;  } 
+         }
+         @-moz-keyframes my { 
+             0% { color: #F8CD0A;  } 
+             50% { color: #fff;  }
+             100% { color: #F8CD0A;  } 
+         }
+         @-o-keyframes my { 
+             0% { color: #F8CD0A; } 
+             50% { color: #fff; } 
+             100% { color: #F8CD0A;  } 
+         }
+         @keyframes my { 
+             0% { color: #F8CD0A;  } 
+             50% { color: #fff;  }
+             100% { color: #F8CD0A;  } 
+         } 
+         .test {
+                 font-weight:bold;
+             -webkit-animation: my 700ms infinite;
+             -moz-animation: my 700ms infinite; 
+             -o-animation: my 700ms infinite; 
+             animation: my 700ms infinite;
+        }
+    </style>
 </head>
 
 <body>
@@ -143,7 +181,7 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="<?php echo site_url("admincp");?>" class="active"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            <a href="<?php echo site_url();?>admincp/" class="active"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Thống kê</a>
@@ -190,106 +228,40 @@
 
         <div id="page-wrapper">
             <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">Dashboard</h1>
+                <div class="col-lg-6">
+                    <h1 class="page-header">Quản lý order</h1>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr class="act">
+                                <th>#ID</th>
+                                <th>Code</th>
+                                <th>User</th>
+                                <th>Time</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $id = 0;
+                                foreach ($order as $item) {
+                                    $id++;
+                                    echo '<tr oid = "'.$item->order_id.'">
+                                            <td>'.$id.'</td>
+                                            <td>'.substr(md5($item->order_id), 0, 10).'</td>
+                                            <td title="'.$this->user_model->get_info($item->user_id)->user_email.'">'.$this->user_model->get_info($item->user_id)->user_fullname.'</td>
+                                            <td>'.date("d-M-Y h:i:s", $item->order_time).'</td>
+                                            <td>';
+                                            if($item->order_status == 0) echo '<span class="test">Pending</span>';
+                                            echo '</td>
+                                        </tr>';
+                                }
+                            ?>
+                        </tbody>
+                    </table>
                 </div>
-                <!-- /.col-lg-12 -->
-            </div>
-            <!-- /.row -->
-            <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-users fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge"><?php echo $this->db->count_all('user');?></div>
-                                    <div>Users!</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#">
-                            <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-green">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-tasks fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge"><?php echo $this->db->count_all('product');?></div>
-                                    <div>Products!</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#">
-                            <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-yellow">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-shopping-cart fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge"><?php echo $this->db->count_all('order');?></div>
-                                    <div>New Orders!</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#">
-                            <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-red">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-support fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge"><?php echo $this->db->count_all('category');?></div>
-                                    <div>Category!</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#">
-                            <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <!-- /.row -->
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">Dashboard</h1>
+                <div class="col-sm-6">
+                    <h1 class="page-header">Thông tin đơn hàng</h1>
+                    <div>Hãy bấm chọn đơn hàng bên trái</div>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -312,7 +284,16 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="<?php echo base_url();?>/asset/backend/js/sb-admin-2.js"></script>
-
+    <script>
+    $(document).ready(function() {
+        $('tr').click(function(event) {
+           $('tr').each(function(index, el) {
+               $(this).removeClass('act');
+           });
+           $(this).addClass('act');
+        });
+    });
+    </script>
 </body>
 
 </html>
