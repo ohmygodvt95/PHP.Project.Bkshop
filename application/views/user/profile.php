@@ -97,11 +97,11 @@
 	                    						</tr>
 	                    						<tr>
 	                    							<td>Join time: </td>
-	                    							<td><?php echo date("d-m-y h:i:s", $this->session->userdata('join'));?></td>
+	                    							<td><?php echo date("l, F jS, Y h:i:s", $this->session->userdata('join'));?></td>
 	                    						</tr>
 	                    						<tr>
 	                    							<td>Last time: </td>
-	                    							<td><?php echo date("d-m-y h:i:s", $this->session->userdata('time'));?></td>
+	                    							<td><?php echo date("l, F jS, Y h:i:s", $this->session->userdata('time'));?></td>
 	                    						</tr>
 	                    					</tbody>
 	                    				</table>
