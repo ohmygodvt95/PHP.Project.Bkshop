@@ -9,7 +9,7 @@
         <meta name="Author" content="LengKeng, E-mail: ohmygodvt95@gmail.com">
         <meta name="copyright" content="Copyright   &copy <?php echo date('Y');?> by LengKeng">
         <link rel="shortcut icon" type="image/png" href="<?php echo base_url();?>asset/images/favicon.png" />
-        <title>Home Page</title>
+        <title>BKShop - Trang chủ - Vui là mua</title>
         <!-- Load CSS-->
         <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/reset.min.css">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/style.css">
@@ -56,7 +56,7 @@
                         foreach ($category as $item) {
                             // chon sp HOT
                             echo '<div class="row">';
-                            echo '  <h2><a href="" title="Xem tất cả sản phẩm '.$item->category_title.'">'.$item->category_title.'</a></h2>';
+                            echo '  <h2><a href="'.site_url('san-pham/'.$item->category_url).'" title="Xem tất cả sản phẩm '.$item->category_title.'">'.$item->category_title.'</a></h2>';
                             echo '  <div class="col-sm-12">
                                         <h4 class="sub-heading">Best seller</h4>
                                         <div class="slider">
@@ -74,14 +74,14 @@
                                                     <div class="info">
                                                         <h3>Thông tin</h3>
                                                         '.$key->product_desc.'<br>
-                                                        <a href="'.site_url('chi-tiet/'.$key->product_url).'">Xem thêm <i class="fa fa-fw fa-hand-o-right"></i></a>
+                                                        <a href="'.site_url('chi-tiet/'.$key->product_url).'" title="Xem chi tiết sản phẩm">Xem thêm <i class="fa fa-fw fa-hand-o-right"></i></a>
                                                     </div>
-                                                    <h3 class="text-center"><a href="'.site_url('chi-tiet/'.$key->product_url).'">'.$key->product_title.'</a></h3>
-                                                    <h4 class="text-center">'.$key->product_price.' USD</h4>
+                                                    <h3 class="text-center"><a href="'.site_url('chi-tiet/'.$key->product_url).'" title="Xem chi tiết sản phẩm">'.$key->product_title.'</a></h3>
+                                                    <h4 class="text-center" >'.$key->product_price.' USD</h4>
                                                     <div>
                                                         <div class="row">
                                                             <div class="col-sm-8 col-sm-offset-2">
-                                                                <button class="btn btn-success center-block btn-add" productid = "'.$key->product_id.'">Add to cart</button>
+                                                                <button class="btn btn-success center-block btn-add" productid = "'.$key->product_id.'" title="Add to cart">Add to cart</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -233,6 +233,10 @@
                                 <h5 class="text-right"><a class="pull-left readmore" href="#">Read more..</a><i>23/04/1995</i></h5>
                             </div>
                         </div>
+                    </div>
+                    <div class="ads">
+                        <h3>Advertising<span class="pull-right"><i class='owl-nav owl-prev-new fa  fa-chevron-left'></i><i class='owl-nav owl-next-new fa  fa-chevron-right'></i></span></h3>
+                        <div class="ads-box" style="background-image: url('<?php echo base_url("asset/images/logo/ads.png");?>'); background-repeat: no-repeat; background-position: center center;"></div>
                     </div>
                 </div>
             </div>

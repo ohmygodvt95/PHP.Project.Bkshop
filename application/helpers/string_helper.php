@@ -14,7 +14,7 @@ function string_short ($str){
        
     return strtolower($str);
     }
- function generateRandomString($length = 10) {
+ function generate_random_string($length = 10) {
         $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $randomString = '';
         for ($i = 0; $i < $length; $i++) {

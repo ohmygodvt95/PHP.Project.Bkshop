@@ -38,33 +38,6 @@
         tr:hover{
             color: black;
         }
-        @-webkit-keyframes my {
-         0% { color: #F8CD0A; } 
-         50% { color: #fff;  } 
-         100% { color: #F8CD0A;  } 
-         }
-         @-moz-keyframes my { 
-             0% { color: #F8CD0A;  } 
-             50% { color: #fff;  }
-             100% { color: #F8CD0A;  } 
-         }
-         @-o-keyframes my { 
-             0% { color: #F8CD0A; } 
-             50% { color: #fff; } 
-             100% { color: #F8CD0A;  } 
-         }
-         @keyframes my { 
-             0% { color: #F8CD0A;  } 
-             50% { color: #fff;  }
-             100% { color: #F8CD0A;  } 
-         } 
-         .test {
-                 font-weight:bold;
-             -webkit-animation: my 700ms infinite;
-             -moz-animation: my 700ms infinite; 
-             -o-animation: my 700ms infinite; 
-             animation: my 700ms infinite;
-        }
     </style>
 </head>
 
@@ -251,7 +224,8 @@
                                             <td title="'.$this->user_model->get_info($item->user_id)->user_email.'">'.$this->user_model->get_info($item->user_id)->user_fullname.'</td>
                                             <td>'.date("d-M-Y h:i:s", $item->order_time).'</td>
                                             <td>';
-                                            if($item->order_status == 0) echo '<span class="test">Pending</span>';
+                                            if($item->order_status == 0) echo '<span class="pending">Pending</span>';
+                                            else echo 'Done';
                                             echo '</td>
                                         </tr>';
                                 }

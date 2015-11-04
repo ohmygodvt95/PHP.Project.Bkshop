@@ -51,6 +51,22 @@ class Product extends CI_Controller {
 		$this->load->view('product/details', $data);
 	}
 
+	public function search()
+	{
+		$this->load->helper('string_helper');
+		$this->load->helper('text');
+		if(isset($_GET['key'])){
+			$value = string_short(convert_accented_characters(trim($_GET['key'])));
+			$value_2 = trim($_GET['key']);
+		}
+		else{
+			$value = $value_2 = "BKSHOP";
+		}
+		$sql = "SELECT product_id, product_url, product_title, product_thumb, product_price, product_desc, product_buy FROM \"product\" WHERE product_url LIKE '%$value%' OR product_title LIKE '%$value_2%' ORDER BY product_time DESC LIMIT ".MAX;
+		$data['product'] = $this->db->query($sql)->result();
+		$this->load->view('product/search', $data);
+	}
+
 }
 
 /* End of file Product.php */

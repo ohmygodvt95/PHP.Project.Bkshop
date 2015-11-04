@@ -31,33 +31,33 @@
             <div class="col-sm-3">
                 <h3 class="text-center">About Us</h3>
                 <ul>
-                    <li><a href="">abc</a></li>
-                    <li><a href="">abc</a></li>
-                    <li><a href="">abc</a></li>
-                    <li><a href="">abc</a></li>
+                    <li><a href="">Về BKSHOP</a></li>
+                    <li><a href="">Tin tức</a></li>
+                    <li><a href="">Đối tác</a></li>
+                    <li><a href="">Cơ hội việc làm</a></li>
                 </ul>
             </div>
             <div class="col-sm-3">
                 <h3 class="text-center">Terms</h3>
                 <ul>
-                    <li><a href="">abc</a></li>
-                    <li><a href="">abc</a></li>
-                    <li><a href="">abc</a></li>
-                    <li><a href="">abc</a></li>
+                    <li><a href="">Chính sách sử dụng web</a></li>
+                    <li><a href="">Chính sách ưu đãi</a></li>
+                    <li><a href="">Chính sách vận chuyển</a></li>
+                    <li><a href="">Chính sách bảo hành</a></li>
                 </ul>
             </div>
             <div class="col-sm-3">
                 <h3 class="text-center">Help</h3>
                 <ul>
-                    <li><a href="">abc</a></li>
-                    <li><a href="">abc</a></li>
-                    <li><a href="">abc</a></li>
-                    <li><a href="">abc</a></li>
+                    <li><a href="">Hướng dẫn mua hàng online</a></li>
+                    <li><a href="">Hướng dẫn giao nhận</a></li>
+                    <li><a href="">Trung tâm bảo hành</a></li>
+                    <li><a href="">FAQ</a></li>
                 </ul>
             </div>
             <div class="col-sm-3">
-                <h3 class="text-center">Copyright</h3>
-                <p>Lorem ipsum Officia incididunt aliqua labore enim in. Lorem ipsum Amet esse dolor et eu esse sed labore in dolore enim ex sunt aliquip ad occaecat occaecat in veniam deserunt ad.</p>
+                <h3 class="text-center" >Copyright</h3>
+                <p style="font-family: arial">BKSHOP tự hào là nhà cung cấp Laptop, Smartphone số 1 vịnh Bắc Bộ. Đội ngũ nhân viên thân thiện, nhiệt tình. Chăm sóc khách hàng tận tình, chu đáo.</p>
             </div>
         </div>
     </div>
