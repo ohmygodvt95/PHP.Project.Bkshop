@@ -64,12 +64,10 @@ class Home extends CI_Controller {
 			unset($_SESSION['access_token']);
 			redirect(site_url('home/login'));
 		}
-		public function test()
+
+		public function time($value='')
 		{
-			$sql='SELECT * FROM "GiangVien"';
-			echo "<pre>";
-			print_r ($this->db->query($sql)->result());
-			echo "</pre>";
+			echo date("l, F jS, Y h:i:s", time());
 		}
 }
 /* End of file Home.php */
