@@ -54,8 +54,7 @@
 	min-height: 100px;
 }
 .header-banner .logo img{
-	height: 100px;
-	width: 120px;
+	max-width: 200px;
 	padding: 10px;
 	margin-top: 10px;
 	display: block;
@@ -100,7 +99,7 @@
 .navbar-default{
 	border-radius: 0;
 	width: 100%;
-	z-index: 9998;
+	z-index: 2000;
 	padding-top: 10px;
 	padding-bottom: 10px;
 	margin-bottom: 0px;
