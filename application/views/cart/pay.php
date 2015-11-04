@@ -9,7 +9,7 @@
         <meta name="Author" content="LengKeng, E-mail: ohmygodvt95@gmail.com">
         <meta name="copyright" content="Copyright   &copy <?php echo date('Y');?> by LengKeng">
         <link rel="shortcut icon" type="image/png" href="<?php echo base_url();?>asset/images/favicon.png" />
-        <title>Thanh toán - BKShop</title>
+        <title>Tài khoản - BKShop</title>
         <!-- Load CSS-->
         <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/reset.min.css">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/style.css">
@@ -88,15 +88,15 @@
                                                 <h4>Email:</h4>
                                                 <div class="input-group">
                                                     <span class="input-group-addon" id="basic-addon1"><i class="fa fa-fw fa-user"></i></span>
-                                                    <input type="email" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+                                                    <input type="email" class="form-control email" placeholder="Username" aria-describedby="basic-addon1">
                                                 </div>
                                                 <h4>Password:</h4>
                                                 <div class="input-group">
                                                     <span class="input-group-addon" id="basic-addon1"><i class="fa fa-fw fa-key"></i></span>
-                                                    <input type="password" class="form-control" placeholder="Password" aria-describedby="basic-addon1">
+                                                    <input type="password" class="form-control pass" placeholder="Password" aria-describedby="basic-addon1">
                                                 </div>
                                                 <hr>
-                                                <button class="btn btn-primary btn-lg btn-block">Login</button>
+                                                <button class="btn btn-primary btn-lg btn-block btn-login">Login</button>
                                             </div>
                                         </div>
                                     </div>
@@ -141,6 +141,45 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-sm-6 <?php if(count($cart) < 1) echo "hidden";?>">
+                            <div class="panel panel-info">
+                                  <div class="panel-heading">
+                                        <h3 class="panel-title text-center" style="height: 35px;">Order</h3>
+                                  </div>
+                                  <div class="panel-body">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Qty</th>
+                                                <th>$</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                         <?php
+                                            foreach ($cart as $item) {
+                                                echo '
+                                                    <tr>
+                                                        <td><a href="'.site_url('chi-tiet/'.$item['options']).'">'.$item['name'].'</a></td>
+                                                        <td>'.$item['qty'].'</td>
+                                                        <td >$ '.($item['qty'] * $item['price']).'</td>
+                                                    </tr>
+                                                ';
+                                            }
+                                        ?>
+                                        <tr>
+                                            <th></th>
+                                            <th><?php echo $total_product;?></th>
+                                            <th style="color: red">$<?php echo $total_amount;?></th>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                  </div>
+                                  <div class="panel-footer">
+                                     <h3>Total amount: <?php echo $total_amount;?> $</h3>
+                                  </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -164,6 +203,29 @@
                 //     $('.signup button').toggleClass('active');
                 // });
                 $('#form').validate();
+                $('.btn-login').click(function(event) {
+                    var email = $('input.email').val();
+                    var pass = $('input.pass').val();
+                    if($.trim(email) != "" && pass.length > 0){
+                        var url = "<?php echo site_url();?>user/checklogin/";
+                        $.post(url, {email: email, pass: pass}, function(data, textStatus, xhr) {
+                            if (textStatus == "success" && data == "TRUE") {
+                                swal({
+                                    title: 'Logged In',
+                        text: 'Bạn đã đăng nhập thành công!',
+                        type: 'success',
+                        confirmButtonColor: '#3085d6',
+                        confirmButtonText: 'OK',
+                        closeOnConfirm: false},function (argument) {
+                                    window.location = "<?php echo site_url();?>cart/pay/";
+                                });
+                            }
+                            else{
+                                swal('Error!', 'Tên đăng nhập hoặc mật khẩu sai!', 'error');
+                            }
+                        });
+                    }
+                });
             });
             </script>
             <script>
