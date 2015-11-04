@@ -12,7 +12,8 @@
                     </div>
                     <div class="header-top-right">
                         <span>Welcome to BKAShop</span>
-                        <a href="#">Login</a> or <a href="#">Sign up</a>
+                        <?php if(!$this->session->has_userdata('login')) echo '<a href="'.site_url('cart/pay/').'">Login</a> or <a href="'.site_url('cart/pay/').'">Sign up</a>';
+                        else echo "Hi, <a title='Information' href='".site_url('user/profile')."'>".substr($this->session->userdata('name'), 0, 8)."</a> | <a title='Đăng xuất' href='".site_url("user/logout")."'> Logout<i class='fa fa-fw fa-sign-out'></i></a>"?>
                     </div>
                 </div>
             </div>
@@ -49,7 +50,7 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav navbar-left">
-                        <li><a href="<?php echo site_url();?>">BKshop</a></li>
+                        <li><a href="<?php echo site_url();?>"><i class="fa fa-fw fa-home"></i>BKshop</a></li>
                         <?php
                         $sql = "SELECT * FROM category WHERE category_level = 0 ORDER BY category_title ASC";
                         $result = $this->db->query($sql)->result();
@@ -57,7 +58,7 @@
                             echo '<li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">'.$item->category_title.'<b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="'.site_url("san-pham/".$item->category_url."/all").'">Tất cả</a></li>';
+                                <li><a href="'.site_url("san-pham/".$item->category_url."/all").'">All product</a></li>';
 
                                 $sql = "SELECT * FROM category WHERE category_level = 1 AND category_prev = $item->category_id ORDER BY category_title ASC";
                                 $r = $this->db->query($sql)->result();
@@ -69,7 +70,8 @@
                         ';
                         }
                         ?>
-                        <li><a href="">Contact</a></li>
+                        <li><a href=""><i class="fa fa-fw fa-paper-plane"></i>Contact</a></li>
+                        <?php if($this->session->has_userdata('login')) echo '<li><a href="'.site_url("user/profile").'"><i class="fa fa-fw fa-user"></i>Profile</a></li>'; ?>
                     </ul>
                     <form class="navbar-form navbar-right" role="search">
                         <div class="input-group">
