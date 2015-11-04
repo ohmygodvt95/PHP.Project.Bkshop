@@ -19,6 +19,7 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/owl.carousel.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/owl.theme.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/sweetalert.min.css">
     <!-- Load module -->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/frontend/header.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/frontend/footer.css">
@@ -98,12 +99,12 @@
                             <div class="col-sm-6">
                                 <div class="input-group">
                                     <div class="input-group-addon">Quantity</div>
-                                    <input type="number" name="quantity" min="1" max="10" value="1" class="form-control">
+                                    <input type="number" name="quantity" min="1" max="10" value="1" class="form-control qty">
                                 </div>
                             </div>
                             <div class="col-sm-6">
-                                <button class="btn btn-warning btn-block">ADD TO CART</button>
-                                <button class="btn btn-primary btn-block">BUY NOW</button>
+                                <button class="btn btn-warning btn-block btn-add-product" productid="<?php echo $product->product_id;?>">ADD TO CART</button>
+                                <button class="btn btn-primary btn-block btn-buy" productid="<?php echo $product->product_id;?>">BUY NOW</button>
                             </div>
                         </div>
                         <div class="col-sm-12">
@@ -318,6 +319,7 @@
                 </div>
             </div>
         </div>
+        <div class="hidden baseurl"><?php echo site_url();?></div>
         <?php $this->load->view('module/frontend/footer');?>
             <!-- JQUERY -->
             <script src="<?php echo base_url();?>asset/js/jquery.min.js"></script>
@@ -327,7 +329,9 @@
             <script src="<?php echo base_url();?>asset/js/owl.carousel.min.js"></script>
             <script src="<?php echo base_url();?>asset/js/stickup.min.js"></script>
             <script src="<?php echo base_url();?>asset/js/frontend/script.js"></script>
+            <script src="<?php echo base_url();?>asset/js/sweetalert.min.js"></script>
             <!-- Customize -->
+            <script src="<?php echo base_url();?>asset/js/frontend/cart.js"></script>
             <script>
             $(document).ready(function() {
                 $("#owl-newfeeds").owlCarousel({
@@ -359,18 +363,19 @@
                     autoPlay: 2000,
                     stopOnHover: true
                 });
+                $("#owl-demo").owlCarousel({
+                    navigation: true, // Show next and prev buttons
+                    slideSpeed: 300,
+                    paginationSpeed: 400,
+                    singleItem: true,
+                    navigationText: [
+                        "<i class='fa fa-2x fa-chevron-left'></i>",
+                        "<i class='fa fa-2x fa-chevron-right'></i>"
+                    ],
+                    autoPlay: 3000
+                });
             });
-            $("#owl-demo").owlCarousel({
-                navigation: true, // Show next and prev buttons
-                slideSpeed: 300,
-                paginationSpeed: 400,
-                singleItem: true,
-                navigationText: [
-                    "<i class='fa fa-2x fa-chevron-left'></i>",
-                    "<i class='fa fa-2x fa-chevron-right'></i>"
-                ],
-                autoPlay: 3000
-            });
+
             </script>
             <script>
             // Preloader Website
