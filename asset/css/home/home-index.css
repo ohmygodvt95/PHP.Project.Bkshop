@@ -240,3 +240,17 @@ body{
 	font-weight: 300;
 	font-size: 16px;
 }
+/*// quang cao*/
+.ads{
+	margin-top: 80px;
+}
+.ads h3{
+	font-weight: bold;
+	font-size: 20px;
+}
+.ads-box{
+	border-radius: 4px;
+	background-color: #F6F6F6;
+	height: 400px;
+	width: 100%;
+}
