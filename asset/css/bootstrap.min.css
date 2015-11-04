@@ -17,3 +17,72 @@
 .roboto{
 	font-family: 'Roboto';
 }
+@-webkit-keyframes my
+{
+    0%
+    {
+        color: #f8cd0a;
+    }
+    50%
+    {
+        color: #fff;
+    }
+    100%
+    {
+        color: #f8cd0a;
+    }
+}
+@-moz-keyframes my
+{
+    0%
+    {
+        color: #f8cd0a;
+    }
+    50%
+    {
+        color: #fff;
+    }
+    100%
+    {
+        color: #f8cd0a;
+    }
+}
+@-o-keyframes my
+{
+    0%
+    {
+        color: #f8cd0a;
+    }
+    50%
+    {
+        color: #fff;
+    }
+    100%
+    {
+        color: #f8cd0a;
+    }
+}
+@keyframes my
+{
+    0%
+    {
+        color: #f8cd0a;
+    }
+    50%
+    {
+        color: #fff;
+    }
+    100%
+    {
+        color: #f8cd0a;
+    }
+}
+.pending
+{
+    font-weight: bold;
+
+    -webkit-animation: my 1000ms infinite;
+       -moz-animation: my 1000ms infinite;
+         -o-animation: my 1000ms infinite;
+            animation: my 1000ms infinite;
+}
