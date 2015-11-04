@@ -74,9 +74,9 @@
                                                     <div class="info">
                                                         <h3>Thông tin</h3>
                                                         '.$key->product_desc.'<br>
-                                                        <a href="'.site_url('product/details')."/".$key->product_url.'">Xem thêm <i class="fa fa-fw fa-hand-o-right"></i></a>
+                                                        <a href="'.site_url('chi-tiet/'.$key->product_url).'">Xem thêm <i class="fa fa-fw fa-hand-o-right"></i></a>
                                                     </div>
-                                                    <h3 class="text-center"><a href="'.site_url('product/details')."/".$key->product_url.'">'.$key->product_title.'</a></h3>
+                                                    <h3 class="text-center"><a href="'.site_url('chi-tiet/'.$key->product_url).'">'.$key->product_title.'</a></h3>
                                                     <h4 class="text-center">'.$key->product_price.' USD</h4>
                                                     <div>
                                                         <div class="row">
@@ -115,9 +115,9 @@
                                                                 <h3>Thông tin</h3>
                                                                 '.$key->product_desc.'
                                                                 <br>
-                                                                <a href="'.site_url('product/details').$key->product_url.'">Xem thêm <i class="fa fa-fw fa-hand-o-right"></i></a>
+                                                                <a href="'.site_url('chi-tiet/'.$key->product_url).'">Xem thêm <i class="fa fa-fw fa-hand-o-right"></i></a>
                                                             </div>
-                                                            <h3 class="text-center"><a href="">'.$key->product_title.'</a></h3>
+                                                            <h3 class="text-center"><a href="'.site_url('chi-tiet/'.$key->product_url).'">'.$key->product_title.'</a></h3>
                                                             <h4 class="text-center">'.$key->product_price.' USD</h4>
                                                             <div>
                                                                 <div class="row">
@@ -137,13 +137,13 @@
                                     $total = $this->db->query($sql)->num_rows() - $total;
                             if($total > 0)echo ' <div class="col-sm-12">
                                         <div class="col-sm-6 col-sm-offset-3">
-                                            <a href="'.site_url("product/").'" class="btn btn-warning btn-block btn-lg btn-more">Xem thêm '.$total.' '.strtolower($item->category_title).'</a>
+                                            <a title="'.$item->category_title.'" href="'.site_url("san-pham/".$item->category_url).'" class="btn btn-warning btn-block btn-lg btn-more">Xem thêm '.$total.' '.strtolower($item->category_title).'</a>
                                         </div>
                                     </div>';
                                     else {
                                         echo '<div class="col-sm-12">
                                         <div class="col-sm-6 col-sm-offset-3">
-                                            <a title="'.$item->category_title.'" href="'.site_url("san-pham/".$item->category_url."/all").'" class="btn btn-warning btn-block btn-lg btn-more">Xem tất cả '.strtolower($item->category_title).'</a>
+                                            <a title="'.$item->category_title.'" href="'.site_url("san-pham/".$item->category_url).'" class="btn btn-warning btn-block btn-lg btn-more">Xem tất cả '.strtolower($item->category_title).'</a>
                                         </div>
                                     </div>';
                                     }
