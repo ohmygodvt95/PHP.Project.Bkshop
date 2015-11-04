@@ -16,13 +16,25 @@ class Cart extends CI_Controller
     }
     public function checkout() {
         $data['cart'] = $this->cart->contents();
-        $this->load->view('cart/index', $data);
+        $this->load->view('cart/checkout', $data);
     }
 
 	public function pay()
 	{
 		$data['cart'] = $this->cart->contents();
-        $this->load->view('cart/pay', $data);
+		$data['total'] = count($data['cart']);
+		$data['total_amount'] = 0;
+		$data['total_product'] = 0;
+		foreach ($data['cart'] as $key) {
+			$data['total_amount'] += $key['qty'] * $key['price'];
+			$data['total_product'] += $key['qty'];
+		}
+		if(!$this->session->has_userdata('login')){
+        	$this->load->view('cart/pay', $data);
+		}
+		else{
+			$this->load->view('cart/pay-login', $data);
+		}
 	}
 
     public function info()
@@ -77,6 +89,27 @@ class Cart extends CI_Controller
     	}
     }
 
+    public function order(){
+    	$cart = $this->cart->contents();
+    	if($this->session->has_userdata('login')){
+    		$user_id = $this->session->userdata('id');
+    		$time = time();
+    		$sql = "INSERT INTO \"order\"(user_id, order_time) VALUES($user_id, $time)";
+    		$result = $this->db->query($sql);
+    		$sql = "SELECT * FROM \"order\" WHERE user_id = $user_id AND order_status = 0 ORDER BY order_id DESC LIMIT 1";
+    		$result = $this->db->query($sql)->result();
+    		$oid = $result[0]->order_id;
+    		foreach ($cart as $item) {
+    			$pid = $item['id'];
+    			$qty = $item['qty'];
+    			$sql = "INSERT INTO \"order_item\"(product_id, order_id, order_item_qty) VALUES($pid, $oid, $qty)";
+    			$result = $this->db->query($sql);
+    			$update = array('rowid' => $item['rowid'], 'qty' => 0);
+    			$this->cart->update($update);
+    		}
+    		echo 'TRUE';
+    	}
+    }
     public function delete()
     {
     	$id = $this->input->post('id');

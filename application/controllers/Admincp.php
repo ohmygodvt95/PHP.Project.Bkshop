@@ -29,6 +29,13 @@ class Admincp extends CI_Controller {
 		}
 	}
 
+	public function order()
+	{
+		$this->load->model('backend/user_model');
+		$data['order'] = $this->db->query("SELECT * FROM \"order\" ORDER BY order_id DESC")->result();
+		$this->load->view('admincp/order/index', $data);
+	}
+
 }
 
 /* End of file Admincp.php */
