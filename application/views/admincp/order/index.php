@@ -218,7 +218,7 @@
                             $id = 0;
                                 foreach ($order as $item) {
                                     $id++;
-                                    echo '<tr oid = "'.$item->order_id.'">
+                                    echo '<tr class="order" oid = "'.$item->order_id.'">
                                             <td>'.$id.'</td>
                                             <td>'.substr(md5($item->order_id), 0, 10).'</td>
                                             <td title="'.$this->user_model->get_info($item->user_id)->user_email.'">'.$this->user_model->get_info($item->user_id)->user_fullname.'</td>
@@ -235,7 +235,7 @@
                 </div>
                 <div class="col-sm-6">
                     <h1 class="page-header">Thông tin đơn hàng</h1>
-                    <div>Hãy bấm chọn đơn hàng bên trái</div>
+                    <div class="info">Hãy bấm chọn đơn hàng bên trái</div>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -265,6 +265,13 @@
                $(this).removeClass('act');
            });
            $(this).addClass('act');
+        });
+        $('.order').click(function(event) {
+           var id = $(this).attr('oid');
+          // / alert(id);
+           $.post('<?php echo site_url();?>adminajax/getorderitem', {id: id}, function(data, textStatus, xhr) {
+               $('.info').html(data);
+           });
         });
     });
     </script>

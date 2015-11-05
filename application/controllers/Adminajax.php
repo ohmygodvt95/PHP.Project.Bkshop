@@ -45,6 +45,43 @@ class Adminajax extends CI_Controller
         $result = $this->db->query("DELETE FROM \"category\" WHERE category_id = $id");
         echo "TRUE";
     }
+    
+    public function getorderitem() {
+        $id = $this->input->post('id');
+        $sql = "SELECT * FROM \"order_item\" WHERE order_id = $id";
+        $result = $this->db->query($sql)->result();
+        echo '<table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>#ID</th>
+                                <th>Name</th>
+                                <th>Qty</th>
+                                <th>Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>';
+        $sid = 0;
+        $total_amount = 0;
+        foreach ($result as $item) {
+            $sid++;
+            $sql = "SELECT product_title, product_price FROM \"product\" WHERE product_id = $item->product_id";
+            $r = $this->db->query($sql)->result();
+            $total_amount+= $r[0]->product_price * $item->order_item_qty;
+            echo '<tr>
+                                <th>' . $sid . '</th>
+                                <th>' . $r[0]->product_title . '</th>
+                                <th>' . $item->order_item_qty . '</th>
+                                <th>$ ' . $r[0]->product_price . '</th>
+                            </tr>';
+        }
+        echo '<tr>
+                                <th></th>
+                                <th></th>
+                                <th>Tổng cộng: </th>
+                                <th>$ '.$total_amount.'</th>
+                            </tr></tbody>
+            </table>';
+    }
 }
 
 /* End of file Adminajax.php */
