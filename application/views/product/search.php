@@ -27,7 +27,7 @@
     <!-- Load Customize Css-->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/product/details.css">
     <!-- Load customize fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,700,500|Raleway:400,500' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,700,500' rel='stylesheet' type='text/css'>
     <!-- Style -->
     <style>
     </style>
@@ -48,7 +48,7 @@
                         <a href="<?php echo site_url();?>">BKShop - Home</a>
                     </li>
                     <li class="active">
-                        Search
+                        Tìm kiếm
                     </li>
                 </ol>
             </div>
@@ -72,7 +72,7 @@
                 <div class="col-sm-12 products">
                     <h1 class="<?php if(isset($_GET['key'])) echo"sub-heading";?>">
                     <?php if(isset($_GET['key'])){
-                    echo "Result : ".count($product); 
+                    echo "Result : ".count($product);
                     if(count($product) <1 ) echo " <span style='text-transform: lowercase;' class='text-warning'> ! Xin lỗi không có sản phẩm nào được tìm thấy!<span>";
                     }
                     else echo '<p class="text-center" style="font-family: arial;">Hãy bắt đầu <a>tìm kiếm</a> sản phẩm ngay bây giờ! </p>';?></h1>
@@ -92,7 +92,7 @@
                                                     <div>
                                                         <div class="row">
                                                             <div class="col-sm-8 col-sm-offset-2">
-                                                                <button class="btn btn-success center-block btn-add" productid = "'.$key->product_id.'">Add to cart</button>
+                                                                <button class="btn btn-success center-block btn-add" productid = "'.$key->product_id.'">Thêm vào giỏ</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -105,7 +105,7 @@
                 </div>
                 <div class="col-sm-12">
                     <hr>
-                    <h2 class="sub-heading">Recommend products</h2>
+                    <h2 class="sub-heading">Sản phẩm đề xuất</h2>
                     <div class="slider">
                         <div id="owl-product" class="owl-carousel owl-theme owl-product products">
                             <div class="col-sm-12">

@@ -25,7 +25,7 @@
         <!-- Load Customize Css-->
         <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/product/details.css">
         <!-- Load customize fonts -->
-        <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,700,500|Raleway:400,500' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,700,500' rel='stylesheet' type='text/css'>
             <!-- Style -->
             <style>
                 tr i{
@@ -67,7 +67,7 @@
                 <div class="container">
                     <div class="row">
                         <?php  $this->load->view('user/menu');?>
-	                    <div class="col-sm-9 roboto">
+	                    <div class="col-sm-9">
 	                    	<div class="panel panel-success">
 	                    		  <div class="panel-heading">
 	                    				<h3 class="panel-title text-center">Lịch sử đơn hàng</h3>
@@ -77,9 +77,9 @@
                                             <thead>
                                                 <tr>
                                                     <th>#ID</th>
-                                                    <th>Code</th>
-                                                    <th>Time</th>
-                                                    <th>Status</th>
+                                                    <th>Mã đơn hàng</th>
+                                                    <th>Thời gian</th>
+                                                    <th>Tình trạng</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -92,11 +92,13 @@
                                                     $id++;
                                                     echo '<tr>
                                                             <td>'.$id.'</td>
-                                                            <td>'.substr(md5($item->order_id), 0, 10).'</td>
+                                                            <td>'.substr(md5($item->order_id), 0, 6).'</td>
                                                             <td>'.date("l, jS F, Y - h:i:s A",$item->order_time).'</td>
                                                             <td>';
-                                                            if($item->order_status == 0) echo '<span class="pending">Pending</span>';
-                                                            else echo "Done";
+                                                            if ($item->order_status == 0) echo '<span class="pending">Chờ xử lý</span>';
+        else if ($item->order_status == 1) echo '<span class="text-danger">Đang xử lý</span>';
+        else if ($item->order_status == 2) echo '<span class="text-success">Đã xử lý</span>';
+        else if ($item->order_status == 3) echo '<span class="text-warning">Đã bị hủy</span>';
                                                             echo '</td>
                                                         </tr>';
                                                 }

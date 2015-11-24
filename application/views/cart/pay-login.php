@@ -25,7 +25,7 @@
         <!-- Load Customize Css-->
         <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/product/details.css">
         <!-- Load customize fonts -->
-        <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,700,500|Raleway:400,500' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,700,500' rel='stylesheet' type='text/css'>
             <!-- Style -->
             <style>
                 tr i{
@@ -69,14 +69,14 @@
                         <div class="col-sm-6 col-sm-offset-3">
                             <div class="panel panel-info <?php if(count($cart) < 1) echo "hidden";?>">
                                   <div class="panel-heading">
-                                        <h3 class="panel-title text-center" style="height: 35px;">Order</h3>
+                                        <h3 class="panel-title text-center" style="height: 35px;">Thông tin đơn hàng</h3>
                                   </div>
                                   <div class="panel-body">
                                     <table class="table table-hover">
                                         <thead>
                                             <tr>
-                                                <th>Name</th>
-                                                <th>Qty</th>
+                                                <th>Sản phẩm</th>
+                                                <th>Số lượng</th>
                                                 <th>$</th>
                                             </tr>
                                         </thead>
@@ -85,7 +85,7 @@
                                             foreach ($cart as $item) {
                                                 echo '
                                                     <tr>
-                                                        <td><a href="'.site_url('chi-tiet/'.$item['options']).'">'.$item['name'].'</a></td>
+                                                        <td><a taget="_new" href="'.site_url('chi-tiet/'.$item['options']).'" title="'.$item['name'].'">'.$item['name'].'</a></td>
                                                         <td>'.$item['qty'].'</td>
                                                         <td >$ '.($item['qty'] * $item['price']).'</td>
                                                     </tr>
@@ -93,7 +93,7 @@
                                             }
                                         ?>
                                         <tr  style="border-top: 3px solid black;">
-                                            <th>Total</th>
+                                            <th>Tổng số</th>
                                             <th><?php echo $total_product;?></th>
                                             <th style="color: red">$ <?php echo $total_amount;?></th>
                                         </tr>

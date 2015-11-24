@@ -26,7 +26,7 @@
     <!-- Load Customize Css-->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/product/details.css">
     <!-- Load customize fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,700,500|Raleway:400,500' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,700,500' rel='stylesheet' type='text/css'>
     <!-- Style -->
     <style>
     tr i{
@@ -64,7 +64,7 @@
         </div>
         <div class="content">
             <div class="container">
-                <h1>My cart <span class="badge"><?php echo count($cart);?></span></h1>
+                <h1>Giỏ hàng của tôi <span class="badge"><?php echo count($cart);?></span></h1>
                 <hr>
                 <div class="row">
                     <div class="col-sm-9">
@@ -72,11 +72,11 @@
                             <thead>
                                 <tr>
                                     <th>#ID</th>
-                                    <th>Name</th>
-                                    <th>Qty</th>
-                                    <th>Price</th>
-                                    <th>Total Amount</th>
-                                    <th>Action</th>
+                                    <th>Sản phẩm</th>
+                                    <th>SLượng</th>
+                                    <th>Đơn giá</th>
+                                    <th>Thành tiền</th>
+                                    <th>Hành động</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -114,14 +114,14 @@
                     <div class="col-sm-3">
                         <div class="panel panel-danger">
                               <div class="panel-heading">
-                                    <h3 class="panel-title">Statistic</h3>
+                                    <h3 class="panel-title">Thống kê nhanh</h3>
                               </div>
                               <div class="panel-body">
-                                    <h5>Products: <?php echo count($cart); ?></h5>
-                                    <h5>Total: <?php echo $total; ?></h5>
+                                    <h5>Số mặt hàng: <?php echo count($cart); ?></h5>
+                                    <h5>Số đơn vị: <?php echo $total; ?></h5>
                               </div>
                               <div class="panel-footer">
-                                  <h4>Total amount: <?php echo $total_amount; ?> $</h4>
+                                  <h4>Tổng số tiền: <?php echo $total_amount; ?> $</h4>
                               </div>
                         </div>
                         <hr>
@@ -178,11 +178,11 @@
 
             </script>
             <script>
-            // Preloader Website
-            $(window).load(function() {
-                $('#loader-wrapper').delay(450).fadeOut();
-                $('#loader').delay(750).fadeOut('slow');
-            });
+                // Preloader Website
+                $(window).load(function() {
+                    $('#loader-wrapper').delay(450).fadeOut();
+                    $('#loader').delay(750).fadeOut('slow');
+                });
             </script>
 </body>
 

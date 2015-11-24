@@ -25,7 +25,7 @@
         <!-- Load Customize Css-->
         <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/product/details.css">
         <!-- Load customize fonts -->
-        <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,700,500|Raleway:400,500' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,700,500' rel='stylesheet' type='text/css'>
             <!-- Style -->
             <style>
                 tr i{
@@ -58,7 +58,7 @@
                             <a href="<?php echo site_url();?>">BKShop - Home</a>
                         </li>
                         <li class="active">
-                            My Cart
+                            Giỏ hàng của tôi
                         </li>
                     </ol>
                 </div>
@@ -72,7 +72,7 @@
                                     <div class="panel-heading" role="tab" id="headingOne">
                                         <h4 class="panel-title">
                                         <h5 role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        I was a member BKShop
+                                        Tôi đã là thành viên của BKShop
                                         </h5>
                                         </h4>
                                     </div>
@@ -105,7 +105,7 @@
                                     <div class="panel-heading" role="tab" id="headingTwo">
                                         <h4 class="panel-title">
                                         <h5 class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        I'm a new member
+                                        Tôi là thành viên mới
                                         </h5>
                                         </h4>
                                     </div>
@@ -128,6 +128,16 @@
                                                         <span class="input-group-addon" id="basic-addon1"><i class="fa fa-fw fa-key"></i></span>
                                                         <input type="password" class="form-control" placeholder="Password" aria-describedby="basic-addon1" required minlength="8" equalTo = "#password">
                                                     </div>
+                                                    <h4>Phone:</h4>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon" id="basic-addon1"><i class="fa fa-fw fa-phone"></i></span>
+                                                        <input type="text" name = "phone" class="form-control" placeholder="Phone number" aria-describedby="basic-addon1" required minlength="8" >
+                                                    </div>
+                                                    <h4>Address:</h4>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon" id="basic-addon1"><i class="fa fa-fw fa-map-marker"></i></span>
+                                                        <textarea class="form-control" name = "address" placeholder="Address" ></textarea>
+                                                    </div>
                                                     <div class="checkbox hidden" style="font-size: 12px">
                                                         <label><input type="checkbox" value="" class="check">I agree to the BKShop <a href="">Terms of Service</a>  and <a href="">Privacy Policy</a></label>
                                                     </div>
@@ -144,15 +154,15 @@
                         <div class="col-sm-6 <?php if(count($cart) < 1) echo "hidden";?>">
                             <div class="panel panel-info">
                                   <div class="panel-heading">
-                                        <h3 class="panel-title text-center" style="height: 35px;">Order</h3>
+                                        <h3 class="panel-title text-center" style="height: 35px;">Thông tin đơn hàng</h3>
                                   </div>
-                                  <div class="panel-body">
+                                  <div class="panel-body arial">
                                     <table class="table table-hover">
                                         <thead>
                                             <tr>
-                                                <th>Name</th>
-                                                <th>Qty</th>
-                                                <th>$</th>
+                                                <th>Sản phẩm</th>
+                                                <th>Số lượng</th>
+                                                <th>Thành tiền</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -160,7 +170,7 @@
                                             foreach ($cart as $item) {
                                                 echo '
                                                     <tr>
-                                                        <td><a href="'.site_url('chi-tiet/'.$item['options']).'">'.$item['name'].'</a></td>
+                                                        <td><a target="_new" href="'.site_url('chi-tiet/'.$item['options']).'" title="'.$item['name'].'">'.$item['name'].'</a></td>
                                                         <td>'.$item['qty'].'</td>
                                                         <td >$ '.($item['qty'] * $item['price']).'</td>
                                                     </tr>
@@ -176,7 +186,7 @@
                                     </table>
                                   </div>
                                   <div class="panel-footer">
-                                     <h3>Total amount: <?php echo $total_amount;?> $</h3>
+                                     <h3 class="">Tổng số tiền: <?php echo $total_amount;?> $</h3>
                                   </div>
                             </div>
                         </div>

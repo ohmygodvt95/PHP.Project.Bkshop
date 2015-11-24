@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class User extends CI_Controller
 {
-    
+
     public function register() {
         if (!$this->session->has_userdata('login')) {
             $email = $this->input->post('email');
@@ -18,7 +18,7 @@ class User extends CI_Controller
             redirect('cart/pay', 'refresh');
         }
     }
-    
+
     public function checklogin() {
         if (!$this->session->has_userdata('login')) {
             $email = $this->input->post('email');
@@ -34,36 +34,38 @@ class User extends CI_Controller
                 $newdata = array('id' => $result->user_id, 'email' => $result->user_email, 'name' => $result->user_fullname, 'login' => TRUE, 'role' => $result->user_role, 'time' => $time, 'join' => $result->user_join_time, 'sex' => $result->user_sex);
                 $this->session->set_userdata($newdata);
                 echo "TRUE";
-            } 
+            }
             else {
                 echo "FALSE";
                 $this->session->set_flashdata('error_login', 'TRUE');
             }
         }
     }
-    
+
     public function logout() {
         if ($this->session->has_userdata('login')) {
             session_destroy();
             redirect(site_url(), 'refresh');
         }
     }
-    
+
     public function profile($value = '') {
-        if ($this->session->has_userdata('login')){
+        if ($this->session->has_userdata('login')) {
             $this->load->view('user/profile');
-        } else {
+        }
+        else {
             redirect(site_url("cart/pay"), 'refresh');
         }
     }
 
-    public function history($value='')
-    {
-        if ($this->session->has_userdata('login')){
+    public function history($value = '') {
+        if ($this->session->has_userdata('login')) {
             $this->load->view('user/history');
-        } else {
+        }
+        else {
             redirect(site_url("cart/pay"), 'refresh');
-        }    }
+        }
+    }
 }
 
 /* End of file User.php */

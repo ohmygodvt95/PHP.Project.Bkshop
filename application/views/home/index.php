@@ -26,7 +26,7 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/home/home-media.css">
         <!-- Load customize fonts -->
         <link href='https://fonts.googleapis.com/css?family=Open+Sans&subset=latin,vietnamese' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,700,500|Raleway:400,500' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,700,500' rel='stylesheet' type='text/css'>
         <!-- Style -->
         <style>
         </style>
@@ -58,13 +58,13 @@
                             echo '<div class="row">';
                             echo '  <h2><a href="'.site_url('san-pham/'.$item->category_url).'" title="Xem tất cả sản phẩm '.$item->category_title.'">'.$item->category_title.'</a></h2>';
                             echo '  <div class="col-sm-12">
-                                        <h4 class="sub-heading">Best seller</h4>
+                                        <h4 class="sub-heading">Bán chạy nhất</h4>
                                         <div class="slider">
                                             <div id="owl-product" class="owl-product owl-carousel owl-theme">';
 
-                            $sql = "SELECT product_id, product_url, product_title, product_thumb, product_price, product_desc, product_buy 
-                                    FROM product 
-                                    WHERE product_status = 0 AND category_id IN(SELECT category_id FROM category WHERE category_prev = $item->category_id) ORDER BY product_buy DESC LIMIT ".MAX;
+                            $sql = "SELECT product_id, product_url, product_title, product_thumb, product_price, product_desc, product_buy
+                                    FROM product
+                                    WHERE product_status = 0 AND category_id IN(SELECT category_id FROM category WHERE category_prev = $item->category_id) ORDER BY product_buy DESC LIMIT ".(MAX - 2);
                             $result = $this->db->query($sql)->result();
                             foreach ($result as $key) {
                                 $total++;
@@ -81,7 +81,7 @@
                                                     <div>
                                                         <div class="row">
                                                             <div class="col-sm-8 col-sm-offset-2">
-                                                                <button class="btn btn-success center-block btn-add" productid = "'.$key->product_id.'" title="Add to cart">Add to cart</button>
+                                                                <button class="btn btn-success center-block btn-add" productid = "'.$key->product_id.'" title="Thêm vào giỏ">Thêm vào giỏ</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -94,18 +94,18 @@
                                     </div>';
                             // sp moi
                                     $sql = "SELECT product_id, product_url, product_title, product_thumb, product_price, product_desc, product_time
-                                            FROM product 
-                                            WHERE product_status = 0 AND category_id IN(SELECT category_id FROM category WHERE category_prev = $item->category_id) AND product_id 
+                                            FROM product
+                                            WHERE product_status = 0 AND category_id IN(SELECT category_id FROM category WHERE category_prev = $item->category_id) AND product_id
                                             NOT IN(
                                                 SELECT product_id
-                                                FROM product 
-                                                WHERE product_status = 0 AND category_id IN(SELECT category_id FROM category WHERE category_prev = $item->category_id) ORDER BY product_buy DESC LIMIT ".MAX."
+                                                FROM product
+                                                WHERE product_status = 0 AND category_id IN(SELECT category_id FROM category WHERE category_prev = $item->category_id) ORDER BY product_buy DESC LIMIT ".(MAX - 2)."
                                                 )
                                             ORDER BY product_time DESC LIMIT ".MAX;
                                     $result = $this->db->query($sql)->result();
                                     echo '
                                             <div class="col-sm-12">
-                                            <h4 class="sub-heading">New products</h4>';
+                                            <h4 class="sub-heading">Sản phẩm mới</h4>';
                                             foreach ($result as $key) {
                                                 $total++;
                                                echo '<div class="col-sm-4">
@@ -122,7 +122,7 @@
                                                             <div>
                                                                 <div class="row">
                                                                     <div class="col-sm-8 col-sm-offset-2">
-                                                                        <button class="btn btn-success center-block btn-add" productid = "'.$key->product_id.'">Add to cart</button>
+                                                                        <button class="btn btn-success center-block btn-add" productid = "'.$key->product_id.'">Thêm vào giỏ</button>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -132,7 +132,7 @@
                                             }
                             echo '</div>';
                             $sql = "SELECT product_id
-                                    FROM product 
+                                    FROM product
                                     WHERE product_status = 0 AND category_id IN(SELECT category_id FROM category WHERE category_prev = $item->category_id)";
                                     $total = $this->db->query($sql)->num_rows() - $total;
                             if($total > 0)echo ' <div class="col-sm-12">

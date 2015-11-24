@@ -25,7 +25,7 @@
         <!-- Load Customize Css-->
         <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/product/details.css">
         <!-- Load customize fonts -->
-        <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,700,500|Raleway:400,500' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,700,500' rel='stylesheet' type='text/css'>
             <!-- Style -->
             <style>
                 tr i{
@@ -76,11 +76,11 @@
 	                    				<table class="table table-hover">
 	                    					<tbody>
 	                    						<tr>
-	                    							<td>Name: </td>
+	                    							<td>Họ và tên: </td>
 	                    							<td><?php echo $this->session->userdata('name');?></td>
 	                    						</tr>
 	                    						<tr>
-	                    							<td>Sex: </td>
+	                    							<td>Giới tính: </td>
 	                    							<td><?php if($this->session->userdata('role') == 1) echo "Nam"; else echo "Nữ"?></td>
 	                    						</tr>
 	                    						<tr>
@@ -88,19 +88,19 @@
 	                    							<td><?php echo $this->session->userdata('email');?></td>
 	                    						</tr>
 	                    						<tr>
-	                    							<td>Role: </td>
+	                    							<td>Loại tài khoản: </td>
 	                    							<td><?php if($this->session->userdata('role') == 1) echo "Normal";?></td>
 	                    						</tr>
 	                    						<tr>
-	                    							<td>Code: </td>
+	                    							<td>Mã: </td>
 	                    							<td><?php echo md5($this->session->userdata('id'));?></td>
 	                    						</tr>
 	                    						<tr>
-	                    							<td>Join time: </td>
+	                    							<td>Thời gian tham gia: </td>
 	                    							<td><?php echo date("l, F jS, Y h:i:s", $this->session->userdata('join'));?></td>
 	                    						</tr>
 	                    						<tr>
-	                    							<td>Last time: </td>
+	                    							<td>Hoạt động gần nhất: </td>
 	                    							<td><?php echo date("l, F jS, Y h:i:s", $this->session->userdata('time'));?></td>
 	                    						</tr>
 	                    					</tbody>

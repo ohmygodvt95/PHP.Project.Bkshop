@@ -27,7 +27,7 @@
     <!-- Load Customize Css-->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/product/details.css">
     <!-- Load customize fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,700,500|Raleway:400,500' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,700,500' rel='stylesheet' type='text/css'>
     <!-- Style -->
     <style>
 
@@ -65,17 +65,28 @@
                     <div class="col-sm-6">
                         <div class="slider">
                             <div id="owl-demo" class="owl-carousel owl-theme">
-                                <div class="item"><img src="http://img.trananh.vn/trananh/2015/08/11/dien-thoai-samsung-galaxy-a8-vang(4).jpg" alt="The Last of us"></div>
-                                <div class="item"><img src="http://img.trananh.vn/trananh/2015/08/11/dien-thoai-samsung-galaxy-a8-vang(1).jpg" alt="GTA V"></div>
-                                <div class="item"><img src="http://img.trananh.vn/trananh/2015/08/11/dien-thoai-samsung-galaxy-a8-vang(4).jpg" alt="Mirror Edge"></div>
+                                <?php
+                                    $image = explode("|", $product->product_image);
+                                    foreach ($image as $key) {
+                                        if(strlen($key) > 10){
+                                            echo '<div class="item"><img src="'.$key.'" alt="'.$product->product_title.'"></div>';
+                                        }
+                                    }
+                                ?>
                             </div>
                         </div>
                     </div>
+                    <?php
+                        $view = $product->product_view + 1;
+                        $this->db->query("UPDATE \"product\" SET product_view = $view WHERE product_id = $product->product_id");
+                     ?>
                     <div class="col-sm-6 details">
                         <h2 class="product-name"><?php echo $product->product_title ; ?></h2>
+                        <p><small> <i class="fa fa-fw fa-eye"></i><i title="lượt xem"><?php echo $product->product_view;?></i> lượt xem</small></p>
+                        <h3 class="text-danger" style="font-weight: bolder"><small>$</small> <?php echo $product->product_price ; ?></h3>
                         <hr>
                         <div class="col-sm-12 status">
-                            <h4><span>Status: </span><?php
+                            <h4><span>Tình trạng: </span><?php
                             if($product->product_status == 0){
                                 echo "Còn hàng";
                             }
@@ -83,48 +94,54 @@
                                 echo "Hết hàng";
                             }
                              ?></h4>
-                            <h4><span>Brand: </span><?php echo $sub_category->category_title; ?></h4>
+                            <h4><span>Nhà sản xuất: </span><?php echo $sub_category->category_title; ?></h4>
                         </div>
                         <div class="col-sm-12">
                             <hr>
-                            <h4 class="heading">Deals</h4>
+                            <h4 class="heading">Khuyến mãi</h4>
                             <div class="alert alert-info" role="alert">
-                                <p>Lorem ipsum Dolore ad aute sed id.
-                                    <br>Lorem ipsum Anim pariatur amet mollit.</p>
+                                <p><?php echo $product->product_deals ; ?></p>
                             </div>
                         </div>
                         <div class="col-sm-12">
                             <hr>
-                            <h4 class="heading">Order</h4>
+                            <h4 class="heading">Đặt hàng</h4>
                             <div class="col-sm-6">
                                 <div class="input-group">
-                                    <div class="input-group-addon">Quantity</div>
+                                    <div class="input-group-addon">Số lượng</div>
                                     <input type="number" name="quantity" min="1" max="10" value="1" class="form-control qty">
                                 </div>
                             </div>
                             <div class="col-sm-6">
-                                <button class="btn btn-warning btn-block btn-add-product" productid="<?php echo $product->product_id;?>">ADD TO CART</button>
-                                <button class="btn btn-primary btn-block btn-buy" productid="<?php echo $product->product_id;?>">BUY NOW</button>
+                                <button class="btn btn-warning btn-block btn-add-product" productid="<?php echo $product->product_id;?>">THÊM VÀO GIỎ</button>
+                                <button class="btn btn-primary btn-block btn-buy" productid="<?php echo $product->product_id;?>">MUA NGAY</button>
                             </div>
                         </div>
                         <div class="col-sm-12">
                             <hr>
-                            <h4 class="heading">Policies</h4>
-                            <p><i class="fa fa-fw fa-check-square-o"></i> Bộ sản phẩm. <a href="#">Tìm hiểu</a></p>
+                            <h4 class="heading">Chính sách</h4>
+                            <p><i class="fa fa-fw fa-check-square-o"></i> Bộ sản phẩm chính hãng. <a href="#">Tìm hiểu</a></p>
                             <p><i class="fa fa-fw fa-check-square-o"></i> Chính sách hậu mãi. <a href="#">Tìm hiểu</a></p>
                             <p><i class="fa fa-fw fa-check-square-o"></i> Chính sách giao hàng. <a href="#">Tìm hiểu</a></p>
+                            <hr>
+                            <h4 class="heading">Liên hệ ngay:</h4>
+                            <ul>
+                                <li>Hotline : (+84)977 903 921 | (+84)240 3832 580</li>
+                                <li>E-mail  : sales.bkshop@gmail.com</li>
+                                <li>Facebook: <a href="">http://fb.com/bkshop.vn</a></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-12">
                     <hr>
                     <div class="col-sm-8">
-                        <h2 class="sub-heading">More information</h2>
+                        <h2 class="sub-heading">Thông tin thêm</h2>
                         <!-- tabs left -->
                         <div class="tabbable tabs-left">
                             <ul class="nav nav-tabs">
-                                <li><a href="#a" data-toggle="tab"><i class="fa fa-fw fa-info"></i><span>Details</span></a></li>
-                                <li class="active"><a href="#b" data-toggle="tab"><i class="fa fa-fw fa-rocket"></i><span>Description</span></a></li>
+                                <li  class="active"><a href="#a" data-toggle="tab"><i class="fa fa-fw fa-info"></i><span>Chi tiết</span></a></li>
+                                <li><a href="#b" data-toggle="tab"><i class="fa fa-fw fa-rocket"></i><span>Giới thiệu</span></a></li>
                                 <li><a href="#c" data-toggle="tab"><i class="fa fa-fw fa-video-camera"></i><span>Video</span></a></li>
                             </ul>
                             <div class="tab-content">
@@ -179,141 +196,12 @@
                 </div>
                 <div class="col-sm-12">
                     <hr>
-                    <h2 class="sub-heading">Recommend products</h2>
+                    <h2 class="sub-heading">Sản phẩm đề xuất</h2>
                     <div class="slider">
                         <div id="owl-product" class="owl-carousel owl-theme owl-product products">
-                            <div class="col-sm-12">
-                                <div class="box">
-                                    <img class="img-responsive center-block" src="https://www.thegioididong.com/images/44/72316/hp-stream-13-533-400-400x400.png" alt="" />
-                                    <div class="info">
-                                        <h3>Thông tin</h3>
-                                        <p>Màn hình: fullHD</p>
-                                        <p>H Đ H: Android 4.4.5</p>
-                                        <p>Ram: 2GB</p>
-                                        <p>CPU: HD</p>
-                                        <a href="<?php echo site_url('product/details');?>">Xem thêm <i class="fa fa-fw fa-hand-o-right"></i></a>
-                                    </div>
-                                    <h3 class="text-center"><a href="">Sony Xperia M4 Aqua Dual</a></h3>
-                                    <h4 class="text-center">9,000,000 USD</h4>
-                                    <div>
-                                        <div class="row">
-                                            <div class="col-sm-8 col-sm-offset-2">
-                                                <button class="btn btn-success center-block">Add to cart</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-12">
-                                <div class="box">
-                                    <img class="img-responsive center-block" src="https://www.thegioididong.com/images/42/71990/wiko-ridge-533a-1-400x533.png" alt="" />
-                                    <div class="info">
-                                        <h3>Thông tin</h3>
-                                        <p>Màn hình: fullHD</p>
-                                        <p>H Đ H: Android 4.4.5</p>
-                                        <p>Ram: 2GB</p>
-                                        <p>CPU: HD</p>
-                                        <a href="<?php echo site_url('product/details');?>">Xem thêm <i class="fa fa-fw fa-hand-o-right"></i></a>
-                                    </div>
-                                    <h3 class="text-center"><a href="">Sony Xperia M4 Aqua Dual</a></h3>
-                                    <h4 class="text-center">9,000,000 USD</h4>
-                                    <div>
-                                        <div class="row">
-                                            <div class="col-sm-8 col-sm-offset-2">
-                                                <button class="btn btn-success center-block">Add to cart</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-12">
-                                <div class="box">
-                                    <img class="img-responsive center-block" src="https://www.thegioididong.com/images/42/71990/wiko-ridge-533a-1-400x533.png" alt="" />
-                                    <div class="info">
-                                        <h3>Thông tin</h3>
-                                        <p>Màn hình: fullHD</p>
-                                        <p>H Đ H: Android 4.4.5</p>
-                                        <p>Ram: 2GB</p>
-                                        <p>CPU: HD</p>
-                                        <a href="<?php echo site_url('product/details');?>">Xem thêm <i class="fa fa-fw fa-hand-o-right"></i></a>
-                                    </div>
-                                    <h3 class="text-center"><a href="">Sony Xperia M4 Aqua Dual</a></h3>
-                                    <h4 class="text-center">9,000,000 USD</h4>
-                                    <div>
-                                        <div class="row">
-                                            <div class="col-sm-8 col-sm-offset-2">
-                                                <button class="btn btn-success center-block">Add to cart</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-12">
-                                <div class="box">
-                                    <img class="img-responsive center-block" src="https://www.thegioididong.com/images/42/71990/wiko-ridge-533a-1-400x533.png" alt="" />
-                                    <div class="info">
-                                        <h3>Thông tin</h3>
-                                        <p>Màn hình: fullHD</p>
-                                        <p>H Đ H: Android 4.4.5</p>
-                                        <p>Ram: 2GB</p>
-                                        <p>CPU: HD</p>
-                                        <a href="<?php echo site_url('product/details');?>">Xem thêm <i class="fa fa-fw fa-hand-o-right"></i></a>
-                                    </div>
-                                    <h3 class="text-center"><a href="">Sony Xperia M4 Aqua Dual</a></h3>
-                                    <h4 class="text-center">9,000,000 USD</h4>
-                                    <div>
-                                        <div class="row">
-                                            <div class="col-sm-8 col-sm-offset-2">
-                                                <button class="btn btn-success center-block">Add to cart</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-12">
-                                <div class="box">
-                                    <img class="img-responsive center-block" src="https://www.thegioididong.com/images/42/71542/oppo-neo-5-400x533.png" alt="" />
-                                    <div class="info">
-                                        <h3>Thông tin</h3>
-                                        <p>Màn hình: fullHD</p>
-                                        <p>H Đ H: Android 4.4.5</p>
-                                        <p>Ram: 2GB</p>
-                                        <p>CPU: HD</p>
-                                        <a href="<?php echo site_url('product/details');?>">Xem thêm <i class="fa fa-fw fa-hand-o-right"></i></a>
-                                    </div>
-                                    <h3 class="text-center"><a href="">LG optimus G E973</a></h3>
-                                    <h4 class="text-center">9,000,000 USD</h4>
-                                    <div>
-                                        <div class="row">
-                                            <div class="col-sm-8 col-sm-offset-2">
-                                                <button class="btn btn-success center-block">Add to cart</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-12">
-                                <div class="box">
-                                    <img class="img-responsive center-block" src="https://www.thegioididong.com/images/42/71089/microsoft-lumia-640-game-400x533-400x533.png" alt="" />
-                                    <div class="info">
-                                        <h3>Thông tin</h3>
-                                        <p>Màn hình: fullHD</p>
-                                        <p>H Đ H: Android 4.4.5</p>
-                                        <p>Ram: 2GB</p>
-                                        <p>CPU: HD</p>
-                                        <a href="<?php echo site_url('product/details');?>">Xem thêm <i class="fa fa-fw fa-hand-o-right"></i></a>
-                                    </div>
-                                    <h3 class="text-center"><a href="">LG optimus G E973</a></h3>
-                                    <h4 class="text-center">9,000,000 USD</h4>
-                                    <div>
-                                        <div class="row">
-                                            <div class="col-sm-8 col-sm-offset-2">
-                                                <button class="btn btn-success center-block">Add to cart</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <?php
+                                $this->product_model->recommentProductByPrice($product->product_price, 200);
+                            ?>
                         </div>
                     </div>
                 </div>

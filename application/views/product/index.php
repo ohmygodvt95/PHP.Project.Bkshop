@@ -25,7 +25,7 @@
         <!-- Load Customize Css-->
         <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/product/product-index.css">
         <!-- Load customize fonts -->
-        <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,700,500|Raleway:400,500' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,700,500' rel='stylesheet' type='text/css'>
         <!-- Style -->
         <style>
         </style>
@@ -94,9 +94,9 @@
                             <div class="col-sm-12 text-center">
                                 <div class="list-group list-group-horizontal">
                                 <?php
-                                    if($this_sub_category == 'all') 
+                                    if($this_sub_category == 'all')
                                         echo '<a href="'.site_url("san-pham/".$category->category_url."/all").'" class="list-group-item active">All</a>';
-                                    else 
+                                    else
                                         echo '<a href="'.site_url("san-pham/".$category->category_url."/all").'" class="list-group-item ">All</a>';
                                     foreach ($sub_category as $item) {
                                         if($item->category_title == $this_category->category_title){
@@ -122,21 +122,21 @@
                         <div class="row">
                             <div class="col-sm-3 sort">
                                 <div class="input-group">
-                                    <div class="input-group-addon">Sort by</div>
+                                    <div class="input-group-addon">Sắp xếp theo</div>
                                     <select name="" id="" class="form-control sort-by">
-                                        <option value="time" <?php if($sort_by == 'time') echo 'selected="true"';?>>Release date</option>
-                                        <option value="name" <?php if($sort_by == 'name') echo 'selected="true"';?>>Name</option>
-                                        <option value="price" <?php if($sort_by == 'price') echo 'selected="true"';?>>Price</option>
-                                        <option value="view" <?php if($sort_by == 'view') echo 'selected="true"';?>>Views</option>
+                                        <option value="time" <?php if($sort_by == 'time') echo 'selected="true"';?>>Ngày ra mắt</option>
+                                        <option value="name" <?php if($sort_by == 'name') echo 'selected="true"';?>>Tên sản phẩm</option>
+                                        <option value="price" <?php if($sort_by == 'price') echo 'selected="true"';?>>Giá thành</option>
+                                        <option value="view" <?php if($sort_by == 'view') echo 'selected="true"';?>>Lượt xem</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-sm-3 sort">
                                 <div class="input-group">
-                                    <div class="input-group-addon">Sort type</div>
+                                    <div class="input-group-addon">Kiểu xếp</div>
                                     <select name="" id="" class="form-control sort-type">
-                                        <option value="asc" <?php if($sort_type == 'asc') echo 'selected="true"';?>>ASC</option>
-                                        <option value="desc" <?php if($sort_type != 'asc') echo 'selected="true"';?>>DESC</option>
+                                        <option value="asc" <?php if($sort_type == 'asc') echo 'selected="true"';?>>Tăng dần</option>
+                                        <option value="desc" <?php if($sort_type != 'asc') echo 'selected="true"';?>>Giảm dần</option>
                                     </select>
                                 </div>
                             </div>
