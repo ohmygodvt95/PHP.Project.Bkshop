@@ -9,6 +9,13 @@
  *	HEADER
  **/
  /*header top*/
+ @font-face {
+    font-family: Raleway;
+    src: url('../../fonts/Raleway-Medium-vi.ttf');
+}
+ .arial{
+ 	font-family: arial!important;
+ }
  header{
  	background-color: #FFFFFF;
  }
