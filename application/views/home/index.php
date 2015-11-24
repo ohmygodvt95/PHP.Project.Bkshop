@@ -65,6 +65,7 @@
                             $sql = "SELECT product_id, product_url, product_title, product_thumb, product_price, product_desc, product_buy
                                     FROM product
                                     WHERE product_status = 0 AND category_id IN(SELECT category_id FROM category WHERE category_prev = $item->category_id) ORDER BY product_buy DESC LIMIT ".(MAX - 2);
+
                             $result = $this->db->query($sql)->result();
                             foreach ($result as $key) {
                                 $total++;
