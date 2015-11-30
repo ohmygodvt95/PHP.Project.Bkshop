@@ -7,7 +7,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">SB Admin v2.0</a>
+                <a class="navbar-brand" href="index.html"><?php echo COMPANY;?> - Admin 1.0.0</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -122,10 +122,10 @@
                             <a href="#"><i class="fa fa-wrench fa-fw"></i> Products<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="panels-wells.html">Thêm mới sản phẩm</a>
+                                    <a href="<?php echo site_url("admincp/product/add");?>">Thêm mới sản phẩm</a>
                                 </li>
                                 <li>
-                                    <a href="manager">Quản lý sản phẩm</a>
+                                    <a href="<?php echo site_url("admincp/product/manager");?>">Quản lý sản phẩm</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

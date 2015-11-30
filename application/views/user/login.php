@@ -9,7 +9,7 @@
         <meta name="Author" content="LengKeng, E-mail: ohmygodvt95@gmail.com">
         <meta name="copyright" content="Copyright   &copy <?php echo date('Y');?> by LengKeng">
         <link rel="shortcut icon" type="image/png" href="<?php echo base_url();?>asset/images/favicon.png" />
-        <title>Lịch sử đơn hàng - <?php echo COMPANY;?> - <?php echo SOLOGAN;?></title>
+        <title>Đăng nhập tài khoản - <?php echo COMPANY;?></title>
         <!-- Load CSS-->
         <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/reset.min.css">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/style.css">
@@ -28,20 +28,7 @@
         <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,700,500' rel='stylesheet' type='text/css'>
             <!-- Style -->
             <style>
-                tr i{
-                    transition: 0.5s;
-                    cursor: pointer;
-                    color: green;
-                }
-                tr i:hover{
-                    color: red;
-                }
-                .roboto{
-                    font-family: 'Roboto';
-                }
-                .error{
-                    color: red;
-                }
+
             </style>
         </head>
         <body>
@@ -58,7 +45,7 @@
                             <a href="<?php echo site_url();?>"><?php echo COMPANY;?> - Home</a>
                         </li>
                         <li class="active">
-                            History
+                            Login
                         </li>
                     </ol>
                 </div>
@@ -66,50 +53,35 @@
             <div class="content">
                 <div class="container">
                     <div class="row">
-                        <?php  $this->load->view('user/menu');?>
-	                    <div class="col-sm-9">
-	                    	<div class="panel panel-success">
-	                    		  <div class="panel-heading">
-	                    				<h3 class="panel-title text-center">Lịch sử đơn hàng</h3>
-	                    		  </div>
-	                    		  <div class="panel-body">
-	                    				<table class="table table-hover">
-                                            <thead>
-                                                <tr>
-                                                    <th>#ID</th>
-                                                    <th>Mã đơn hàng</th>
-                                                    <th>Thời gian</th>
-                                                    <th>Tình trạng</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                               <?php
-                                               $user_id = $this->session->userdata('id');
-                                                $sql = "SELECT * FROM \"order\" WHERE user_id = $user_id ORDER BY order_id DESC";
-                                                $result = $this->db->query($sql)->result();
-                                                $id = 0;
-                                                foreach ($result as $item) {
-                                                    $id++;
-                                                    echo '<tr>
-                                                            <td>'.$id.'</td>
-                                                            <td>'.substr(md5($item->order_id), 0, 6).'</td>
-                                                            <td>'.date("l, jS F, Y - h:i:s A",$item->order_time).'</td>
-                                                            <td>';
-                                                            if ($item->order_status == 0) echo '<span class="pending">Chờ xử lý</span>';
-        else if ($item->order_status == 1) echo '<span class="text-danger">Đang xử lý</span>';
-        else if ($item->order_status == 2) echo '<span class="text-success">Đã xử lý</span>';
-        else if ($item->order_status == 3) echo '<span class="text-warning">Đã bị hủy</span>';
-                                                            echo '</td>
-                                                        </tr>';
-                                                }
-                                               ?>
-                                            </tbody>
-                                        </table>
-	                    		  </div>
-	                    	</div>
-	                    </div>
+                        <div class="col-sm-6 col-sm-offset-3">
+                            <h2 class="text-center text-primary">Đăng nhập - <?php echo COMPANY;?></h2>
+                            <h4 class="text-center"><?php echo COMPANY;?> - <?php echo SOLOGAN;?></h4>
+                            <hr>
+                            <h4 class="text-center arial">Bạn chưa là thành viên? <a href="<?php echo site_url("account/dang-ky");?>">Đăng ký</a>  tài khoản ngay!</h4>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-8 col-sm-offset-2">
+                                    <h4>Email:</h4>
+                                    <div class="input-group">
+                                        <span class="input-group-addon" id="basic-addon1"><i class="fa fa-fw fa-user"></i></span>
+                                        <input type="email" class="form-control email" placeholder="Email" aria-describedby="basic-addon1">
+                                    </div>
+                                    <h4>Password:</h4>
+                                    <div class="input-group">
+                                        <span class="input-group-addon" id="basic-addon1"><i class="fa fa-fw fa-key"></i></span>
+                                        <input type="password" class="form-control pass" placeholder="Password" aria-describedby="basic-addon1">
+                                    </div>
+                                    <br>
+                                    <a href="">Quên mật khẩu?</a>
+                                    <hr>
+                                    <button type="button" class="btn btn-primary login btn-lg btn-block">Đăng nhập</button>
+                                </div>
+                            </div>
+                            <hr>
+                            <a href="<?php echo site_url(); ?>" title="Go home">Tiếp tục mua hàng <i class="fa fa-fw fa-shopping-cart"></i></a>
+                            <a href="<?php echo site_url("contact"); ?>" title="Contact" class="pull-right">Tìm hiểu ngay về chúng tôi<i class="fa fa-fw fa-info"></i></a>
+                        </div>
                     </div>
-
                 </div>
             </div>
             <div class="hidden baseurl"><?php echo site_url();?></div>
@@ -124,6 +96,25 @@
             <script src="<?php echo base_url();?>asset/js/frontend/script.js"></script>
             <script src="<?php echo base_url();?>asset/js/sweetalert.min.js"></script>
             <!-- Customize -->
+            <script>
+            $(document).ready(function() {
+                $('.login').click(function(event) {
+                    var email = $('.email').val();
+                    var pass  = $('.pass').val();
+                    if($.trim(email) != "" && pass.length > 0){
+                        var url = "<?php echo site_url();?>user/checklogin/";
+                        $.post(url, {email: email, pass: pass}, function(data, textStatus, xhr) {
+                            if (textStatus == "success" && data == "TRUE") {
+                                window.location = "<?php echo site_url();?>user/profile/";
+                            }
+                            else{
+                                swal('Error!', 'Tên đăng nhập hoặc mật khẩu sai!', 'error');
+                            }
+                        });
+                    }
+                });
+            });
+            </script>
             <script>
                         // Preloader Website
                         $(window).load(function() {

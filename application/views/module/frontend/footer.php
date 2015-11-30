@@ -31,7 +31,7 @@
             <div class="col-sm-3">
                 <h3 class="text-center">About Us</h3>
                 <ul>
-                    <li><a href="">Về BKSHOP</a></li>
+                    <li><a href="">Về <?php echo COMPANY;?></a></li>
                     <li><a href="">Tin tức</a></li>
                     <li><a href="">Đối tác</a></li>
                     <li><a href="">Cơ hội việc làm</a></li>
@@ -57,14 +57,14 @@
             </div>
             <div class="col-sm-3">
                 <h3 class="text-center" >Copyright</h3>
-                <p style="font-family: arial">BKSHOP tự hào là nhà cung cấp Laptop, Smartphone số 1 vịnh Bắc Bộ. Đội ngũ nhân viên thân thiện, nhiệt tình. Chăm sóc khách hàng tận tình, chu đáo.</p>
+                <p style="text-align: left"><?php echo COMPANY;?> tự hào là nhà cung cấp Laptop, Smartphone số 1 vịnh Bắc Bộ. Đội ngũ nhân viên thân thiện, nhiệt tình. Chăm sóc khách hàng tận tình, chu đáo.</p>
             </div>
         </div>
     </div>
 </div>
 <div class="copyright">
     <div class="container">
-        <span>Copyright &copy 2014 Powered by LengKeng. All Rights Reserved.</span>
+        <span>Copyright &copy 2015 Powered by LengKeng. All Rights Reserved.</span>
     </div>
 </div>
 </footer>

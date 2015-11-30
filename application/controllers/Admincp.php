@@ -11,8 +11,20 @@ class Admincp extends CI_Controller
     public function dashboard() {
         $this->load->view('admincp/dashboard.php');
     }
-    public function product($value = '') {
-        $this->load->view('admincp/product/add.php');
+    public function product($value = 'add') {
+        switch ($value) {
+            case 'add':
+                $this->load->view('admincp/product/add');
+                break;
+
+            case 'manager':
+                $this->load->view('admincp/product/manager');
+                break;
+
+            default:
+                echo "null";
+                break;
+        }
     }
     public function categories($value = 'index') {
         $this->load->model('backend/categories_model');

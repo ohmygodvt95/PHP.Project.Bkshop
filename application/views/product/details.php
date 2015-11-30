@@ -5,13 +5,26 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Webshop">
-    <META NAME="keywords" CONTENT="Lengkeng">
+    <meta name="description" content="<?php echo COMPANY;?> - <?php echo $product->product_title;?> - <?php echo $sub_category->category_title;?> - <?php echo $category->category_title;?>">
+    <META NAME="keywords" CONTENT="<?php echo COMPANY;?> - <?php echo $product->product_title;?> - <?php echo $sub_category->category_title;?> - <?php echo $category->category_title;?>">
     <meta name="Author" content="LengKeng, E-mail: ohmygodvt95@gmail.com">
     <meta name="copyright" content="Copyright   &copy <?php echo date('Y');?> by LengKeng">
+    <meta itemprop="name" content="<?php echo COMPANY;?> - <?php echo $product->product_title;?>">
+    <meta itemprop="description" content="<?php echo COMPANY;?> - <?php echo $product->product_title;?> - <?php echo $sub_category->category_title;?> - <?php echo $category->category_title;?>">
+    <meta itemprop="image" content="<?php echo $product->product_thumb;?>">
+    <meta property="og:title" content="<?php echo COMPANY;?> - <?php echo $product->product_title;?>" />
+    <meta property="og:locale" content="vi_VN" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="<?php echo site_url("chi-tiet/".$product->product_url);?>" />
+    <meta property="og:image" content="<?php echo $product->product_thumb;?>" />
+    <meta property="og:description" content="<?php echo COMPANY;?> - <?php echo $product->product_title;?> - <?php echo $sub_category->category_title;?> - <?php echo $category->category_title;?>" />
+    <meta property="og:site_name" content="<?php echo COMPANY;?>" />
+    <meta property="fb:admins" content="" />
     <link rel="shortcut icon" type="image/png" href="<?php echo base_url();?>asset/images/favicon.png" />
-    <title>
-        <?php echo $product->product_title ; ?> - BKShop</title>
+    <link rel="canonical" href="<?php echo site_url("chi-tiet/".$product->product_url);?>"/>
+    <link rel="next" href="<?php echo site_url("san-pham/".$category->category_url); ?>"/>
+    <link rel="prev" href="<?php echo site_url("san-pham/".$category->category_url."/".$sub_category->category_url); ?>" />
+    <title><?php echo $product->product_title ; ?> - <?php echo COMPANY;?> - <?php echo SOLOGAN;?></title>
     <!-- Load CSS-->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/reset.min.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/style.css">
@@ -45,7 +58,7 @@
             <div class="container">
                 <ol class="breadcrumb">
                     <li>
-                        <a href="<?php echo site_url();?>">BKShop - Home</a>
+                        <a href="<?php echo site_url();?>"><?php echo COMPANY;?> - Home</a>
                     </li>
                     <li>
                         <a href="<?php echo $category->category_url; ?>"><?php echo $category->category_title; ?></a>

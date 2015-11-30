@@ -3,6 +3,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class User extends CI_Controller
 {
+    public function index($value='')
+    {
+        # code...
+    }
 
     public function register() {
         if (!$this->session->has_userdata('login')) {
@@ -64,6 +68,27 @@ class User extends CI_Controller
         }
         else {
             redirect(site_url("cart/pay"), 'refresh');
+        }
+    }
+
+    public function account($action = "dang-ky") {
+        if ($this->session->has_userdata('login')) {
+            $this->load->view('user/profile');
+        }
+        else {
+            switch ($action) {
+                case "dang-ky":
+                    $this->load->view('user/register');
+                    break;
+
+                case "dang-nhap":
+                    $this->load->view('user/login');
+                    break;
+
+                default:
+                    redirect(site_url(), 'refresh');
+                    break;
+            }
         }
     }
 }

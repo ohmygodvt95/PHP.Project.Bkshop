@@ -4,12 +4,12 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="Webshop">
-        <META NAME="keywords" CONTENT="Lengkeng">
+        <meta name="description" content="<?php echo COMPANY;?> - Trang chủ - <?php echo SOLOGAN;?>">
+        <META NAME="keywords" CONTENT="<?php echo COMPANY;?>">
         <meta name="Author" content="LengKeng, E-mail: ohmygodvt95@gmail.com">
         <meta name="copyright" content="Copyright   &copy <?php echo date('Y');?> by LengKeng">
         <link rel="shortcut icon" type="image/png" href="<?php echo base_url();?>asset/images/favicon.png" />
-        <title>BKShop - Trang chủ - Vui là mua</title>
+        <title><?php echo COMPANY;?> - Trang chủ - <?php echo SOLOGAN;?></title>
         <!-- Load CSS-->
         <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/reset.min.css">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/style.css">
@@ -33,8 +33,8 @@
     </head>
     <body>
         <!-- Preloader -->
-        <div id="xloader-wrapper">
-            <div id="xloader"></div>
+        <div id="loader-wrapper">
+            <div id="loader"></div>
         </div>
         <?php $this->load->view('module/frontend/header');?>
         <!-- Preloader End -->
@@ -324,8 +324,8 @@
         <script>
         // Preloader Website
         $(window).load(function() {
-            $('#loader-wrapper').delay(450).fadeOut();
-            $('#loader').delay(750).fadeOut('slow');
+            $('#loader-wrapper').delay(250).fadeOut();
+            $('#loader').delay(450).fadeOut('slow');
         });
         </script>
     </body>

@@ -4,12 +4,12 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="Webshop">
+        <meta name="description" content="<?php echo COMPANY;?>">
         <META NAME="keywords" CONTENT="Lengkeng">
         <meta name="Author" content="LengKeng, E-mail: ohmygodvt95@gmail.com">
         <meta name="copyright" content="Copyright   &copy <?php echo date('Y');?> by LengKeng">
         <link rel="shortcut icon" type="image/png" href="<?php echo base_url();?>asset/images/favicon.png" />
-        <title><?php echo $category->category_title. " - " . $this_category->category_title;?> - BKAshop</title>
+        <title><?php echo $category->category_title. " - " . $this_category->category_title;?> - <?php echo COMPANY;?> - <?php echo SOLOGAN;?></title>
         <!-- Load CSS-->
         <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/reset.min.css">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/style.css">

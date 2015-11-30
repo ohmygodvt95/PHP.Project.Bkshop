@@ -5,13 +5,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Webshop Tìm kiếm">
-    <META NAME="keywords" CONTENT="Lengkeng">
+    <meta name="description" content="<?php echo COMPANY;?> - Tìm kiếm">
+    <META NAME="keywords" CONTENT="Tìm kiếm - <?php echo COMPANY;?>">
     <meta name="Author" content="LengKeng, E-mail: ohmygodvt95@gmail.com">
     <meta name="copyright" content="Copyright   &copy <?php echo date('Y');?> by LengKeng">
     <link rel="shortcut icon" type="image/png" href="<?php echo base_url();?>asset/images/favicon.png" />
-    <title>
-        Tìm kiếm - BKShop</title>
+    <title>Tìm kiếm - <?php echo COMPANY;?></title>
     <!-- Load CSS-->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/reset.min.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/style.css">
@@ -45,7 +44,7 @@
             <div class="container">
                 <ol class="breadcrumb">
                     <li>
-                        <a href="<?php echo site_url();?>">BKShop - Home</a>
+                        <a href="<?php echo site_url();?>"><?php echo COMPANY;?> - Home</a>
                     </li>
                     <li class="active">
                         Tìm kiếm
@@ -72,8 +71,8 @@
                 <div class="col-sm-12 products">
                     <h1 class="<?php if(isset($_GET['key'])) echo"sub-heading";?>">
                     <?php if(isset($_GET['key'])){
-                    echo "Result : ".count($product);
-                    if(count($product) <1 ) echo " <span style='text-transform: lowercase;' class='text-warning'> ! Xin lỗi không có sản phẩm nào được tìm thấy!<span>";
+                    echo "Kết quả : ".count($product);
+                    if(count($product) <1 ) echo " <p style=';' class='text-warning text-center'> ! Xin lỗi không có sản phẩm nào được tìm thấy!<p>";
                     }
                     else echo '<p class="text-center" style="font-family: arial;">Hãy bắt đầu <a>tìm kiếm</a> sản phẩm ngay bây giờ! </p>';?></h1>
                     <?php

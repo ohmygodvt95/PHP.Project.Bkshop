@@ -6,13 +6,13 @@
                     <div class="header-top-left">
                         <ul>
                             <li>
-                                <a href="<?php echo site_url();?>cart/checkout/"><i class="fa fa-fw fa-cart-plus"></i><span>My Cart</span></a>
+                                <a href="<?php echo site_url();?>cart/checkout/"><i class="fa fa-fw fa-cart-plus"></i><span>Giỏ hàng của tôi</span></a>
                             </li>
                         </ul>
                     </div>
                     <div class="header-top-right">
-                        <span>Welcome to BKAShop</span>
-                        <?php if(!$this->session->has_userdata('login')) echo '<a href="'.site_url('cart/pay/').'">Login</a> or <a href="'.site_url('cart/pay/').'">Sign up</a>';
+                        <span>Welcome to <?php echo COMPANY;?></span>
+                        <?php if(!$this->session->has_userdata('login')) echo '<a href="'.site_url('user/account/dang-nhap').'">Login</a> or <a href="'.site_url('user/account/login').'">Sign up</a>';
                         else echo "Hi, <a title='Information' href='".site_url('user/profile')."'>".substr($this->session->userdata('name'), 0, 8)."</a> | <a title='Đăng xuất' href='".site_url("user/logout")."'> Logout<i class='fa fa-fw fa-sign-out'></i></a>"?>
                     </div>
                 </div>
@@ -23,7 +23,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-6 logo">
-                    <a href="<?php echo site_url();?>"><img src="<?php echo base_url();?>asset/images/logo3.png" alt="BKshop" ></a>
+                    <a href="<?php echo site_url();?>"><img src="<?php echo base_url();?>asset/images/logo3.png" alt="<?php echo COMPANY;?>" ></a>
                 </div>
                 <div class="col-sm-4 col-sm-offset-2 contact">
                     <div class="contact-box center-block">
@@ -50,7 +50,7 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav navbar-left">
-                        <li><a href="<?php echo site_url();?>" title="BKShop Home Page"><i class="fa fa-fw fa-home"></i>BKshop</a></li>
+                        <li><a href="<?php echo site_url();?>" title="<?php echo COMPANY;?> - Home Page"><i class="fa fa-fw fa-home"></i><?php echo COMPANY;?></a></li>
                         <?php
                         $sql = "SELECT * FROM category WHERE category_level = 0 ORDER BY category_title ASC";
                         $result = $this->db->query($sql)->result();
@@ -58,7 +58,7 @@
                             echo '<li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="'.$item->category_title.'">'.$item->category_title.'<b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="'.site_url("san-pham/".$item->category_url."/all").'" title="Tất cả sản phẩm '.$item->category_title.'">All product</a></li>';
+                                <li><a href="'.site_url("san-pham/".$item->category_url."/all").'" title="Tất cả sản phẩm '.$item->category_title.'">Tất cả</a></li>';
 
                                 $sql = "SELECT * FROM category WHERE category_level = 1 AND category_prev = $item->category_id ORDER BY category_title ASC";
                                 $r = $this->db->query($sql)->result();

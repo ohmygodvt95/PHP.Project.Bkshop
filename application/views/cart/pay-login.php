@@ -4,12 +4,12 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="Webshop">
-        <META NAME="keywords" CONTENT="Lengkeng">
+        <meta name="description" content="<?php echo COMPANY;?> - Thanh toán">
+        <META NAME="keywords" CONTENT="<?php echo COMPANY;?> - Thanh toán">
         <meta name="Author" content="LengKeng, E-mail: ohmygodvt95@gmail.com">
         <meta name="copyright" content="Copyright   &copy <?php echo date('Y');?> by LengKeng">
         <link rel="shortcut icon" type="image/png" href="<?php echo base_url();?>asset/images/favicon.png" />
-        <title>Thanh toán - BKShop</title>
+        <title>Thanh toán - <?php echo COMPANY;?> - <?php echo SOLOGAN;?></title>
         <!-- Load CSS-->
         <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/reset.min.css">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/style.css">
@@ -55,7 +55,7 @@
                 <div class="container">
                     <ol class="breadcrumb">
                         <li class="">
-                            <a href="<?php echo site_url();?>">BKShop - Home</a>
+                            <a href="<?php echo site_url();?>"><?php echo COMPANY;?> - Home</a>
                         </li>
                         <li class="active">
                             Thanh toán
