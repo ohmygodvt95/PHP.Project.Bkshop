@@ -62,7 +62,7 @@
                                         <div class="slider">
                                             <div id="owl-product" class="owl-product owl-carousel owl-theme">';
 
-                            $sql = "SELECT product_id, product_url, product_title, product_thumb, product_price, product_desc, product_buy
+                            $sql = "SELECT product_id, product_url, product_title, product_thumb, product_price, product_desc, product_buy, product_view
                                     FROM product
                                     WHERE product_status = 0 AND category_id IN(SELECT category_id FROM category WHERE category_prev = $item->category_id) ORDER BY product_buy DESC LIMIT ".(MAX - 2);
 
@@ -76,6 +76,8 @@
                                                         <h3>Thông tin</h3>
                                                         '.$key->product_desc.'<br>
                                                         <a href="'.site_url('chi-tiet/'.$key->product_url).'" title="Xem chi tiết sản phẩm">Xem thêm <i class="fa fa-fw fa-hand-o-right"></i></a>
+                                                        <br>
+                                                                <i class="fa fa-fw fa-eye"></i>'.$key->product_view.' | <i class="fa fa-fw fa-shopping-cart"></i>'.$key->product_buy.'
                                                     </div>
                                                     <h3 class="text-center"><a href="'.site_url('chi-tiet/'.$key->product_url).'" title="Xem chi tiết sản phẩm">'.$key->product_title.'</a></h3>
                                                     <h4 class="text-center" >'.$key->product_price.' USD</h4>
@@ -94,7 +96,7 @@
                                         </div>
                                     </div>';
                             // sp moi
-                                    $sql = "SELECT product_id, product_url, product_title, product_thumb, product_price, product_desc, product_time
+                                    $sql = "SELECT product_id, product_url, product_title, product_thumb, product_price, product_desc, product_time, product_view, product_buy
                                             FROM product
                                             WHERE product_status = 0 AND category_id IN(SELECT category_id FROM category WHERE category_prev = $item->category_id) AND product_id
                                             NOT IN(
@@ -102,7 +104,7 @@
                                                 FROM product
                                                 WHERE product_status = 0 AND category_id IN(SELECT category_id FROM category WHERE category_prev = $item->category_id) ORDER BY product_buy DESC LIMIT ".(MAX - 2)."
                                                 )
-                                            ORDER BY product_time DESC LIMIT ".MAX;
+                                            ORDER BY product_time DESC LIMIT ".(MAX - 2);
                                     $result = $this->db->query($sql)->result();
                                     echo '
                                             <div class="col-sm-12">
@@ -116,7 +118,10 @@
                                                                 <h3>Thông tin</h3>
                                                                 '.$key->product_desc.'
                                                                 <br>
+
                                                                 <a href="'.site_url('chi-tiet/'.$key->product_url).'">Xem thêm <i class="fa fa-fw fa-hand-o-right"></i></a>
+                                                                <br>
+                                                                <i class="fa fa-fw fa-eye"></i>'.$key->product_view.' | <i class="fa fa-fw fa-shopping-cart"></i>'.$key->product_buy.'
                                                             </div>
                                                             <h3 class="text-center"><a href="'.site_url('chi-tiet/'.$key->product_url).'">'.$key->product_title.'</a></h3>
                                                             <h4 class="text-center">'.$key->product_price.' USD</h4>

@@ -65,7 +65,7 @@ class Product extends CI_Controller
         else {
             $value = $value_2 = "BKSHOP";
         }
-        $sql = "SELECT product_id, product_url, product_title, product_thumb, product_price, product_desc, product_buy FROM \"product\" WHERE product_url LIKE '%$value%' OR product_title LIKE '%$value_2%' ORDER BY product_time DESC LIMIT " . MAX;
+        $sql = "SELECT product_id, product_url, product_title, product_thumb, product_price, product_desc, product_buy, product_view FROM \"product\" WHERE product_url LIKE '%$value%' OR product_title LIKE '%$value_2%' ORDER BY product_time DESC LIMIT " . MAX;
         $data['product'] = $this->db->query($sql)->result();
         $this->load->view('product/search', $data);
     }

@@ -115,7 +115,7 @@ class Adminajax extends CI_Controller
 
     public function addproduct() {
         $product_title = $this->input->post('product_title');
-        $product_url = string_short(convert_accented_characters($product_title)) . "-" . generate_random_string(4);
+        $product_url = string_short(convert_accented_characters($product_title)) . "-" . generate_random_string(2);
         $product_price = $this->input->post('product_price');
         $product_status = $this->input->post('product_status');
         $product_desc = $this->input->post('product_desc');
@@ -141,7 +141,7 @@ class Adminajax extends CI_Controller
     public function editproduct() {
         $product_id = $this->input->post('product_id');
         $product_title = $this->input->post('product_title');
-        $product_url = string_short(convert_accented_characters($product_title)) . "-" . generate_random_string(1);
+        $product_url = string_short(convert_accented_characters($product_title)) . "-" . generate_random_string(2);
         $product_price = $this->input->post('product_price');
         $product_status = $this->input->post('product_status');
         $product_desc = $this->input->post('product_desc');

@@ -275,7 +275,7 @@
                         if(textStatus == "success" && data == "TRUE"){
                             swal({
                                     title: 'Thành công',
-                                    text: 'Bạn đã thêm sản phẩm thành công!',
+                                    text: 'Bạn đã sửa thông tin thành công!',
                                     type: 'success',
                                     confirmButtonColor: '#3085d6',
                                     confirmButtonText: 'OK',

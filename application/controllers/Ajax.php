@@ -51,12 +51,12 @@ class Ajax extends CI_Controller
                     break;
             }
             if ($sub_category == 'all') {
-                $sql = "SELECT product_id, product_url, product_title, product_thumb, product_price, product_desc, product_buy
+                $sql = "SELECT product_id, product_url, product_title, product_thumb, product_price, product_desc, product_buy, product_view
 			 	 FROM product
 				 WHERE category_id IN(SELECT category_id FROM category WHERE category_prev = $prev->category_id) AND product_status = 0 ORDER BY $sort_by $sort_type LIMIT " . MAX . " OFFSET $offset";
             }
             else {
-                $sql = "SELECT product_id, product_url, product_title, product_thumb, product_price, product_desc, product_buy
+                $sql = "SELECT product_id, product_url, product_title, product_thumb, product_price, product_desc, product_buy, product_view
 				 FROM product
 				 WHERE category_id = $category_id AND product_status = 0 ORDER BY $sort_by $sort_type LIMIT " . MAX . " OFFSET $offset";
             }
@@ -72,6 +72,8 @@ class Ajax extends CI_Controller
 	                            ' . $key->product_desc . '
 	                            <br>
 	                            <a href="' . site_url('chi-tiet/' . $key->product_url) . '">Xem thêm <i class="fa fa-fw fa-hand-o-right"></i></a>
+                                <br>
+                                                                <i class="fa fa-fw fa-eye"></i>'.$key->product_view.' | <i class="fa fa-fw fa-shopping-cart"></i>'.$key->product_buy.'
                             </div>
                             <h3 class="text-center"><a href="' . site_url('chi-tiet/' . $key->product_url) . '">' . $key->product_title . '</a></h3>
                             <h4 class="text-center">' . $key->product_price . ' USD</h4>
