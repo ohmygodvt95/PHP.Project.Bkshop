@@ -3,6 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class User extends CI_Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->model('frontend/log_model');
+    }
     public function index($value='')
     {
         # code...
@@ -12,12 +17,15 @@ class User extends CI_Controller
         if (!$this->session->has_userdata('login')) {
             $email = $this->input->post('email');
             $password = $this->input->post('password');
+            $phone = $this->input->post('phone');
+            $address = $this->input->post('address');
             $name = substr($email, 0, 8);
             if ($email != "" && $password != "") {
                 $time = time();
-                $sql = "INSERT INTO \"user\"( user_email, user_pass, user_fullname, user_time, user_join_time) VALUES( '$email', '$password', '$email', $time, $time)";
+                $sql = "INSERT INTO \"user\"( user_email, user_pass, user_fullname, user_time, user_join_time, user_phone, user_address) VALUES( '$email', '$password', '$email', $time, $time, '$phone', '$address')";
                 $this->db->query($sql);
                 $this->session->set_flashdata('signup', $email);
+                $this->log_model->write_log($email." đã tạo tài khoản mới", 0);
             }
             redirect('cart/pay', 'refresh');
         }
@@ -37,6 +45,7 @@ class User extends CI_Controller
                 $r = $this->db->query($sql);
                 $newdata = array('id' => $result->user_id, 'email' => $result->user_email, 'name' => $result->user_fullname, 'login' => TRUE, 'role' => $result->user_role, 'time' => $time, 'join' => $result->user_join_time, 'sex' => $result->user_sex);
                 $this->session->set_userdata($newdata);
+                $this->log_model->write_log_login("đăng nhập vào hệ thống", 0);
                 echo "TRUE";
             }
             else {
@@ -48,6 +57,7 @@ class User extends CI_Controller
 
     public function logout() {
         if ($this->session->has_userdata('login')) {
+            $this->log_model->write_log_login("đăng xuất khỏi hệ thống", 0);
             session_destroy();
             redirect(site_url(), 'refresh');
         }

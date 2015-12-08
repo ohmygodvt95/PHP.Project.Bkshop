@@ -131,12 +131,12 @@
                                                     <h4>Phone:</h4>
                                                     <div class="input-group">
                                                         <span class="input-group-addon" id="basic-addon1"><i class="fa fa-fw fa-phone"></i></span>
-                                                        <input type="text" name = "phone" class="form-control" placeholder="Phone number" aria-describedby="basic-addon1" required minlength="8" >
+                                                        <input type="text" name = "phone" class="form-control phone" placeholder="Phone number" aria-describedby="basic-addon1" required minlength="8" >
                                                     </div>
                                                     <h4>Address:</h4>
                                                     <div class="input-group">
                                                         <span class="input-group-addon" id="basic-addon1"><i class="fa fa-fw fa-map-marker"></i></span>
-                                                        <textarea class="form-control" name = "address" placeholder="Address" ></textarea>
+                                                        <textarea class="form-control address" name = "address" placeholder="Address" required></textarea>
                                                     </div>
                                                     <div class="checkbox hidden" style="font-size: 12px">
                                                         <label><input type="checkbox" value="" class="check">I agree to the <?php echo COMPANY;?> <a href="">Terms of Service</a>  and <a href="">Privacy Policy</a></label>
@@ -216,9 +216,11 @@
                 $('.btn-login').click(function(event) {
                     var email = $('input.email').val();
                     var pass = $('input.pass').val();
+                    var phone = $('textarea.pass').val();
+                    var address = $('textarea.pass').val();
                     if($.trim(email) != "" && pass.length > 0){
                         var url = "<?php echo site_url();?>user/checklogin/";
-                        $.post(url, {email: email, pass: pass}, function(data, textStatus, xhr) {
+                        $.post(url, {email: email, pass: pass, phone: phone, address: address}, function(data, textStatus, xhr) {
                             if (textStatus == "success" && data == "TRUE") {
                                 swal({
                                     title: 'Logged In',

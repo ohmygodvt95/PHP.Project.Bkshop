@@ -8,6 +8,7 @@ class Adminajax extends CI_Controller
         parent::__construct();
         $this->load->helper('string_helper');
         $this->load->helper('text');
+        $this->load->model('frontend/log_model');
     }
     public function index() {
     }
@@ -31,6 +32,7 @@ class Adminajax extends CI_Controller
         }
         else {
             $this->db->insert('category', $data);
+            $this->log_model->write_log_login("tạo thành công category mới: ".$data['category_title'], 1);
             echo "TRUE";
         }
     }
@@ -39,10 +41,12 @@ class Adminajax extends CI_Controller
         $id = $this->input->post("id");
         $sql = "SELECT * FROM \"category\" WHERE category_id = $id";
         $result = $this->db->query($sql)->result();
+        $ctg = $result[0]->category_title;
         if ($result[0]->category_level == 0) {
             $r = $this->db->query("DELETE FROM \"category\" WHERE category_prev = " . $result[0]->category_id);
         }
         $result = $this->db->query("DELETE FROM \"category\" WHERE category_id = $id");
+        $this->log_model->write_log_login("xóa thành công category ".$ctg, 1);
         echo "TRUE";
     }
 
@@ -110,6 +114,7 @@ class Adminajax extends CI_Controller
         $status = $this->input->post("status");
         $sql = "UPDATE \"order\" SET order_status = $status WHERE order_id = $oid";
         $this->db->query($sql);
+        $this->log_model->write_log_login("cập nhật thành công trạng thái đơn hàng $oid", 1);
         echo "TRUE";
     }
 
@@ -128,6 +133,7 @@ class Adminajax extends CI_Controller
         $product_deals = $this->input->post('product_deals');
         $sql = "INSERT INTO \"product\"(product_title, product_url, product_price, product_status, product_desc, product_details, product_content, category_id, product_thumb,product_image,product_time,product_deals) VALUES('$product_title', '$product_url', $product_price, $product_status, '$product_desc', '$product_details', '$product_content', $category_id, '$product_thumb', '$product_image', $product_time, '$product_deals')";
         $this->db->query($sql);
+        $this->log_model->write_log_login("thêm thành công sản phẩm $product_title", 1);
         echo "TRUE";
     }
 
@@ -135,6 +141,7 @@ class Adminajax extends CI_Controller
         $id = $this->input->post('pid');
         $sql = "DELETE FROM \"product\" WHERE product_id = $id";
         $this->db->query($sql);
+        $this->log_model->write_log_login("xóa thành công sản phẩm $id", 1);
         echo "TRUE";
     }
 
@@ -154,6 +161,7 @@ class Adminajax extends CI_Controller
         $product_deals = $this->input->post('product_deals');
         $sql = "UPDATE \"product\" SET product_title = '$product_title', product_url = '$product_url', product_price = $product_price, product_status = $product_status, product_desc = '$product_desc', product_details = '$product_details', product_content = '$product_content', category_id = $category_id, product_thumb = '$product_thumb', product_image = '$product_image', product_deals = '$product_deals' WHERE product_id = $product_id";
         $this->db->query($sql);
+        $this->log_model->write_log_login("sửa thành công sản phẩm $product_id", 1);
         echo "TRUE";
     }
 }

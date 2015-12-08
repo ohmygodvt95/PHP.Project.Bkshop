@@ -6,6 +6,7 @@ class Cart extends CI_Controller
     public function __construct() {
         parent::__construct();
         $this->load->library('cart');
+        $this->load->model('frontend/log_model');
     }
     public function index() {
         $data['cart'] = $this->cart->contents();
@@ -87,6 +88,7 @@ class Cart extends CI_Controller
     }
 
     public function order() {
+        $this->load->model('frontend/cart_model');
         $cart = $this->cart->contents();
         if ($this->session->has_userdata('login')) {
             $user_id = $this->session->userdata('id');
@@ -103,7 +105,9 @@ class Cart extends CI_Controller
                 $result = $this->db->query($sql);
                 $update = array('rowid' => $item['rowid'], 'qty' => 0);
                 $this->cart->update($update);
+                $this->cart_model->buyProduct($pid);
             }
+            $this->log_model->write_log_login("thêm đơn hàng số $oid thành công", 0);
             echo 'TRUE';
         }
     }

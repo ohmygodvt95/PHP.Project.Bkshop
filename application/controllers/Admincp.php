@@ -3,7 +3,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Admincp extends CI_Controller
 {
-
+    public function __construct()
+    {
+        parent::__construct();
+        if (!$this->session->has_userdata('login')) {
+            redirect(site_url(),'refresh');
+        }
+        else if($this->session->userdata['role'] != 0){
+            redirect(site_url(),'refresh');
+        }
+    }
     public function index() {
         redirect('admincp/dashboard', 'refresh');
     }
