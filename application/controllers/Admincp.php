@@ -18,7 +18,15 @@ class Admincp extends CI_Controller
                 break;
 
             case 'manager':
-                $this->load->view('admincp/product/manager');
+                $sql = "SELECT product_id, product_thumb, product_title, product_url, product_status, category_id, product_view, product_buy FROM product ORDER BY product_time DESC";
+                $data['data'] = $this->db->query($sql)->result();
+                $this->load->view('admincp/product/manager', $data);
+                break;
+            case 'edit':
+                $pid = $this->input->get('pid');
+                $result = $this->db->query("SELECT * FROM product WHERE product_id = $pid")->result();
+                $data['product'] = $result[0];
+                $this->load->view('admincp/product/edit', $data);
                 break;
 
             default:

@@ -222,11 +222,12 @@
                             if (textStatus == "success" && data == "TRUE") {
                                 swal({
                                     title: 'Logged In',
-                        text: 'Bạn đã đăng nhập thành công!',
-                        type: 'success',
-                        confirmButtonColor: '#3085d6',
-                        confirmButtonText: 'OK',
-                        closeOnConfirm: false},function (argument) {
+                                    text: 'Bạn đã đăng nhập thành công!',
+                                    type: 'success',
+                                    confirmButtonColor: '#3085d6',
+                                    confirmButtonText: 'OK',
+                                    closeOnConfirm: false
+                                },function (argument) {
                                     window.location = "<?php echo site_url();?>cart/pay/";
                                 });
                             }

@@ -10,5 +10,6 @@ var config = {};
 // Examples:
 // config.language = 'pl';
 // config.skin = 'jquery-mobile';
-
+config.language = 'vi';
+config.selectMultiple = true;
 CKFinder.define( config );

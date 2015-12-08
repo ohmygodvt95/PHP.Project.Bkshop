@@ -61,10 +61,10 @@
                         <a href="<?php echo site_url();?>"><?php echo COMPANY;?> - Home</a>
                     </li>
                     <li>
-                        <a href="<?php echo $category->category_url; ?>"><?php echo $category->category_title; ?></a>
+                        <a href="<?php echo site_url("/san-pham/"."".$category->category_url); ?>"><?php echo $category->category_title; ?></a>
                     </li>
                     <li>
-                        <a href="<?php echo $sub_category->category_url; ?>"><?php echo $sub_category->category_title; ?></a>
+                        <a href="<?php echo site_url("/san-pham/".$category->category_url."/$sub_category->category_url"); ?>"><?php echo $sub_category->category_title; ?></a>
                     </li>
                     <li class="active">
                         <?php echo $product->product_title ; ?>
@@ -78,7 +78,9 @@
                     <div class="col-sm-6">
                         <div class="slider">
                             <div id="owl-demo" class="owl-carousel owl-theme">
+
                                 <?php
+                                    echo '<div class="item"><img src="'.$product->product_thumb.'" alt="'.$product->product_title.'"></div>';
                                     $image = explode("|", $product->product_image);
                                     foreach ($image as $key) {
                                         if(strlen($key) > 10){

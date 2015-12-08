@@ -1,5 +1,5 @@
 {
-	"appTitle": "CKFinder",
+	"appTitle": "BKShop",
 	"common": {
 		"cancel": "Hủy",
 		"messageTitle": "Thông tin",
@@ -22,8 +22,8 @@
 	"FileDelete": "Bạn có chắc muốn xóa tập tin \"%1\"?",
 	"FilesDelete": "Are you sure you want to delete %1 files?",
 	"FilesLoading": {
-		"title": "Loading...",
-		"text": "Please wait. The files are being loaded."
+		"title": "Đang tải...",
+		"text": "Xin đợi! File đang được tải lên!!"
 	},
 	"FilesEmpty": {
 		"title": "The folder is empty.",
@@ -54,8 +54,8 @@
 	"MoveDragDrop": "Di chuyển ở đây",
 	"Upload": "Tải lên",
 	"Settings": "Thiết lập",
-	"Choose": "Choose",
-	"ChooseResizedImage": "Choose Resized",
+	"Choose": "Chọn",
+	"ChooseResizedImage": "Chọn và chỉnh sửa",
 	"OriginalSize": "Original Size",
 	"Custom": "Custom",
 	"GettingFileData": "Getting file data. Please wait.",
@@ -208,11 +208,11 @@
 		"loading": "Loading image"
 	},
 	"ChooseResizedImageSizes": {
-		"small": "Small",
-		"medium": "Medium",
-		"large": "Large",
+		"small": "Nhỏ",
+		"medium": "Vừa",
+		"large": "Lớn",
 		"max": "Max",
-		"Custom": "Custom"
+		"Custom": "Tùy chọn"
 	},
 	"ShowMore": "Show more"
 }

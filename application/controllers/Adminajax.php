@@ -112,6 +112,50 @@ class Adminajax extends CI_Controller
         $this->db->query($sql);
         echo "TRUE";
     }
+
+    public function addproduct() {
+        $product_title = $this->input->post('product_title');
+        $product_url = string_short(convert_accented_characters($product_title)) . "-" . generate_random_string(4);
+        $product_price = $this->input->post('product_price');
+        $product_status = $this->input->post('product_status');
+        $product_desc = $this->input->post('product_desc');
+        $product_details = $this->input->post('product_details');
+        $product_content = $this->input->post('product_content');
+        $category_id = $this->input->post('category_id');
+        $product_thumb = $this->input->post('product_thumb');
+        $product_image = $this->input->post('product_image');
+        $product_time = time();
+        $product_deals = $this->input->post('product_deals');
+        $sql = "INSERT INTO \"product\"(product_title, product_url, product_price, product_status, product_desc, product_details, product_content, category_id, product_thumb,product_image,product_time,product_deals) VALUES('$product_title', '$product_url', $product_price, $product_status, '$product_desc', '$product_details', '$product_content', $category_id, '$product_thumb', '$product_image', $product_time, '$product_deals')";
+        $this->db->query($sql);
+        echo "TRUE";
+    }
+
+    public function deleteproduct() {
+        $id = $this->input->post('pid');
+        $sql = "DELETE FROM \"product\" WHERE product_id = $id";
+        $this->db->query($sql);
+        echo "TRUE";
+    }
+
+    public function editproduct() {
+        $product_id = $this->input->post('product_id');
+        $product_title = $this->input->post('product_title');
+        $product_url = string_short(convert_accented_characters($product_title)) . "-" . generate_random_string(1);
+        $product_price = $this->input->post('product_price');
+        $product_status = $this->input->post('product_status');
+        $product_desc = $this->input->post('product_desc');
+        $product_details = $this->input->post('product_details');
+        $product_content = $this->input->post('product_content');
+        $category_id = $this->input->post('category_id');
+        $product_thumb = $this->input->post('product_thumb');
+        $product_image = $this->input->post('product_image');
+        $product_time = time();
+        $product_deals = $this->input->post('product_deals');
+        $sql = "UPDATE \"product\" SET product_title = '$product_title', product_url = '$product_url', product_price = $product_price, product_status = $product_status, product_desc = '$product_desc', product_details = '$product_details', product_content = '$product_content', category_id = $category_id, product_thumb = '$product_thumb', product_image = '$product_image', product_deals = '$product_deals' WHERE product_id = $product_id";
+        $this->db->query($sql);
+        echo "TRUE";
+    }
 }
 
 /* End of file Adminajax.php */

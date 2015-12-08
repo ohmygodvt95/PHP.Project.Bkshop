@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="<?php echo COMPANY;?>">
     <meta name="author" content="LengKeng">
-    <title>Thêm mới sản phẩm - <?php echo COMPANY;?></title>
+    <title>Chỉnh sửa sản phẩm - <?php echo COMPANY;?></title>
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo base_url();?>asset/css/bootstrap.min.css" rel="stylesheet">
     <!-- MetisMenu CSS -->
@@ -46,11 +46,11 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-sm-12">
-                    <h2 class="page-header">Thêm mới sản phẩm</h2>
+                    <h2 class="page-header">Chỉnh sửa sản phẩm <small class="pull-right"><a  href="<?php echo site_url("admincp/product/add"); ?>"><i class="fa fa-fw fa-plus"></i>Thêm mới sản phẩm</a></small></h2>
                     <div class="row">
                         <div class="col-sm-7">
                             <h3>Tên sản phẩm:</h3>
-                            <input type="text" class="form-control product_title" placeholder="Nhập tên sản phẩm">
+                            <input type="text" class="form-control product_title" placeholder="Nhập tên sản phẩm" value="<?php echo $product->product_title;?>">
                             <hr>
                             <h4>Thuộc chuyên mục:</h4>
                             <select name="" id="" class="form-control category_id">
@@ -64,7 +64,9 @@
                                             $sql = "SELECT * FROM category WHERE category_level = 1 AND category_prev = $item->category_id ORDER BY category_title ASC";
                                             $r = $this->db->query($sql)->result();
                                             foreach ($r as $key) {
-                                                echo "<option value='$key->category_id'>$key->category_title</option>";
+                                                if($product->category_id == $key->category_id)
+                                                    echo "<option value='$key->category_id' selected>$key->category_title</option>";
+                                                else echo "<option value='$key->category_id' >$key->category_title</option>";
                                             }
                                         echo "</optgroup>";
                                     }
@@ -72,31 +74,32 @@
                             </select>
                             <hr>
                             <h4>Thông tin ngắn sản phẩm:</h4>
-                            <textarea rows="8" class="form-control product_desc" placeholder="Thông số vắn tắt của sản phẩm"></textarea>
+                            <textarea rows="8" class="form-control product_desc" placeholder="Thông số vắn tắt của sản phẩm"><?php $product->product_desc = str_replace("<br>","\n",$product->product_desc); echo $product->product_desc;?></textarea>
                         </div>
                         <div class="col-sm-5">
                             <div class="row">
                                 <div class="col-sm-6">
                                     <h3>Giá:</h3>
-                                    <input type="number" class="form-control product_price" placeholder="Đơn vị USD">
+                                    <input type="number" class="form-control product_price" placeholder="Đơn vị USD" value="<?php echo $product->product_price;?>">
                                 </div>
                                 <div class="col-sm-6">
                                     <h3>Tình trạng:</h3>
                                     <select name="" id="" class="form-control product_status">
-                                        <option value="0">Sẵn sàng</option>
-                                        <option value="1">Ngừng cung cấp</option>
+                                        <option value="0" <?php if($product->product_status == 0) echo "selected";?>>Sẵn sàng</option>
+                                        <option value="1" <?php if($product->product_status == 1) echo "selected";?>>Ngừng cung cấp</option>
+                                        <option value="2" <?php if($product->product_status == 2) echo "selected";?>>Hết hàng</option>
                                     </select>
                                 </div>
                             </div>
                             <hr>
                             <h4>Ảnh đại diện:</h4>
                             <div class="input-group">
-                                <input class="form-control thumb product_thumb" disabled="true" placeholder="Ảnh đại diện cho sản phẩm" type="text" >
+                                <input class="form-control thumb product_thumb" disabled="true" placeholder="Ảnh đại diện cho sản phẩm" type="text" value="<?php echo $product->product_thumb;?>">
                                 <span class="input-group-btn">
                                     <button class="btn btn-primary btn-thumb" type="button">Chọn ảnh</button>
                                 </span>
                             </div>
-                            <img src="/webshop/uploads/images/new-product.jpg" alt="" class="img-reponsive center-block img-thumb" height="250px" width="200px" >
+                            <img src="<?php echo $product->product_thumb;?>" alt="" class="img-reponsive center-block img-thumb" height="250px" width="200px" >
                         </div>
                     </div>
                     <hr>
@@ -119,15 +122,15 @@
                                 <div class="tab-content">
                                     <div role="tabpanel" class="tab-pane active" id="home">
                                         <h3>Chi tiết sản phẩm</h3>
-                                        <textarea id="details" rows="15" cols="80" placeholder="Chi tiết sản phẩm" class="product_details">Chi tiết sản phẩm</textarea>
+                                        <textarea id="details" rows="15" cols="80" placeholder="Chi tiết sản phẩm" class="product_details"><?php echo $product->product_details;?></textarea>
                                     </div>
                                     <div role="tabpanel" class="tab-pane" id="tab">
                                         <h3>Giới thiệu sản phẩm</h3>
-                                        <textarea id="content" rows="15" cols="80" placeholder="Bài viết, review sản phẩm" class="product_content">Bài viết, review sản phẩm</textarea>
+                                        <textarea id="content" rows="15" cols="80" placeholder="Bài viết, review sản phẩm" class="product_content"><?php echo $product->product_content;?></textarea>
                                     </div>
                                      <div role="tabpanel" class="tab-pane" id="tab1">
                                         <h3>Khuyến mãi</h3>
-                                        <textarea id="deals" rows="10" cols="80" placeholder="THông tin khuyến mãi" class="product_deals form-control">- Thông tin khuyến mãi</textarea>
+                                        <textarea id="deals" rows="10" cols="80" placeholder="Thông tin khuyến mãi" class="product_deals form-control"><?php echo $product->product_deals;?></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -136,13 +139,19 @@
                             <h4>Tập ảnh sản phẩm <a class="btn btn-primary pull-right add-img btn-sm">Thêm ảnh</a></h4>
                             <hr>
                             <div class="images well product_image">
+                            <?php
+                                $img = explode("|",$product->product_image);
+                                foreach ($img as $key) {
+                                    if(strlen($key) > 10) echo '<div><img src="'. $key .'" alt="Image" title="Click to remove image"><div></div></div>';
+                                }
+                            ?>
                             </div>
                             <a class="img-delete pull-right"> Xóa tất cả ảnh</a>
                             <br>
                             <hr>
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <button type="button" class="btn btn-success btn-block btn-lg save">Hoàn tất</button>
+                                    <button type="button" class="btn btn-success btn-block btn-lg save">Cập nhật</button>
                                 </div>
                                 <div class="col-sm-6">
                                     <button type="button" class="btn btn-danger btn-block btn-lg reset">Làm lại</button>
@@ -161,6 +170,7 @@
 
     <div class="hidden">
         <input class="base_url" type="text" name="" value="<?php echo site_url();?>" placeholder="">
+        <input class="product_id" type="text" name="" value="<?php echo $product->product_id;?>" placeholder="">
     </div>
     <!-- /#wrapper -->
     <!-- jQuery -->
@@ -182,7 +192,6 @@
             CKEDITOR.replace('details');
             CKEDITOR.replace('content');
             CKEDITOR.replace('deals');
-
             function openModalThumb() {
                  CKFinder.modal( {
                     width: 1000,
@@ -232,6 +241,7 @@
                 $('.images').html('');
              });
              $('.save').click(function(event) {
+                var product_id = $('.product_id').val();
                 var product_title = $.trim($('.product_title').val());
                 var product_price = $('.product_price').val();
                 var product_status = $('.product_status').val();
@@ -249,7 +259,8 @@
                     swal("Error", "Thông tin nhập chưa đầy đủ, vui lòng kiểm tra lại!", "error");
                 }
                 else{
-                    $.post(base_url + "adminajax/addproduct/", {
+                    $.post(base_url + "adminajax/editproduct/", {
+                        product_id: product_id,
                         product_title: product_title,
                         product_price: product_price,
                         product_status: product_status,

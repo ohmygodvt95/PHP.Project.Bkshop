@@ -73,7 +73,7 @@ class User extends CI_Controller
 
     public function account($action = "dang-ky") {
         if ($this->session->has_userdata('login')) {
-            $this->load->view('user/profile');
+            redirect('user/profile','refresh');
         }
         else {
             switch ($action) {
