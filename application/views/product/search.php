@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,6 +9,20 @@
     <meta name="Author" content="LengKeng, E-mail: ohmygodvt95@gmail.com">
     <meta name="copyright" content="Copyright   &copy <?php echo date('Y');?> by LengKeng">
     <link rel="shortcut icon" type="image/png" href="<?php echo base_url();?>asset/images/favicon.png" />
+    <meta itemprop="name" content="<?php echo COMPANY;?> - <?php echo SOLOGAN;?>">
+    <meta itemprop="description" content="<?php echo COMPANY;?> - <?php echo SOLOGAN;?> - Tìm kiếm">
+    <meta itemprop="image" content="<?php echo base_url();?>asset/images/logo2.png">
+    <meta property="og:title" content="<?php echo COMPANY;?> - <?php echo SOLOGAN;?> - Tìm kiếm" />
+    <meta property="og:locale" content="vi_VN" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="<?php echo $_SERVER['REQUEST_URI'];?>" />
+    <meta property="og:image" content="<?php echo base_url();?>asset/images/logo2.png" />
+    <meta property="og:description" content="<?php echo COMPANY;?> - <?php echo SOLOGAN;?> - Tìm kiếm" />
+    <meta property="og:site_name" content="<?php echo COMPANY;?>" />
+    <meta property="fb:admins" content="ohmygodvt95" />
+    <link rel="canonical" href="<?php echo $_SERVER['REQUEST_URI'];?>"/>
+    <link rel="next" href="<?php echo $_SERVER['REQUEST_URI'];?>"/>
+    <link rel="prev" href="<?php echo $_SERVER['REQUEST_URI'];?>" />
     <title>Tìm kiếm - <?php echo COMPANY;?></title>
     <!-- Load CSS-->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/reset.min.css">

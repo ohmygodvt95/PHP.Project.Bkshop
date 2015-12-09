@@ -84,7 +84,7 @@
                         <div class="list-group level-1">
                             <?php
                                 foreach ($category as $key) {
-                                    echo '<a  class="list-group-item" value="'.$key->category_id.'">'.$key->category_title.'<i class="fa fa-fw fa-trash pull-right delete" title="Xóa" value="'.$key->category_id.'"></i><i class="fa fa-fw fa-wrench pull-right edit" title="Chỉnh sửa" value="'.$key->category_id.'"></i></a>';
+                                    echo '<a  class="list-group-item" value="'.$key->category_id.'">'.$key->category_title.'<i class="fa fa-fw fa-trash pull-right delete" title="Xóa" value="'.$key->category_id.'"></i><i class="fa fa-fw fa-wrench pull-right edit" title="Chỉnh sửa tiêu đề" cid="'.$key->category_id.'" value="'.$key->category_title.'"></i></a>';
                                 }
                             ?>
                         </div>
@@ -125,6 +125,35 @@
     <script type="text/javascript" charset="utf-8" >
     jQuery(document).ready(function($) {
         var base_url = $('input.base_url').val();
+        $(document).on('click', '.edit', function(event) {
+            var title = $(this).attr('title');
+            var cid = $(this).attr('cid');
+            var value = $(this).attr('value');
+            swal({
+                        title: title,
+                        html: '<p><input id="input-field" class="form-control" value="' + value + '">',
+                        showCancelButton: true,
+                        closeOnConfirm: false },
+                        function() {
+                            var new_val = $('#input-field').val();
+                            $.post('<?php echo site_url();?>adminajax/editcategorytitle', {id: cid, value: new_val}, function(data, textStatus, xhr) {
+                                if(textStatus == "success" && data == "TRUE"){
+                                    swal({
+                                        title: "Success",
+                                        html: 'Bạn đã '+ title + " thành công! : "+new_val ,
+                                        type: "success",
+                                        showCancelButton: false,
+                                        closeOnConfirm: false },
+                                        function() {
+                                            window.location = "<?php echo site_url('admincp/categories');?>";
+                                        });
+                                }
+                                else swal("Error", "Có lỗi xảy ra, vui lòng thử lại sau!", "error");
+
+                            });
+                        });
+        });
+
         $(".loai-danh-muc").change(function(event) {
             $('.category').toggle();
         });

@@ -17,8 +17,18 @@ class Adminajax extends CI_Controller
         $sql = "SELECT * FROM category WHERE category_level = 1 AND category_prev = $id ORDER BY category_title ASC";
         $data = $this->db->query($sql)->result();
         foreach ($data as $key) {
-            echo '<a  class="list-group-item" value="' . $key->category_id . '">' . $key->category_title . '<i class="fa fa-fw fa-trash pull-right delete" title="Xóa" value="' . $key->category_id . '"></i><i class="fa fa-fw fa-wrench pull-right edit" title="Chỉnh sửa" value="' . $key->category_id . '"></i></a>';
+            echo '<a  class="list-group-item" value="' . $key->category_id . '">' . $key->category_title . '<i class="fa fa-fw fa-trash pull-right delete" title="Xóa" value="' . $key->category_id . '"></i><i class="fa fa-fw fa-wrench pull-right edit" title="Chỉnh sửa tiêu đề" cid="'.$key->category_id.'" value="'.$key->category_title.'"></i></a>';
         }
+    }
+
+    public function editcategorytitle($value='')
+    {
+        $category_id = $this->input->post('id');
+        $category_title = $this->input->post('value');
+        $category_url = string_short(convert_accented_characters($category_title));
+        $sql = "UPDATE \"category\" SET category_title = '$category_title', category_url = '$category_url' WHERE category_id = $category_id";
+        $this->db->query($sql);
+        echo "TRUE";
     }
 
     public function newcategory() {
@@ -52,6 +62,7 @@ class Adminajax extends CI_Controller
 
     public function getorderitem() {
         $id = $this->input->post('id');
+
         $astatus = array("0" => "pending", "1" => "processing", "2" => "done");
         $status = $astatus[$this->input->post('status') ];
         $sql = "SELECT * FROM \"order_item\" WHERE order_id = $id";
@@ -91,6 +102,7 @@ class Adminajax extends CI_Controller
         $sql = "SELECT * FROM \"order\" WHERE order_id = $id";
         $re = $this->db->query($sql)->result();
         $item = $re[0];
+        $user_id = $item->user_id;
         echo '<hr>
             <h3>Trạng thái đơn hàng: ';
         if ($item->order_status == 0) echo '<span class="pending">Chờ xử lý</span>';
@@ -106,7 +118,17 @@ class Adminajax extends CI_Controller
             </select>
             <br>
             <button type="button" class="btn btn-primary order-status-' . $status . '" oid="' . $item->order_id . '">Cập nhật trạng thái</button>
-            ';
+            <hr>';
+            $sql = "SELECT user_email, user_fullname, user_phone, user_address FROM \"user\" WHERE user_id = $user_id";
+            if($this->session->userdata('role') == 0){
+                $r = $this->db->query($sql)->result();
+                echo "<h3>Thông tin người nhận:</h3><hr>";
+
+                echo "<h4>Họ và Tên: ".$r[0]->user_fullname."</h4>";
+                echo "<h4>SDT: ".$r[0]->user_phone."</h4>";
+                echo "<h4>Email: ".$r[0]->user_email."</h4>";
+                echo "<h4>Nơi nhận: ".$r[0]->user_address."</h4><hr>";
+            }
     }
 
     public function updatestatus() {
