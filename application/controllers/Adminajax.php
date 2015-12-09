@@ -28,6 +28,7 @@ class Adminajax extends CI_Controller
         $category_url = string_short(convert_accented_characters($category_title));
         $sql = "UPDATE \"category\" SET category_title = '$category_title', category_url = '$category_url' WHERE category_id = $category_id";
         $this->db->query($sql);
+        $this->log_model->write_log_login("sửa tiêu đề chuyên mục thành công", 1);
         echo "TRUE";
     }
 
@@ -192,10 +193,10 @@ class Adminajax extends CI_Controller
         $uid = $this->input->post('uid');
         $pass = md5("12345678".COMPANY);
         $this->db->query("UPDATE \"user\" SET user_pass = '$pass' WHERE user_id = $uid");
+        $this->log_model->write_log_login("reset pass cho tài khoản $uid", 0);
         echo "TRUE";
     }
 }
 
 /* End of file Adminajax.php */
-
 /* Location: ./application/controllers/Adminajax.php */

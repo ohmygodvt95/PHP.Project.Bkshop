@@ -76,8 +76,8 @@ class User extends CI_Controller
         if ($this->session->has_userdata('login')) {
             $this->log_model->write_log_login("đăng xuất khỏi hệ thống", 0);
             session_destroy();
-            redirect(site_url(), 'refresh');
         }
+        redirect(site_url(), 'refresh');
     }
 
     public function profile($value = '') {

@@ -18,7 +18,9 @@ class Admincp extends CI_Controller
     }
 
     public function dashboard() {
-        $this->load->view('admincp/dashboard.php');
+        $data['log_admin'] = $this->db->query("SELECT * FROM \"log\" WHERE log_type = 1 ORDER BY log_id DESC LIMIT 15")->result();
+        $data['log_user'] = $this->db->query("SELECT * FROM \"log\" WHERE log_type = 0 ORDER BY log_id DESC LIMIT 15")->result();
+        $this->load->view('admincp/dashboard.php', $data);
     }
     public function product($value = 'add') {
         switch ($value) {

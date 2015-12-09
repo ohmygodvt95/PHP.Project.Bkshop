@@ -3,6 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Ajax extends CI_Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->model('frontend/log_model');
+    }
 
     public function index() {
     }
@@ -18,6 +23,7 @@ class Ajax extends CI_Controller
         else{
             $this->db->query("UPDATE \"user\" SET $action = $value WHERE user_id = $user_id");
         }
+        $this->log_model->write_log_login("thay đổi thông tin cá nhân", 0);
         echo "TRUE";
     }
 
@@ -31,6 +37,7 @@ class Ajax extends CI_Controller
         if(count($result) == 1){
             $sql = "UPDATE \"user\" SET user_pass = '$nextpass' WHERE user_id = $user_id";
             $this->db->query($sql);
+            $this->log_model->write_log_login("thay đổi mật khẩu", 0);
             echo "TRUE";
         }
         else echo "FALSE";
