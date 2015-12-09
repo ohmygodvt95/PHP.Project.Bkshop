@@ -80,7 +80,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="#">
+                        <a href="<?php echo site_url("admincp/product/manager");?>">
                             <div class="panel-footer">
                                 <span class="pull-left">View Details</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -97,12 +97,12 @@
                                     <i class="fa fa-shopping-cart fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge"><?php echo $this->db->count_all('order');?></div>
+                                    <div class="huge"><?php echo $result = $this->db->query("SELECT * FROM \"order\" WHERE order_status = 0")->num_rows();?></div>
                                     <div>New Orders!</div>
                                 </div>
                             </div>
                         </div>
-                        <a href="#">
+                        <a href="<?php echo site_url("admincp/order");?>">
                             <div class="panel-footer">
                                 <span class="pull-left">View Details</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -124,7 +124,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="#">
+                        <a href="<?php echo site_url("admincp/categories");?>">
                             <div class="panel-footer">
                                 <span class="pull-left">View Details</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>

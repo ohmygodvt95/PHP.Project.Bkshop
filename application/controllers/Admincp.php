@@ -66,6 +66,12 @@ class Admincp extends CI_Controller
         $data['order4'] = $this->db->query("SELECT * FROM \"order\" WHERE order_status = 3 ORDER BY order_id DESC")->result();
         $this->load->view('admincp/order/index', $data);
     }
+
+    public function user()
+    {
+        $data['user'] = $this->db->query("SELECT * FROM \"user\" WHERE user_role != 0")->result();
+        $this->load->view('admincp/user/user', $data);
+    }
 }
 
 /* End of file Admincp.php */

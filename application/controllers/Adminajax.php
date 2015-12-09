@@ -164,6 +164,14 @@ class Adminajax extends CI_Controller
         $this->log_model->write_log_login("sửa thành công sản phẩm $product_id", 1);
         echo "TRUE";
     }
+
+    public function resetpass($value='')
+    {
+        $uid = $this->input->post('uid');
+        $pass = md5("12345678".COMPANY);
+        $this->db->query("UPDATE \"user\" SET user_pass = '$pass' WHERE user_id = $uid");
+        echo "TRUE";
+    }
 }
 
 /* End of file Adminajax.php */

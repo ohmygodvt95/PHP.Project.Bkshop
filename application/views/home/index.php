@@ -40,9 +40,7 @@
         <!-- Preloader End -->
         <div class="slider">
             <div id="owl-demo" class="owl-carousel owl-theme">
-                <div class="item"><img src="https://cdn3.tgdd.vn/qcao/31_08_2015_18_30_19_TGDd-T9-ThangSamsung-800-300.jpg" alt="The Last of us"></div>
-                <div class="item"><img src="https://cdn.tgdd.vn/qcao/05_09_2015_08_02_13_TGDD-IPHONE-800-300.jpg" alt="GTA V"></div>
-                <div class="item"><img src="https://cdn4.tgdd.vn/qcao/06_09_2015_15_53_45_TGDd-Lai-Yollo-800-300.jpg" alt="Mirror Edge"></div>
+                <?php $this->load->view('module/frontend/img');?>
             </div>
         </div>
         <div class="content">
@@ -172,36 +170,36 @@
                         <h3>TESTIMONIALS <span class="pull-right"><i class='owl-nav owl-prev fa  fa-chevron-left'></i><i class='owl-nav owl-next fa  fa-chevron-right'></i></span></h3>
                         <div id="owl-testimonials" class="owl-carousel owl-theme">
                             <div class="item">
-                                <h4>Cool Style! 1</h4>
+                                <h4>Tuyệt vời!</h4>
                                 <p><i class="fa fa-fw fa-quote-left"></i>
-                                    Lorem ipsum Culpa deserunt Ut elit in est reprehenderit mollit ullamco reprehenderit adipisicing incididunt Excepteur consequat nulla est magna minim aliquip.
+                                    Ông chủ thân thiện, đội ngũ chăm sóc thân thiện. Thật tuyệt
                                     <i class="fa fa-fw fa-quote-right"></i>
                                 </p>
-                                <h5 class="text-right"><i>John Doe</i></h5>
+                                <h5 class="text-right"><i>ohmygodvt95@gmail.com</i></h5>
                             </div>
                             <div class="item">
-                                <h4>Cool Style! 2</h4>
+                                <h4>Support nhiệt tình</h4>
                                 <p><i class="fa fa-fw fa-quote-left"></i>
-                                    Lorem ipsum Culpa deserunt Ut elit in est reprehenderit mollit ullamco reprehenderit adipisicing incididunt Excepteur consequat nulla est magna minim aliquip.
+                                    Mình chưa thấy ở đâu đội ngũ kỹ thuật hỗ trợ tận tình như vậy. Mình sẽ giới thiệu bạn bè đến đây mua hàng :3
                                     <i class="fa fa-fw fa-quote-right"></i>
                                 </p>
-                                <h5 class="text-right"><i>John Doe</i></h5>
+                                <h5 class="text-right"><i>levinhthien.bka@gmail.com</i></h5>
                             </div>
                             <div class="item">
-                                <h4>Cool Style! 3</h4>
+                                <h4>Cảm ơn cửa hàng</h4>
                                 <p><i class="fa fa-fw fa-quote-left"></i>
-                                    Lorem ipsum Culpa deserunt Ut elit in est reprehenderit mollit ullamco reprehenderit adipisicing incididunt Excepteur consequat nulla est magna minim aliquip.
+                                    Máy mình mới mua bị lỗi do nhà sản xuất quá 7 ngày, may quá của hàng linh động cho đổi trả. Chúc cửa hàng làm ăn phát đạt.
                                     <i class="fa fa-fw fa-quote-right"></i>
                                 </p>
-                                <h5 class="text-right"><i>John Doe</i></h5>
+                                <h5 class="text-right"><i>johndoe.vn.2015@gmail.com</i></h5>
                             </div>
                             <div class="item">
-                                <h4>Cool Style! 4</h4>
+                                <h4>Dịch vụ tốt</h4>
                                 <p><i class="fa fa-fw fa-quote-left"></i>
-                                    Lorem ipsum Culpa deserunt Ut elit in est reprehenderit mollit ullamco reprehenderit adipisicing incididunt Excepteur consequat nulla est magna minim aliquip.
+                                    Vừa đặt mua buổi chiều mà buổi tối đã trên tay đc rồi. Thank.
                                     <i class="fa fa-fw fa-quote-right"></i>
                                 </p>
-                                <h5 class="text-right"><i>John Doe</i></h5>
+                                <h5 class="text-right"><i>conmuangangqua.1102@gmail.com</i></h5>
                             </div>
                         </div>
                     </div>

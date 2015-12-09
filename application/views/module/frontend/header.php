@@ -6,14 +6,14 @@
                     <div class="header-top-left">
                         <ul>
                             <li>
-                                <a href="<?php echo site_url();?>cart/checkout/"><i class="fa fa-fw fa-cart-plus"></i><span>Giỏ hàng của tôi</span></a>
+                                <a href="<?php echo site_url();?>cart/checkout/" title="Xem giỏ hàng"><i class="fa fa-fw fa-cart-plus"></i><span>Giỏ hàng của tôi</span></a>
                             </li>
                         </ul>
                     </div>
                     <div class="header-top-right">
                         <span>Welcome to <?php echo COMPANY;?></span>
-                        <?php if(!$this->session->has_userdata('login')) echo '<a href="'.site_url('user/account/dang-nhap').'">Login</a> or <a href="'.site_url('user/account/login').'">Sign up</a>';
-                        else echo "Hi, <a title='Information' href='".site_url('user/profile')."'>".substr($this->session->userdata('name'), 0, 8)."</a> | <a title='Đăng xuất' href='".site_url("user/logout")."'> Logout<i class='fa fa-fw fa-sign-out'></i></a>"?>
+                        <?php if(!$this->session->has_userdata('login')) echo '<a href="'.site_url('user/account/dang-nhap').'">Login</a> or <a href="'.site_url('user/account/dang-ky').'">Sign up</a>';
+                        else echo "Hi, <a title='Thông tin tài khoản ".$this->session->userdata('name')."' href='".site_url('user/profile')."'>".substr($this->session->userdata('name'), 0, 8)."</a> | <a title='Đăng xuất' href='".site_url("user/logout")."'> Logout<i class='fa fa-fw fa-sign-out'></i></a>"?>
                     </div>
                 </div>
             </div>
@@ -23,12 +23,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-6 logo">
-                    <a href="<?php echo site_url();?>"><img src="<?php echo base_url();?>asset/images/logo3.png" alt="<?php echo COMPANY;?>" ></a>
+                    <a href="<?php echo site_url();?>" title="<?php echo COMPANY . " - " . SOLOGAN;?>"><img src="<?php echo base_url();?>asset/images/logo3.png" alt="<?php echo COMPANY;?>" ></a>
                 </div>
                 <div class="col-sm-4 col-sm-offset-2 contact">
                     <div class="contact-box center-block">
-                        <h6><i class="fa fa-fw fa-phone"> </i>+(84) 977 903 921</h6>
-                        <h6><i class="fa fa-fw fa-envelope"> </i>ohmygodvt95@gmail.com</h6>
+                        <h6 title="Đường dây nóng"><i class="fa fa-fw fa-phone"> </i>+(84) 977 903 921</h6>
+                        <h6 title="Email ngay cho chúng tôi"><i class="fa fa-fw fa-envelope"> </i>ohmygodvt95@gmail.com</h6>
                     </div>
                 </div>
             </div>

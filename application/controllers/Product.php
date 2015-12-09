@@ -58,6 +58,7 @@ class Product extends CI_Controller
     public function search() {
         $this->load->helper('string_helper');
         $this->load->helper('text');
+        $this->load->model('frontend/product_model');
         if (isset($_GET['key'])) {
             $value = string_short(convert_accented_characters(trim($_GET['key'])));
             $value_2 = trim($_GET['key']);

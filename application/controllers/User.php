@@ -16,7 +16,7 @@ class User extends CI_Controller
     public function register() {
         if (!$this->session->has_userdata('login')) {
             $email = $this->input->post('email');
-            $password = $this->input->post('password');
+            $password = md5($this->input->post('password').COMPANY);
             $phone = $this->input->post('phone');
             $address = $this->input->post('address');
             $name = substr($email, 0, 8);
@@ -30,11 +30,28 @@ class User extends CI_Controller
             redirect('cart/pay', 'refresh');
         }
     }
+    public function register2() {
+        if (!$this->session->has_userdata('login')) {
+            $email = $this->input->post('email');
+            $password = md5($this->input->post('password').COMPANY);
+            $phone = $this->input->post('phone');
+            $address = $this->input->post('address');
+            $name = substr($email, 0, 8);
+            if ($email != "" && $password != "") {
+                $time = time();
+                $sql = "INSERT INTO \"user\"( user_email, user_pass, user_fullname, user_time, user_join_time, user_phone, user_address) VALUES( '$email', '$password', '$email', $time, $time, '$phone', '$address')";
+                $this->db->query($sql);
+                $this->session->set_flashdata('signup', $email);
+                $this->log_model->write_log($email." đã tạo tài khoản mới", 0);
+            }
+            redirect('user/account/dang-nhap', 'refresh');
+        }
+    }
 
     public function checklogin() {
         if (!$this->session->has_userdata('login')) {
             $email = $this->input->post('email');
-            $pass = $this->input->post('pass');
+            $pass = md5($this->input->post('pass').COMPANY);
             $sql = "SELECT * FROM \"user\" WHERE user_email = '$email' AND user_pass = '$pass'";
             $result = $this->db->query($sql);
             if ($result->num_rows() == 1) {
@@ -65,7 +82,9 @@ class User extends CI_Controller
 
     public function profile($value = '') {
         if ($this->session->has_userdata('login')) {
-            $this->load->view('user/profile');
+            $result = $this->db->query("SELECT * FROM \"user\" WHERE user_id = ".$this->session->userdata('id'))->result();
+            $data['user'] = $result[0];
+            $this->load->view('user/profile', $data);
         }
         else {
             redirect(site_url("cart/pay"), 'refresh');
@@ -74,6 +93,7 @@ class User extends CI_Controller
 
     public function history($value = '') {
         if ($this->session->has_userdata('login')) {
+
             $this->load->view('user/history');
         }
         else {
@@ -100,6 +120,22 @@ class User extends CI_Controller
                     break;
             }
         }
+    }
+
+    public function trackyourorder($id = 0)
+    {
+        if (!$this->session->has_userdata('login')) {
+            redirect(site_url(),'refresh');
+        }
+        else{
+            if($id == 0) redirect(site_url(),'refresh');
+            else{
+                $result = $this->db->query("SELECT * FROM \"order\" WHERE order_id = $id")->result();
+                $data['order'] = $result[0];
+                $this->load->view('user/track', $data);
+            }
+        }
+
     }
 }
 

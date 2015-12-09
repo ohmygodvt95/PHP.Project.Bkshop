@@ -92,7 +92,7 @@
                                                     $id++;
                                                     echo '<tr>
                                                             <td>'.$id.'</td>
-                                                            <td>'.substr(md5($item->order_id), 0, 6).'</td>
+                                                            <td><a href="'.site_url("user/trackyourorder/".$item->order_id).'" title="Xem chi tiết đơn hàng '.$item->order_id.'">'.substr(md5($item->order_id), 0, 6).'</a></td>
                                                             <td>'.date("l, jS F, Y - h:i:s A",$item->order_time).'</td>
                                                             <td>';
                                                             if ($item->order_status == 0) echo '<span class="pending">Chờ xử lý</span>';

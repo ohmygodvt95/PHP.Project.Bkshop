@@ -19,11 +19,12 @@
     <meta property="og:image" content="<?php echo $product->product_thumb;?>" />
     <meta property="og:description" content="<?php echo COMPANY;?> - <?php echo $product->product_title;?> - <?php echo $sub_category->category_title;?> - <?php echo $category->category_title;?>" />
     <meta property="og:site_name" content="<?php echo COMPANY;?>" />
-    <meta property="fb:admins" content="" />
+    <meta property="fb:admins" content="ohmygodvt95" />
     <link rel="shortcut icon" type="image/png" href="<?php echo base_url();?>asset/images/favicon.png" />
     <link rel="canonical" href="<?php echo site_url("chi-tiet/".$product->product_url);?>"/>
     <link rel="next" href="<?php echo site_url("san-pham/".$category->category_url); ?>"/>
     <link rel="prev" href="<?php echo site_url("san-pham/".$category->category_url."/".$sub_category->category_url); ?>" />
+
     <title><?php echo $product->product_title ; ?> - <?php echo COMPANY;?> - <?php echo SOLOGAN;?></title>
     <!-- Load CSS-->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/reset.min.css">
@@ -52,6 +53,14 @@
     <div id="loader-wrapper">
         <div id="loader"></div>
     </div>
+    <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.5";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
     <?php $this->load->view('module/frontend/header');?>
         <!-- Preloader End -->
         <div class="bread">
@@ -97,7 +106,9 @@
                      ?>
                     <div class="col-sm-6 details">
                         <h2 class="product-name"><?php echo $product->product_title ; ?></h2>
-                        <p><small> <i class="fa fa-fw fa-eye"></i><i title="lượt xem"><?php echo $product->product_view;?></i> lượt xem</small></p>
+                        <p><small> <i class="fa fa-fw fa-eye"></i><i title="lượt xem"><?php echo $product->product_view;?></i> lượt xem</small>
+                        <div class="fb-like" data-href="<?php echo site_url('chi-tiet/'.$product->product_url);?>"></div>
+                        </p>
                         <h3 class="text-danger" style="font-weight: bolder"><small>$</small> <?php echo $product->product_price ; ?></h3>
                         <hr>
                         <div class="col-sm-12 status">
@@ -105,8 +116,11 @@
                             if($product->product_status == 0){
                                 echo "Còn hàng";
                             }
-                            else if($product->product_status == 1){
+                            else if($product->product_status == 2){
                                 echo "Hết hàng";
+                            }
+                            else if($product->product_status == 1){
+                                echo "Ngừng cung cấp";
                             }
                              ?></h4>
                             <h4><span>Nhà sản xuất: </span><?php echo $sub_category->category_title; ?></h4>
@@ -118,7 +132,7 @@
                                 <p><?php echo $product->product_deals ; ?></p>
                             </div>
                         </div>
-                        <div class="col-sm-12">
+                        <div class="col-sm-12 <?php if($product->product_status != 0) echo 'hidden';?>">
                             <hr>
                             <h4 class="heading">Đặt hàng</h4>
                             <div class="col-sm-6">
@@ -155,9 +169,9 @@
                         <!-- tabs left -->
                         <div class="tabbable tabs-left">
                             <ul class="nav nav-tabs">
-                                <li  class="active"><a href="#a" data-toggle="tab"><i class="fa fa-fw fa-info"></i><span>Chi tiết</span></a></li>
-                                <li><a href="#b" data-toggle="tab"><i class="fa fa-fw fa-rocket"></i><span>Giới thiệu</span></a></li>
-                                <li><a href="#c" data-toggle="tab"><i class="fa fa-fw fa-video-camera"></i><span>Video</span></a></li>
+                                <li  class="active"><a href="#a" data-toggle="tab"><i class="fa fa-fw fa-info"></i><span> Chi tiết</span></a></li>
+                                <li><a href="#b" data-toggle="tab"><i class="fa fa-fw fa-rocket"></i><span> Giới thiệu</span></a></li>
+                                <li><a href="#c" data-toggle="tab"><i class="fa fa-fw fa-wechat"></i><span> Bình luận</span></a></li>
                             </ul>
                             <div class="tab-content">
                                 <div class="tab-pane active" id="a">
@@ -166,7 +180,7 @@
                                 <div class="tab-pane" id="b">
                                     <?php echo $product->product_content ; ?>
                                 </div>
-                                <div class="tab-pane" id="c">Comming Soon!</div>
+                                <div class="tab-pane" id="c"><div class="fb-comments" data-href="<?php echo site_url('chi-tiet/'.$product->product_url);?>" data-numposts="5"></div></div>
                             </div>
                         </div>
                         <!-- /tabs -->

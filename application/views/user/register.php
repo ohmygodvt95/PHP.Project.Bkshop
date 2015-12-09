@@ -9,7 +9,7 @@
         <meta name="Author" content="LengKeng, E-mail: ohmygodvt95@gmail.com">
         <meta name="copyright" content="Copyright   &copy <?php echo date('Y');?> by LengKeng">
         <link rel="shortcut icon" type="image/png" href="<?php echo base_url();?>asset/images/favicon.png" />
-        <title>Tài khoản - <?php echo COMPANY;?> - <?php echo SOLOGAN;?></title>
+        <title>Tài khoản - Đăng ký - <?php echo COMPANY;?> - <?php echo SOLOGAN;?></title>
         <!-- Load CSS-->
         <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/reset.min.css">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/style.css">
@@ -77,7 +77,7 @@
                             <a href="<?php echo site_url();?>"><?php echo COMPANY;?> - Home</a>
                         </li>
                         <li class="active">
-                            Giỏ hàng của tôi
+                            Đăng ký thành viên mới
                         </li>
                     </ol>
                 </div>
@@ -85,53 +85,23 @@
             <div class="content">
                 <div class="container">
                     <div class="row">
-                        <div class="col-sm-6">
-                            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading" role="tab" id="headingOne">
-                                        <h4 class="panel-title">
-                                        <h5 role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        Tôi đã là thành viên của <?php echo COMPANY;?>
-                                        </h5>
-                                        </h4>
-                                    </div>
-                                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                                        <div class="panel-body">
-                                        <?php if($this->session->flashdata('signup') != NULL){
-                                                echo '<div class="alert alert-info">
-                                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                                <strong>Chúc mừng!</strong> Tài khoản '.$this->session->userdata('signup').' đã có thể sử dụng
-                                            </div>';
-                                            }?>
-                                            <div class="col-sm-8 col-sm-offset-2 login">
-                                                <h4>Email:</h4>
-                                                <div class="input-group">
-                                                    <span class="input-group-addon" id="basic-addon1"><i class="fa fa-fw fa-user"></i></span>
-                                                    <input type="email" class="form-control email" placeholder="Username" aria-describedby="basic-addon1">
-                                                </div>
-                                                <h4>Password:</h4>
-                                                <div class="input-group">
-                                                    <span class="input-group-addon" id="basic-addon1"><i class="fa fa-fw fa-key"></i></span>
-                                                    <input type="password" class="form-control pass" placeholder="Password" aria-describedby="basic-addon1">
-                                                </div>
-                                                <hr>
-                                                <button class="btn btn-primary btn-lg btn-block btn-login">Login</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                        <div class="col-sm-8 col-sm-offset-2">
+                            <hr>
+                            <a href="<?php echo site_url(); ?>" title="Go home">Tiếp tục mua hàng <i class="fa fa-fw fa-shopping-cart"></i></a>
+                            <a href="<?php echo site_url("contact"); ?>" title="Contact" class="pull-right">Tìm hiểu ngay về chúng tôi<i class="fa fa-fw fa-info"></i></a>
+                            <hr>
                                 <div class="panel panel-default">
                                     <div class="panel-heading" role="tab" id="headingTwo">
                                         <h4 class="panel-title">
-                                        <h5 class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        Tôi là thành viên mới
-                                        </h5>
+                                        <h2 class="text-center" role="button"  data-parent="#accordion" href="#collapseTwo" aria-expanded="false" >
+                                        Đăng ký thành viên mới của <?php echo COMPANY;?>
+                                        </h2>
                                         </h4>
                                     </div>
-                                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                    <div id="collapseTwo" class="panel-collapse" role="tabpanel" aria-labelledby="headingTwo">
                                         <div class="panel-body">
                                             <div class="col-sm-8 col-sm-offset-2 signup">
-                                                <form id = "form" action="<?php echo site_url();?>user/register/" method = "POST">
+                                                <form id = "form" action="<?php echo site_url();?>user/register2/" method = "POST">
                                                      <h4>Email:</h4>
                                                     <div class="input-group">
                                                         <span class="input-group-addon" id="basic-addon1"><i class="fa fa-fw fa-user"></i></span>
@@ -157,57 +127,21 @@
                                                         <span class="input-group-addon" id="basic-addon1"><i class="fa fa-fw fa-map-marker"></i></span>
                                                         <textarea class="form-control address" name = "address" placeholder="Address"></textarea>
                                                     </div>
+                                                    <hr>
                                                     <div class="checkbox hidden" style="font-size: 12px">
                                                         <label><input type="checkbox" value="" class="check">I agree to the <?php echo COMPANY;?> <a href="">Terms of Service</a>  and <a href="">Privacy Policy</a></label>
                                                     </div>
                                                     <hr>
-                                                    <button class="btn btn-primary btn-lg btn-block">Sign Up</button>
+                                                    <button class="btn btn-primary btn-lg btn-block">Đăng Ký</button>
                                                 </form>
                                             </div>
 
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 <?php if(count($cart) < 1) echo "hidden";?>">
-                            <div class="panel panel-info">
-                                  <div class="panel-heading">
-                                        <h3 class="panel-title text-center" style="height: 35px;">Thông tin đơn hàng</h3>
-                                  </div>
-                                  <div class="panel-body arial">
-                                    <table class="table table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th>Sản phẩm</th>
-                                                <th>Số lượng</th>
-                                                <th>Thành tiền</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                         <?php
-                                            foreach ($cart as $item) {
-                                                echo '
-                                                    <tr>
-                                                        <td><a target="_new" href="'.site_url('chi-tiet/'.$item['options']).'" title="'.$item['name'].'">'.$item['name'].'</a></td>
-                                                        <td>'.$item['qty'].'</td>
-                                                        <td >$ '.($item['qty'] * $item['price']).'</td>
-                                                    </tr>
-                                                ';
-                                            }
-                                        ?>
-                                        <tr>
-                                            <th></th>
-                                            <th><?php echo $total_product;?></th>
-                                            <th style="color: red">$<?php echo $total_amount;?></th>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                  </div>
-                                  <div class="panel-footer">
-                                     <h3 class="">Tổng số tiền: <?php echo $total_amount;?> $</h3>
-                                  </div>
-                            </div>
+                                <hr>
+                            <a href="<?php echo site_url(); ?>" title="Go home">Tiếp tục mua hàng <i class="fa fa-fw fa-shopping-cart"></i></a>
+                            <a href="<?php echo site_url("contact"); ?>" title="Contact" class="pull-right">Tìm hiểu ngay về chúng tôi<i class="fa fa-fw fa-info"></i></a>
                         </div>
                     </div>
                 </div>
@@ -285,32 +219,6 @@
                             required: "Số di động không được bỏ trống",
                             phonesVN: "Không phải là số di động của Việt Nam"
                         }
-                    }
-                });
-                $('.btn-login').click(function(event) {
-                    var email = $('input.email').val();
-                    var pass = $('input.pass').val();
-                    var phone = $('textarea.pass').val();
-                    var address = $('textarea.pass').val();
-                    if($.trim(email) != "" && pass.length > 0){
-                        var url = "<?php echo site_url();?>user/checklogin/";
-                        $.post(url, {email: email, pass: pass, phone: phone, address: address}, function(data, textStatus, xhr) {
-                            if (textStatus == "success" && data == "TRUE") {
-                                swal({
-                                    title: 'Logged In',
-                                    text: 'Bạn đã đăng nhập thành công!',
-                                    type: 'success',
-                                    confirmButtonColor: '#3085d6',
-                                    confirmButtonText: 'OK',
-                                    closeOnConfirm: false
-                                },function (argument) {
-                                    window.location = "<?php echo site_url();?>cart/pay/";
-                                });
-                            }
-                            else{
-                                swal('Error!', 'Tên đăng nhập hoặc mật khẩu sai!', 'error');
-                            }
-                        });
                     }
                 });
             });

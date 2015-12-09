@@ -9,7 +9,7 @@
         <meta name="Author" content="LengKeng, E-mail: ohmygodvt95@gmail.com">
         <meta name="copyright" content="Copyright   &copy <?php echo date('Y');?> by LengKeng">
         <link rel="shortcut icon" type="image/png" href="<?php echo base_url();?>asset/images/favicon.png" />
-        <title>Tài khoản- Đăng nhập - <?php echo COMPANY;?></title>
+        <title>Track your order- <?php echo COMPANY;?> - <?php echo SOLOGAN;?></title>
         <!-- Load CSS-->
         <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/reset.min.css">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/style.css">
@@ -28,7 +28,20 @@
         <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,700,500' rel='stylesheet' type='text/css'>
             <!-- Style -->
             <style>
-
+                tr i{
+                    transition: 0.5s;
+                    cursor: pointer;
+                    color: green;
+                }
+                tr i:hover{
+                    color: red;
+                }
+                .roboto{
+                    font-family: 'Roboto';
+                }
+                .error{
+                    color: red;
+                }
             </style>
         </head>
         <body>
@@ -45,7 +58,7 @@
                             <a href="<?php echo site_url();?>"><?php echo COMPANY;?> - Home</a>
                         </li>
                         <li class="active">
-                            Login
+                            Track your order
                         </li>
                     </ol>
                 </div>
@@ -53,45 +66,24 @@
             <div class="content">
                 <div class="container">
                     <div class="row">
-                        <div class="col-sm-6 col-sm-offset-3">
-                            <h2 class="text-center text-primary">Đăng nhập - <?php echo COMPANY;?></h2>
-                            <h4 class="text-center"><?php echo COMPANY;?> - <?php echo SOLOGAN;?></h4>
-                            <hr>
-                            <h4 class="text-center arial">Bạn chưa là thành viên? <a href="<?php echo site_url("user/account/dang-ky");?>">Đăng ký</a>  tài khoản ngay!</h4>
-                            <hr>
-                            <?php if($this->session->flashdata('signup') != NULL){
-                                                echo '<div class="alert alert-info">
-                                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                                <strong>Chúc mừng!</strong> Tài khoản '.$this->session->userdata('signup').' đã có thể sử dụng
-                                            </div>';
-                                            }?>
-                            <div class="row">
-                                <div class="col-sm-8 col-sm-offset-2">
+                        <?php  $this->load->view('user/menu');?>
+                        <div class="col-sm-9">
+                            <div class="panel panel-success">
+                                  <div class="panel-heading">
+                                        <h3 class="panel-title text-center">Track your order</h3>
+                                  </div>
+                                  <div class="panel-body">
 
-                                    <h4>Email:</h4>
-                                    <div class="input-group">
-                                        <span class="input-group-addon" id="basic-addon1"><i class="fa fa-fw fa-user"></i></span>
-                                        <input type="email" class="form-control email" placeholder="Email" aria-describedby="basic-addon1">
-                                    </div>
-                                    <h4>Password:</h4>
-                                    <div class="input-group">
-                                        <span class="input-group-addon" id="basic-addon1"><i class="fa fa-fw fa-key"></i></span>
-                                        <input type="password" class="form-control pass" placeholder="Password" aria-describedby="basic-addon1">
-                                    </div>
-                                    <br>
-                                    <a href="">Quên mật khẩu?</a>
-                                    <hr>
-                                    <button type="button" class="btn btn-primary login btn-lg btn-block">Đăng nhập</button>
-                                </div>
+                                  </div>
                             </div>
-                            <hr>
-                            <a href="<?php echo site_url(); ?>" title="Go home">Tiếp tục mua hàng <i class="fa fa-fw fa-shopping-cart"></i></a>
-                            <a href="<?php echo site_url("contact"); ?>" title="Contact" class="pull-right">Tìm hiểu ngay về chúng tôi<i class="fa fa-fw fa-info"></i></a>
                         </div>
                     </div>
+
                 </div>
             </div>
             <div class="hidden baseurl"><?php echo site_url();?></div>
+            <div class="hidden oid"><?php echo $order->order_id;?></div>
+            <div class="hidden status"><?php echo $order->order_status;?></div>
             <?php $this->load->view('module/frontend/footer');?>
             <!-- JQUERY -->
             <script src="<?php echo base_url();?>asset/js/jquery.min.js"></script>
@@ -102,26 +94,20 @@
             <script src="<?php echo base_url();?>asset/js/stickup.min.js"></script>
             <script src="<?php echo base_url();?>asset/js/frontend/script.js"></script>
             <script src="<?php echo base_url();?>asset/js/sweetalert.min.js"></script>
-            <!-- Customize -->
             <script>
             $(document).ready(function() {
-                $('.login').click(function(event) {
-                    var email = $('.email').val();
-                    var pass  = $('.pass').val();
-                    if($.trim(email) != "" && pass.length > 0){
-                        var url = "<?php echo site_url();?>user/checklogin/";
-                        $.post(url, {email: email, pass: pass}, function(data, textStatus, xhr) {
-                            if (textStatus == "success" && data == "TRUE") {
-                                window.location = "<?php echo site_url();?>user/profile/";
-                            }
-                            else{
-                                swal('Error!', 'Tên đăng nhập hoặc mật khẩu sai!', 'error');
-                            }
-                        });
+                var oid = $('.oid').text();
+                var status = $('.status').text();
+                $.post('<?php echo site_url();?>adminajax/getorderitem', {id: oid, status: status}, function(data, textStatus, xhr) {
+                    if(textStatus == "success"){
+                        $('.panel-body').html(data);
+                        $('select').addClass('hidden');
+                        $('button').addClass('hidden');
                     }
                 });
             });
             </script>
+            <!-- Customize -->
             <script>
                         // Preloader Website
                         $(window).load(function() {

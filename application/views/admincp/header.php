@@ -109,7 +109,7 @@
                         <li>
                             <a href="<?php echo site_url("admincp");?>" class="active"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
-                        <li>
+                        <li class="hidden">
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Thống kê</a>
                         </li>
                         <li>
@@ -134,16 +134,7 @@
                             <a href="#"><i class="fa fa-sitemap fa-fw"></i> Deals</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-users fa-fw"></i> Users<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="blank.html">Thêm mới user</a>
-                                </li>
-                                <li>
-                                    <a href="login.html">Quản lý user</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
+                            <a href="<?php echo site_url('admincp/user');?>"><i class="fa fa-users fa-fw"></i> Users</a>
                         </li>
                     </ul>
                 </div>

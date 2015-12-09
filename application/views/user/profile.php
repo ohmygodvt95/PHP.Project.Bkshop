@@ -77,37 +77,63 @@
 	                    					<tbody>
 	                    						<tr>
 	                    							<td>Họ và tên: </td>
-	                    							<td><?php echo $this->session->userdata('name');?></td>
+	                    							<td><?php echo $user->user_fullname;?> <i class="fa fa-wrench fa-fw pull-right fix" action = "user_fullname" val = "<?php echo $user->user_fullname;?>" title="Đổi họ và tên"></i></td>
 	                    						</tr>
 	                    						<tr>
 	                    							<td>Giới tính: </td>
-	                    							<td><?php if($this->session->userdata('role') == 1) echo "Nam"; else echo "Nữ"?></td>
+	                    							<td><?php if($user->user_sex == 1) echo "Nam"; else echo "Nữ"?> <i class="fa fa-wrench fa-fw pull-right fix-sex" action = "user_sex" val = "<?php echo $user->user_sex;?>" title="Đổi giới tính"></i></td>
 	                    						</tr>
-	                    						<tr>
-	                    							<td>Email: </td>
-	                    							<td><?php echo $this->session->userdata('email');?></td>
-	                    						</tr>
+                                                <tr>
+                                                    <td>Phone: </td>
+                                                    <td><?php echo $user->user_phone;?><i class="fa fa-wrench fa-fw pull-right fix" action = "user_phone" val = "<?php echo $user->user_phone;?>" title="Đổi sdt"></i></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Address: </td>
+                                                    <td><?php echo $user->user_address;?><i class="fa fa-wrench fa-fw pull-right fix" action = "user_address" val = "<?php echo $user->user_address;?>" title="Đổi địa chỉ nhận hàng"></i></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Email: </td>
+                                                    <td><?php echo $user->user_email;?></td>
+                                                </tr>
 	                    						<tr>
 	                    							<td>Loại tài khoản: </td>
-	                    							<td><?php if($this->session->userdata('role') == 1) echo "Normal";?></td>
+	                    							<td><?php if($user->user_role == 1) echo "Customer"; else echo "Administrator"?> </td>
 	                    						</tr>
 	                    						<tr>
 	                    							<td>Mã: </td>
-	                    							<td><?php echo md5($this->session->userdata('id'));?></td>
+	                    							<td><?php echo ($user->user_id);?></td>
 	                    						</tr>
 	                    						<tr>
 	                    							<td>Thời gian tham gia: </td>
-	                    							<td><?php echo date("l, F jS, Y h:i:s", $this->session->userdata('join'));?></td>
+	                    							<td><?php echo date("l, F jS, Y h:i:s", $user->user_join_time);?></td>
 	                    						</tr>
 	                    						<tr>
 	                    							<td>Hoạt động gần nhất: </td>
-	                    							<td><?php echo date("l, F jS, Y h:i:s", $this->session->userdata('time'));?></td>
+	                    							<td><?php echo date("l, F jS, Y h:i:s", $user->user_time);?></td>
 	                    						</tr>
 	                    					</tbody>
 	                    				</table>
 	                    		  </div>
 	                    	</div>
 	                    </div>
+                        <div class="col-sm-3">
+                            <div class="panel panel-info">
+                                  <div class="panel-heading">
+                                        <h3 class="panel-title">Đổi mật khẩu</h3>
+                                  </div>
+                                  <div class="panel-body">
+                                       <h5>Mật khẩu hiện tại:</h5>
+                                       <input type="password" class="form-control curpass" placeholder="Mật khẩu hiện có">
+                                       <hr>
+                                       <h5>Mật khẩu mới:</h5>
+                                       <input type="password" class="form-control nextpass" placeholder="Độ dài >= 8 kí tự" >
+                                       <h5>Xác nhận mật khẩu mới:</h5>
+                                       <input type="password" class="form-control re-nextpass" placeholder="Mật khẩu xác nhận phải giống">
+                                       <hr>
+                                       <button class="btn btn-success btn-block btn-change" >Đổi mật khẩu</button>
+                                  </div>
+                            </div>
+                        </div>
                     </div>
 
                 </div>
@@ -123,6 +149,92 @@
             <script src="<?php echo base_url();?>asset/js/stickup.min.js"></script>
             <script src="<?php echo base_url();?>asset/js/frontend/script.js"></script>
             <script src="<?php echo base_url();?>asset/js/sweetalert.min.js"></script>
+            <script>
+            $(document).ready(function() {
+                $('.btn-change').click(function(event) {
+                    var curpass = $('.curpass').val();
+                    var nextpass = $('.nextpass').val();
+                    var renextpass = $('.re-nextpass').val();
+                    if(nextpass.length < 8 || nextpass != renextpass || curpass.length < 8){
+                        swal({title: 'Error', html: "<ul style='text-align: left!important'><li>Mật khẩu cũ phải có độ dài >= 8 kí tự.</li><li>Mật khẩu mới phải có độ dài >= 8 kí tự. </li><li>Mật khẩu xác nhận phải giống mật khẩu mới!</li></ul>", type: "error"});
+                    }
+                    else{
+                        $.post('<?php echo site_url();?>ajax/changepass', {curpass: curpass, nextpass: nextpass}, function(data, textStatus, xhr) {
+                            if(textStatus == "success" && data == "TRUE"){
+                                swal({
+                                        title: "Success",
+                                        html: "Bạn đã đổi mật khẩu thành công!" ,
+                                        type: "success",
+                                        showCancelButton: false,
+                                        closeOnConfirm: false },
+                                        function() {
+                                            window.location = "<?php echo site_url('user/profile');?>";
+                                        });
+                            }
+                            else{
+                                swal('Error', "Mật khẩu hiện tại không đúng!", "error");
+                            }
+                        });
+                    }
+                });
+                $('.fix').click(function(event) {
+                    var title = $(this).attr('title');
+                    var action = $(this).attr('action');
+                    var val = $(this).attr('val');
+                    swal({
+                        title: title,
+                        html: '<p><input id="input-field" class="form-control" value="'+val+'">',
+                        showCancelButton: true,
+                        closeOnConfirm: false },
+                        function() {
+                            var new_val = $('#input-field').val();
+                            $.post('<?php echo site_url();?>ajax/changeinfo', {action: action, value: new_val}, function(data, textStatus, xhr) {
+                                if(textStatus == "success" && data == "TRUE"){
+                                    swal({
+                                        title: "Success",
+                                        html: 'Bạn đã '+ title + " thành công!" ,
+                                        type: "success",
+                                        showCancelButton: false,
+                                        closeOnConfirm: false },
+                                        function() {
+                                            window.location = "<?php echo site_url('user/profile');?>";
+                                        });
+                                }
+                                else swal("Error", "Có lỗi xảy ra, vui lòng thử lại sau!", "error");
+
+                            });
+                        });
+                });
+                $('.fix-sex').click(function(event) {
+                    var title = $(this).attr('title');
+                    var action = $(this).attr('action');
+                    swal({
+                        title: title,
+                        html: '<select class="form-control" id="sex"><option value="0">Nữ</option><option value="1">Nam</option></select>',
+                        showCancelButton: true,
+                        closeOnConfirm: false },
+                        function() {
+                            var new_val = $('#sex').val();
+                            $.post('<?php echo site_url();?>ajax/changeinfo', {action: action, value: new_val}, function(data, textStatus, xhr) {
+                                if(textStatus == "success" && data == "TRUE"){
+                                    swal({
+                                        title: "Success",
+                                        html: 'Bạn đã '+ title + " thành công!" ,
+                                        type: "success",
+                                        showCancelButton: false,
+                                        closeOnConfirm: false },
+                                        function() {
+                                            window.location = "<?php echo site_url('user/profile');?>";
+                                        });
+                                }
+                                else swal("Error", "Có lỗi xảy ra, vui lòng thử lại sau!", "error");
+
+                            });
+                        });
+                });
+            });
+
+            </script>
             <!-- Customize -->
             <script>
                         // Preloader Website
