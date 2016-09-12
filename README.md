@@ -1,5 +1,6 @@
 # BKSHOP
 ### WEBSHOP mã nguồn dành cho môn csdl
-- @author Le Vinh Thien - HUST
-- @copyright By Me 2015
-### Đã có tên HEROKU
+### Đã có trên HEROKU [This link](http://bkshop.herokuapp.com/)
+
+- Copyright &copy; 2015 By Lê Vĩnh Thiện - HUST
+- levinhthien.bka@gmail.com
